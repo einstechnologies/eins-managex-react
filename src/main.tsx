@@ -13,6 +13,3 @@ createRoot(document.getElementById('root')!).render(
   // hello
 )
 
-// Comments added to test the commit and PR
-
-// Tutorial Comment for explaination of Github PR
