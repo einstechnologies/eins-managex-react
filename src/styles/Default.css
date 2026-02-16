@@ -1,0 +1,98 @@
+.mainContent {
+    margin-top: 50px;
+    margin-left: 160px;
+    margin-right: 20px;
+    padding: 20px;
+    transition: margin-left 0.3s ease-in-out;
+    position: relative;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px);
+
+}
+
+.mainContent-expanded {
+    margin-top: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 20px;
+    transition: margin-left 0.3s ease-in-out;
+    position: relative;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px);
+}
+
+.engraved-text {
+    font-size: 5em;
+    font-weight: bold;
+    font-family: 'Poppins-Regular', sans-serif;
+
+    color: #b1b1b1;
+    text-align: center;
+
+    /* Deep engraved effect */
+    text-shadow:
+        0px 3px 3px rgba(255, 255, 255, 0.5),
+        0px -1px 1px rgba(0, 0, 0, 0.6),
+        0px 1px 2px rgba(0, 0, 0, 0.3);
+
+    letter-spacing: 2px;
+    margin: 0;
+    padding: 20px;
+    opacity: 1;
+
+}
+
+.engraved-text-para {
+    font-size: 2em;
+    font-family: 'Poppins-Regular', sans-serif;
+    color: #b1b1b1;
+    text-align: center;
+    text-shadow:
+        0px 3px 3px rgba(255, 255, 255, 0.5),
+        0px -1px 1px rgba(0, 0, 0, 0.6),
+        0px 1px 2px rgba(0, 0, 0, 0.3);
+    margin: 0;
+    padding: 20px;
+    opacity: 1;
+
+}
+
+.engraved-text .highlight-x {
+    color: #ab1532;
+    text-shadow:
+        0px 3px 3px rgba(255, 255, 255, 0.5),
+        0px -1px 1px rgba(0, 0, 0, 0.6),
+        0px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.testing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.testing hr {
+    border: none;
+    border-top: 2px solid #ccc;
+    margin: 20px 0;
+    width: 100%;
+}
+
+
+/* Mobile */
+@media (max-width: 700px) {
+
+
+    .mainContent,
+    .mainContent-expanded {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
