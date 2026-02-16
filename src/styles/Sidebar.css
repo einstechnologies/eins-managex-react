@@ -1,0 +1,231 @@
+.sidebar {
+    position: fixed;
+    top: 1em;
+    left: 0.7em;
+    bottom: 1em;
+    height: calc(100vh - 2em);
+    width: 130px;
+
+    background: linear-gradient(to bottom, #193e8e, #130e3b);
+    box-shadow: 0px 0px 8px rgba(62, 57, 107, 0.7);
+    border-radius: 0.25rem;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+
+    scrollbar-gutter: stable;
+    font-family: 'Poppins-Regular', sans-serif;
+
+    /* Animation properties */
+    transform: translateX(0);
+    opacity: 1;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    z-index: 1000;
+
+    /* Centering properties */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+/* Scrollbar styling */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    list-style: none;
+    margin: auto 0;
+    padding: 0;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.1s ease-in-out, visibility 0s 0s;
+    width: 100%;
+    gap: 20px;
+}
+
+/* List items */
+.sidebar li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0.18em 0;
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+
+}
+
+.sidebar ul li i {
+    color: #9a9898;
+    font-size: 3em;
+    vertical-align: middle;
+
+}
+
+.sidebar li span {
+    font-size: 14px;
+    margin: 0;
+    color: transparent;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.sidebar li:hover span {
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+
+/* When li has active class, style the icon inside it */
+.sidebar ul li.active i {
+    color: #ffffff;
+}
+
+/* Also style the text span */
+.sidebar ul li.active span {
+    color: #ffffff;
+}
+
+/* Complete active menu styling */
+.sidebar ul li.active {
+    color: #ffffff;
+}
+
+.sidebar li:hover i {
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.sidebar-hidden {
+    position: fixed;
+    top: 1em;
+    left: 0.7em;
+    bottom: 1em;
+    height: calc(100vh - 2em);
+    width: 130px;
+
+    background: linear-gradient(to bottom, #193e8e, #130e3b);
+    box-shadow: 0px 0px 8px rgba(62, 57, 107, 0.7);
+    border-radius: 0.25rem;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding: 0.3em !important;
+    box-sizing: border-box;
+
+    scrollbar-gutter: stable;
+    font-family: 'Poppins-Regular', Arial, sans-serif;
+
+    /* Hidden state animation */
+    transform: translateX(-145px);
+    pointer-events: none;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+
+.sidebar-hidden ul {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.1s ease-in-out, visibility 0s 0.1s;
+    gap: 0px;
+}
+
+
+.sidebar-hidden li {
+    display: none;
+
+}
+
+
+.drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+/* Mobile drawer styles */
+.sidebar-mobile {
+    top: 0 !important;
+    left: 0 !important;
+    height: 100vh !important;
+    width: 250px !important;
+    z-index: 1000 !important;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3) !important;
+
+}
+
+.sidebar-mobile li {
+    display: flex;
+    flex-direction: row;
+    /* ✅ Changed from column to row */
+    align-items: center;
+    margin: 0.18em 0;
+    padding: 15px;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    gap: 15px;
+    /* ✅ Add gap between icon and text */
+}
+
+.sidebar-mobile li span {
+    font-size: 1em;
+    margin: 0;
+    padding-left: 15px;
+    color: #9a9898;
+    white-space: nowrap;
+
+}
+
+@media (max-width: 700px) {
+    .drawer-overlay {
+        display: block;
+    }
+
+    .sidebar {
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 250px;
+        transform: translateX(-260px) !important;
+        /* Force hidden on mobile */
+        z-index: 1000;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .sidebar-mobile:not(.sidebar-hidden) {
+        transform: translateX(0) !important;
+        /* Slide in when visible */
+    }
+
+    .sidebar-hidden.sidebar-mobile {
+        transform: translateX(-260px) !important;
+        /* Slide out */
+    }
+}
