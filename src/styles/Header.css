@@ -9,6 +9,7 @@
     position: fixed;
     width: calc(100% - 170px);
     transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+    z-index: 1000;    /* higher value = more on top */
 }
 
 .headerStyle i {
@@ -43,6 +44,7 @@
     flex-wrap: nowrap;
     position: fixed;
     transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+    z-index: 1000;    /* higher value = more on top */
 }
 
 .headerStyle-hidden i {
