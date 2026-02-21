@@ -5,8 +5,8 @@ import LayoutPage from './pages/Layout';
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<LoginPage />} />
-      <Route path="/Home" element={<LayoutPage />} />
+      <Route path="/EINS_ManageX/" element={<LoginPage />} />
+      <Route path="/EINS_ManageX/Home" element={<LayoutPage />} />
     </Routes>
   );
 };
