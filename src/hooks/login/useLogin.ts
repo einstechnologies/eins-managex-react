@@ -11,7 +11,7 @@ export const useLogin = () => {
         onSuccess:async (data) => {
             localStorage.setItem('token', data.token);
              await new Promise((resolve) => setTimeout(resolve, 800));
-            navigate("/Home", { replace: true });
+            navigate("/EINS_ManageX/Home", { replace: true });
             console.log('Logged in as:', data.username, '| Role:', data.userRole)
         },
        
