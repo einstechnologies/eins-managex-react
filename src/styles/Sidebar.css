@@ -95,20 +95,18 @@
 }
 
 
-/* When li has active class, style the icon inside it */
-.sidebar ul li.active i {
-    color: #ffffff;
-}
-
-/* Also style the text span */
-.sidebar ul li.active span {
-    color: #ffffff;
-}
-
-/* Complete active menu styling */
 .sidebar ul li.active {
-    color: #ffffff;
+ color: #ffffff !important;
 }
+
+.sidebar ul li.active i {
+  color: #ffffff !important;
+}
+
+.sidebar ul li.active span {
+  color: #ffffff !important;
+}
+
 
 .sidebar li:hover i {
     color: #ffffff;

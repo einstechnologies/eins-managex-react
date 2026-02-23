@@ -11,7 +11,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 
 
 function LayoutPage() {
-    const { isVisible, setIsVisible, isMobile, enableTransition, activeMenuItem } = useSidebar();
+    const { isVisible, setIsVisible, isMobile, enableTransition, activeMenuItem,setActiveMenuItem } = useSidebar();
      const navigate = useNavigate();
 
     const menuItems: MenuItem[] = [
@@ -25,6 +25,7 @@ function LayoutPage() {
     ];
 
     const handleMenuClick = (menuId: string) => {
+         setActiveMenuItem(menuId);   
         const item = menuItems.find(m => m.id === menuId);
         if (item?.path) {
       navigate(item.path);   // ABSOLUTE path → no duplication
