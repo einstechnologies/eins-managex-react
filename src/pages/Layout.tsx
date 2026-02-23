@@ -7,36 +7,32 @@ import '../styles/Sidebar.css';
 import '../styles/Header.css';
 import '../styles/Footer.css';
 import type { MenuItem } from '../ts/index';
-import DASHBOARD from './Dashboard';
-import USER_REGISTRATION from './UserRegistration';
-import Default from './Default';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 
 function LayoutPage() {
-    const { isVisible, setIsVisible, isMobile, enableTransition, setActiveMenuItem, activeMenuItem } = useSidebar();
+    const { isVisible, setIsVisible, isMobile, enableTransition, activeMenuItem } = useSidebar();
+     const navigate = useNavigate();
 
     const menuItems: MenuItem[] = [
-        { id: "DASHBOARD", icon: "bi bi-grid", label: "DASHBOARD", component: DASHBOARD },
-        { id: "USER REGISTRATION", icon: "bi bi-person-add", label: "MANAGE USERS", component: USER_REGISTRATION },
-        { id: "CONFIGURATION", icon: "bi bi-gear-wide-connected", label: "CONFIGURATION", component: Default },
-        { id: "TEMPLATE TRANSFER", icon: "bi bi-shuffle", label: "TEMPLATES", component: Default },
-        { id: "TRANSACTION", icon: "bi bi-send", label: "TRANSACTION", component: Default },
-        { id: "PROFILE", icon: "bi bi-person-circle", label: "PROFILE", component: Default },
-        { id: "HELP", icon: "bi bi-patch-question", label: "HELP", component: Default }
+        { id: "DASHBOARD", icon: "bi bi-grid", label: "DASHBOARD", path: "/EINS_ManageX/Dashboard"},
+        { id: "USER REGISTRATION", icon: "bi bi-person-add", label: "MANAGE USERS", path: "/EINS_ManageX/User"},
+        { id: "CONFIGURATION", icon: "bi bi-gear-wide-connected", label: "CONFIGURATION",path: "/EINS_ManageX/Configuration"},
+        { id: "TEMPLATE TRANSFER", icon: "bi bi-shuffle", label: "TEMPLATES",path: "/EINS_ManageX/TemplateTransfer" },
+        { id: "TRANSACTION",icon: "bi bi-send", label: "TRANSACTION",path: "/EINS_ManageX/Transaction"  },
+        { id: "PROFILE", icon: "bi bi-person-circle", label: "PROFILE",path: "/EINS_ManageX/Profile" },
+        { id: "HELP", icon: "bi bi-patch-question", label: "HELP",path: "/EINS_ManageX/Help" }
     ];
 
     const handleMenuClick = (menuId: string) => {
-        console.log(`Navigating to: ${menuId}`);
-
-        setActiveMenuItem(menuId);
-
+        const item = menuItems.find(m => m.id === menuId);
+        if (item?.path) {
+      navigate(item.path);   // ABSOLUTE path → no duplication
+    }  
         if (isMobile) {
             setIsVisible(false);
         }
-        // Add your routing logic
     };
-
-    const ActiveComponent = menuItems.find(item => item.id === activeMenuItem)?.component || Default;
 
     return (
         <>
@@ -61,7 +57,7 @@ function LayoutPage() {
 
             <main>
                 <MainContent isVisible={isVisible} isMobile={isMobile}>
-                    <ActiveComponent />
+                  <Outlet />
                 </MainContent>
             </main>
 
