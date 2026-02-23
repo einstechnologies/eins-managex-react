@@ -53,7 +53,7 @@ function App() {
       {/* Device Health & Timeline */}
       <Row className="g-4 mb-4">
          {/* Live Transactions Table */}
-          <Col xl={12} lg={12}>
+          <Col xs={12} sm={12} md={12} xl={12} lg={12}>
             <div className="Productheader">
                 <h1 className='engraved-text'>EINS Manage<span className="highlight-x">X</span></h1>
                 <hr className="custom-hr"/>

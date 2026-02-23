@@ -63,11 +63,14 @@
   align-items: center;
   position: relative;
   z-index: 2;
+
+   flex-wrap: wrap; /* allow content to wrap */
+    gap: 8px;        /* small spacing when wrapped */
 }
 
 .card-title {
   font-size: 16px;
-  opacity: 0.9;
+  opacity: 1;
   margin-bottom: 8px;
 }
 
@@ -100,6 +103,7 @@
   right: 20px;                 /* adjust position */
   bottom: 0px;                /* adjust position */
   z-index: 2;
+   transition: transform 0.3s ease;
 }
 
 .custom-card:hover .card-icon {
@@ -117,19 +121,25 @@
 =================================*/
 
 .gradient-1 {
-  background: linear-gradient(135deg, #fda4af, #c084fc);
+  background: linear-gradient(135deg, #fbbf24, #f97316);
 }
+/* .gradient-2 {
+  background: linear-gradient(135deg, #2563eb, #0ea5e9);
+} */
 
 .gradient-2 {
-  background: linear-gradient(135deg, #5eead4, #38bdf8);
-}
+  background: linear-gradient(135deg, #06b6d4, #0f766e);
+} 
+
+/* .gradient-2 {
+  background: linear-gradient(135deg, #22d3ee, #4338ca);
+} */
 .gradient-3 {
-  background: linear-gradient(135deg, #86efac, #16a34a);
+  background: linear-gradient(135deg, #84cc16, #4d7c0f);
 }
 .gradient-4 {
-  background: linear-gradient(135deg, #fca5a5, #dc2626);
+  background: linear-gradient(135deg, #dc2626, #991b1b);
 }
-
 /* .gradient-3 {
   background: linear-gradient(135deg, #93c5fd, #6366f1);
 }
@@ -185,4 +195,49 @@
 .content-body
 {
     margin-top: 30px;
+}
+
+/* ===============================
+   Responsive Adjustments
+=================================*/
+
+/* iPhone SE (320-375px width) */
+@media (max-width: 375px) {
+    .card-title { font-size: 12px; }
+    .card-value { font-size: 28px; }
+    .card-icon { font-size: 40px; right: 0px; bottom: 5px; }
+}
+
+/* Small phones / iPhone 12 / Galaxy S8 */
+@media (max-width: 414px) {
+    .card-title { font-size: 15px; }
+    .card-value { font-size: 32px; }
+    .card-icon { font-size: 55px; right: 15px; bottom: 5px; }
+}
+
+/* Very small screens - stack content vertically */
+@media (max-width: 320px) {
+    .card-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .card-icon {
+        position: static;
+        opacity: 0.3;
+        margin-top: 8px;
+    }
+}
+
+/* Tablets / iPad mini / iPad Air */
+@media (max-width: 768px) {
+    .card-title { font-size: 13px; }
+    .card-value { font-size: 34px; }
+    .card-icon { font-size: 47px; right: 5px; bottom: 0px; }
+}
+
+/* Large folding phones (Galaxy Z Fold 5) and bigger devices */
+@media (min-width: 1024px) {
+    .card-title { font-size: 16px; }
+    .card-value { font-size: 36px; }
+    .card-icon { font-size: 60px; right: 5px; bottom: 0; }
 }

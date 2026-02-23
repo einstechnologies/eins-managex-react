@@ -30,3 +30,15 @@ export interface MenuItem {
     path:string
     onClick?: () => void;
 }
+
+// types.ts
+export interface Transaction {
+  status: "Paid" | "Pending" | "in Process";
+  date: string;
+  type: "Deposit" | "Withdrawal" | "Referral";
+  amount: string;
+  currency: string;
+  tokens: string;
+  details: string;
+  icon?: string;
+}
