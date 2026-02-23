@@ -56,6 +56,13 @@
   width: 100%;
 }
 
+
+  .Productheader .custom-hr {
+    border: none;
+    border-top: 2px solid #ccc;
+    margin: 20px 0;
+    width: 40%; 
+}
 /* Mobile */
 @media (max-width: 700px) {
 
@@ -75,4 +82,30 @@
 
     width: 80%;
   }
+
+}
+
+
+/* Tablets / medium screens */
+@media (max-width: 768px) {
+    .Productheader .custom-hr {
+        width: 80%; /* slightly wider on tablets */
+        margin: 15px 0;
+    }
+}
+
+/* Small phones / iPhone 12 / Galaxy S8+ */
+@media (max-width: 414px) {
+    .Productheader .custom-hr {
+        width: 125%; /* almost full width on small screens */
+        margin: 12px 0;
+    }
+}
+
+/* Extra small / iPhone SE */
+@media (max-width: 375px) {
+    .Productheader .custom-hr {
+        width: 150%; /* nearly full width */
+        margin: 10px 0;
+    }
 }

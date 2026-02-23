@@ -96,3 +96,23 @@
         margin-right: 20px;
     }
 }
+
+
+/* Tablets / Large phones */
+@media (max-width: 1024px) {
+    .engraved-text { font-size: 4em; }
+    .engraved-text-para{font-size: 2em;}
+}
+
+/* Medium phones (iPhone 12 Pro / Galaxy S8+) */
+@media (max-width: 414px) {
+    .engraved-text { font-size: 4em; }
+}
+
+/* Small phones (iPhone SE) */
+@media (max-width: 375px) {
+    .engraved-text {
+        font-size: 4em;
+        line-height: 1.2; /* prevents overlapping with subtitle */
+    }
+}
