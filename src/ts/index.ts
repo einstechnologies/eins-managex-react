@@ -1,8 +1,5 @@
 // Common types used across components
 
-import DASHBOARD from '../pages/Dashboard';
-
-
 export interface SidebarProps {
     isVisible: boolean;
     isMobile: boolean;
@@ -30,6 +27,6 @@ export interface MenuItem {
     id: string;
     icon: string;
     label: string;
-    component: typeof DASHBOARD;
+    path:string
     onClick?: () => void;
 }

@@ -99,7 +99,7 @@ const LoginPage: React.FC = () => {
 
       <div
         className="login-wrapper"
-        style={{ backgroundImage: `url(/p88.jpg)` }}
+        style={{ backgroundImage: `url(/EINS_ManageX/loginbg.jpg)` }}
       >
         <div className="login-card">
           {/* Left section */}

@@ -10,8 +10,11 @@
     position: fixed;
     width: calc(100% - 170px);
     transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
-    color: black;
-    opacity: 0.5;
+    
+
+     color: #9d8f8f;
+    opacity: 1;
+    background-color:#fff;
 }
 
 .footer-expanded {
@@ -26,8 +29,8 @@
     flex-wrap: nowrap;
     position: fixed;
     transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
-    color: black;
-    opacity: 0.5;
+      color: #9d8f8f;
+    opacity: 1.5;
 }
 
 .footer-contact {
@@ -41,13 +44,16 @@
     .footer,
     .footer-expanded {
         bottom: 0;
-        left: 20px;
-
-        width: calc(100% - 30px);
+        left: 0;              /* ✅ remove left gap */
+        right: 0;             /* ✅ ensure full stretch */
+        width: 100%;          /* ✅ full width */
         z-index: 998;
+
         flex-direction: column;
         align-items: flex-start;
-        /* Use flex-start instead of 'left' */
         justify-content: flex-start;
+
+        background-color: #fff;
+        padding: 15px;        /* optional internal spacing */
     }
 }
