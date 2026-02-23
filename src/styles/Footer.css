@@ -41,17 +41,19 @@
 
 @media (max-width: 700px) {
 
-     .footer,
+    .footer,
     .footer-expanded {
         bottom: 0;
-        left: 20px;
-
-        width: calc(100% - 30px);
+        left: 0;              /* ✅ remove left gap */
+        right: 0;             /* ✅ ensure full stretch */
+        width: 100%;          /* ✅ full width */
         z-index: 998;
+
         flex-direction: column;
         align-items: flex-start;
-        /* Use flex-start instead of 'left' */
         justify-content: flex-start;
-       background-color: #fff
+
+        background-color: #fff;
+        padding: 15px;        /* optional internal spacing */
     }
 }
