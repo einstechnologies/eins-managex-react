@@ -35,3 +35,11 @@ export interface MenuItem {
   }>;
   onClick?: () => void;
 }
+
+
+export interface DeviceCardDgProp
+{
+    IsDeviceImage:string;
+    IsVisible:string
+    
+} 
