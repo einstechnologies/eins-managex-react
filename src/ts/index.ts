@@ -24,24 +24,18 @@ export interface FooterProps {
 }
 
 export interface MenuItem {
+  id: string;
+  icon: string;
+  label: string;
+  path: string;
+  children?: Array<{
     id: string;
-    icon: string;
     label: string;
-    path:string
-    onClick?: () => void;
+    path: string;
+  }>;
+  onClick?: () => void;
 }
 
-// types.ts
-export interface Transaction {
-  status: "Paid" | "Pending" | "in Process";
-  date: string;
-  type: "Deposit" | "Withdrawal" | "Referral";
-  amount: string;
-  currency: string;
-  tokens: string;
-  details: string;
-  icon?: string;
-}
 
 export interface DeviceCardDgProp
 {

@@ -7,28 +7,91 @@ import '../styles/Sidebar.css';
 import '../styles/Header.css';
 import '../styles/Footer.css';
 import type { MenuItem } from '../ts/index';
-import { Outlet, useNavigate } from 'react-router-dom';
-
+import { Outlet, useNavigate} from 'react-router-dom';
+import { useState, useRef } from 'react';
+import { useEffect } from 'react';
 
 function LayoutPage() {
+
     const { isVisible, setIsVisible, isMobile, enableTransition, activeMenuItem,setActiveMenuItem } = useSidebar();
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    const [menuRect, setMenuRect] = useState<DOMRect | null>(null);
+    const hideTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);  
      const navigate = useNavigate();
+     const isMounted = useRef(false); 
+     const [hoveredId, setHoveredId] = useState<string | null>(null);
 
     const menuItems: MenuItem[] = [
         { id: "DASHBOARD", icon: "bi bi-grid", label: "DASHBOARD", path: "/EINS_ManageX/Dashboard"},
-        { id: "USER REGISTRATION", icon: "bi bi-person-add", label: "MANAGE USERS", path: "/EINS_ManageX/User"},
+        { id: "USER REGISTRATION", icon: "bi bi-person-add", label: "MANAGE USERS", path: "",children: [              
+      { id: "User_Registration", label: "User Registration", path: "/EINS_ManageX/User/UserRegistration" },
+      { id: "User_Search", label: "User Search", path: "/EINS_ManageX/User/Edit" }, ], },
         { id: "CONFIGURATION", icon: "bi bi-gear-wide-connected", label: "CONFIGURATION",path: "/EINS_ManageX/Configuration"},
         { id: "TEMPLATE TRANSFER", icon: "bi bi-shuffle", label: "TEMPLATES",path: "/EINS_ManageX/TemplateTransfer" },
         { id: "TRANSACTION",icon: "bi bi-send", label: "TRANSACTION",path: "/EINS_ManageX/Transaction"  },
-        { id: "PROFILE", icon: "bi bi-person-circle", label: "PROFILE",path: "/EINS_ManageX/Profile" },
+        { id: "PROFILE", icon: "bi bi-person-circle", label: "PROFILE",path: "",children: [              
+      { id: "License", label: "License Details", path: "/EINS_ManageX/License" },
+      { id: "Login History", label: "Login History", path: "/EINS_ManageX/Login_History" }, 
+     { id: "Logout", label: "Logout", path: "/EINS_ManageX/" }, ], },
         { id: "HELP", icon: "bi bi-patch-question", label: "HELP",path: "/EINS_ManageX/Help" }
     ];
+
+    useEffect(() => {
+  isMounted.current = true;  
+  return () => {
+    isMounted.current = false;
+  };
+}, []);
+
+
+const handleSidebarHover = (data: any) => {
+    if (!isMounted.current) return; 
+   console.log('1. Hover received:', data?.id);  
+    console.log('2. Found index:', menuItems.findIndex(m => m.id === data?.id));        
+  if (hideTimeout.current) clearTimeout(hideTimeout.current);
+  if (data?.id) {
+      
+    const idx = menuItems.findIndex(m => m.id === data.id);  
+     console.log('3. Setting index:', idx);  
+      console.log('4. Children:', menuItems[idx]?.children);   
+    setHoveredIndex(idx);
+     setHoveredId(data.id); 
+    setMenuRect(data.boundingRect);
+  }
+  else {
+   
+    hideTimeout.current = setTimeout(() => {
+      setHoveredIndex(null);
+      setHoveredId(null);
+      setMenuRect(null);
+    }, 150);
+  }
+};
+
+const handleSubmenuEnter = () => {
+  console.log('7. Submenu entered → cancelling timer');
+  if (hideTimeout.current) clearTimeout(hideTimeout.current);  //  cancel hide
+};
+const handleSubmenuLeave = () => {
+  console.log('8. Submenu left → starting timer');
+  hideTimeout.current = setTimeout(() => {  //  delay hide
+    setHoveredIndex(null);
+     setHoveredId(null);
+    setMenuRect(null);
+  }, 150);
+};
 
     const handleMenuClick = (menuId: string) => {
          setActiveMenuItem(menuId);   
         const item = menuItems.find(m => m.id === menuId);
         if (item?.path) {
-      navigate(item.path);   // ABSOLUTE path → no duplication
+      navigate(item.path);   //
+    }
+     if (!item) {
+        menuItems.forEach(parent => {
+            const child = parent.children?.find((c: any) => c.id === menuId);
+            if (child?.path) navigate(child.path);
+        });
     }  
         if (isMobile) {
             setIsVisible(false);
@@ -45,17 +108,42 @@ function LayoutPage() {
                 <Header isVisible={isVisible} setVisible={setIsVisible} isMobile={isMobile} />
             </nav>
 
-            <aside>
-                <Sidebar
-                    isVisible={isVisible}
-                    isMobile={isMobile}
-                    enableTransition={enableTransition}
-                    onMenuItemClick={handleMenuClick}
-                    customMenuItems={menuItems}
-                    activeMenuItem={activeMenuItem}
-                />
-            </aside>
+          <aside>
+  <Sidebar
+  hoveredId={hoveredId} 
+    isVisible={isVisible}
+    isMobile={isMobile}
+    enableTransition={enableTransition}
+    onMenuItemClick={handleMenuClick}
+    customMenuItems={menuItems}
+    activeMenuItem={activeMenuItem}
+onHoverItem={handleSidebarHover}  
+  />
+</aside>
 
+{hoveredIndex !== null && 
+ menuItems[hoveredIndex]?.children && 
+ menuItems[hoveredIndex].children!.length > 0 && (
+  <div 
+    className="global-submenu"
+    style={{ top: `${menuRect?.top ?? 200}px` }}
+     onMouseEnter={handleSubmenuEnter}   //  cancel hide
+   onMouseLeave={handleSubmenuLeave}        // delay hide
+  >
+    {menuItems[hoveredIndex].children!.map((child: any) => (
+      <button
+        key={child.id}
+        className="submenu-btn"
+        onClick={() => {
+          navigate(child.path);
+          setHoveredIndex(null);  //  correct state
+        }}
+      >
+        {child.label}
+      </button>
+    ))}
+  </div>
+)}
             <main>
                 <MainContent isVisible={isVisible} isMobile={isMobile}>
                   <Outlet />
