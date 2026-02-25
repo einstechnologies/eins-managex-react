@@ -42,3 +42,10 @@ export interface Transaction {
   details: string;
   icon?: string;
 }
+
+export interface DeviceCardDgProp
+{
+    IsDeviceImage:string;
+    IsVisible:string
+    
+} 
