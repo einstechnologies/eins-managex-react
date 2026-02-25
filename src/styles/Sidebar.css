@@ -206,7 +206,7 @@
 .global-submenu {
   position: fixed !important;
   height: auto !important;
-  left: calc(0.7em + 130px + 4px) !important;  
+  left: calc(0.7em + 130px + 0px) !important;  
   background: linear-gradient(to bottom, #193e8e, #130e3b) !important;
   min-width: 140px;
   padding: 12px 0;
@@ -214,7 +214,6 @@
   box-shadow: 5px 0 10px rgba(62, 57, 107, 0.7);
   z-index: 10001 !important;  
   overflow: hidden;
-  
   opacity: 1;  
   transition: opacity 0.2s ease;
 }
