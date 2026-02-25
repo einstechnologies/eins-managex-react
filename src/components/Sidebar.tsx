@@ -47,13 +47,12 @@ function Sidebar({
     };
 
     return (
-        <div className={sidebarClass} onMouseLeave={() =>{   console.log('SIDEBAR LEFT'); onHoverItem?.(null)}} >
+        <div className={sidebarClass} onMouseLeave={() =>{  onHoverItem?.(null)}} >
             <ul>
                {visibleItems.map((item) => (  // ← use visibleItems
        <li key={item.id} 
   onMouseEnter={(e) => {
       if (isMobile) return;
-    console.log('LI ENTER:', item.id);
     const rect = e.currentTarget.getBoundingClientRect();
     onHoverItem?.({
       id: item.id,

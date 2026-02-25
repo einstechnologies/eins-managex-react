@@ -45,15 +45,10 @@ function LayoutPage() {
 
 
 const handleSidebarHover = (data: any) => {
-    if (!isMounted.current) return; 
-   console.log('1. Hover received:', data?.id);  
-    console.log('2. Found index:', menuItems.findIndex(m => m.id === data?.id));        
+    if (!isMounted.current) return;      
   if (hideTimeout.current) clearTimeout(hideTimeout.current);
   if (data?.id) {
-      
-    const idx = menuItems.findIndex(m => m.id === data.id);  
-     console.log('3. Setting index:', idx);  
-      console.log('4. Children:', menuItems[idx]?.children);   
+    const idx = menuItems.findIndex(m => m.id === data.id); 
     setHoveredIndex(idx);
      setHoveredId(data.id); 
     setMenuRect(data.boundingRect);
@@ -69,11 +64,9 @@ const handleSidebarHover = (data: any) => {
 };
 
 const handleSubmenuEnter = () => {
-  console.log('7. Submenu entered → cancelling timer');
   if (hideTimeout.current) clearTimeout(hideTimeout.current);  //  cancel hide
 };
 const handleSubmenuLeave = () => {
-  console.log('8. Submenu left → starting timer');
   hideTimeout.current = setTimeout(() => {  //  delay hide
     setHoveredIndex(null);
      setHoveredId(null);
