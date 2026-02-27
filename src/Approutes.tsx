@@ -2,9 +2,14 @@ import { Routes, Route } from "react-router-dom";
 import LoginPage from './pages/Loginpage';
 import LayoutPage from './pages/Layout';
 import DASHBOARD from './pages/Dashboard';
-import USER_REGISTRATION from './pages/UserRegistration';
+import USER_REGISTRATION from './pages/User/UserRegistration';
+import USER_Search from './pages/User/UserSearch';
 import Default from './pages/Default'
+import Template from './pages/TemplateTransfer'
+import Help from './pages/Help'
 import DeviceList from './pages/Devicelist'
+import License from "./pages/Profile/License";
+import Login_History from './pages/Profile/Login_History';
 
 const AppRoutes = () => {
   return (
@@ -15,12 +20,14 @@ const AppRoutes = () => {
 {/* index route – when you hit /EINS_ManageX/Home */}
         <Route path="Home" element={<Default />} />
         <Route path="Dashboard" element={<DASHBOARD />} />
-        <Route path="User" element={<USER_REGISTRATION />} />       
+        <Route path="User/UserRegistration" element={<USER_REGISTRATION />} />     
+        <Route path="User/UserSearch" element={<USER_Search />} />    
         <Route path="Configuration" element={<DeviceList />} />
-        <Route path="TemplateTransfer" element={<Default />} />
+        <Route path="TemplateTransfer" element={<Template />} />
         <Route path="Transaction" element={<Default />} />
-        <Route path="Profile" element={<Default />} />
-        <Route path="Help" element={<Default />} />
+        <Route path="Profile/License" element={<License />} />
+        <Route path="Profile/Login_History" element={<Login_History />} />
+        <Route path="Help" element={<Help />} />
 
       </Route>
       
