@@ -1,0 +1,53 @@
+/* components/Tabs.module.css */
+
+.user-tab-Wrapper {
+    width: 100%;
+}
+
+.user-tab-Wrapper .tabList {
+    display: flex;
+    gap: 4px;
+    padding: 4px;
+    border-radius: 8px;
+    background-color: #f3f4f6;
+}
+
+.user-tab-Wrapper .tabButton {
+    flex: 1;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: transparent;
+    color: #6b7280;
+    transition: all 0.2s ease;
+}
+
+.user-tab-Wrapper .tabButton:hover {
+    background-color: #e5e7eb;
+    color: #374151;
+}
+
+.user-tab-Wrapper .tabButtonActive {
+    background-color: white;
+    color: #111827;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.user-tab-Wrapper .tabContent {
+    margin-top: 12px;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    background-color: #f9fafb;
+    color: #374151;
+    font-size: 0.875rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.user-tab-Wrapper .tabContent span {
+    font-size: 12px;
+}

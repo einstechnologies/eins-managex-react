@@ -1,0 +1,79 @@
+.user-card-table-tableWrapper {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+}
+
+.user-card-table-tableWrapper table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.user-card-table-tableWrapper .tableHead {
+    background-color: #f9fafb;
+}
+
+.user-card-table-tableWrapper .tableHead th {
+    padding: 10px 16px;
+    text-align: left;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #6b7280;
+    border: 1px solid #e5e7eb;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.user-card-table-tableWrapper .tableBody tr {
+    border-bottom: 1px solid #e5e7eb;
+    transition: background-color 0.15s ease;
+}
+
+.user-card-table-tableWrapper .tableBody tr:last-child {
+    border-bottom: none;
+}
+
+.user-card-table-tableWrapper .tableBody tr:hover {
+    background-color: #fff5f7;
+}
+
+.user-card-table-tableWrapper .tableBody td {
+    padding: 10px 16px;
+    font-size: 0.875rem;
+    color: #374151;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.user-card-table-tableWrapper .deleteBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #d21a38;
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.user-card-table-tableWrapper .deleteBtn:hover {
+    background-color: #fff5f7;
+}
+
+.user-card-table-tableWrapper .emptyRow td {
+    text-align: center;
+    color: #9ca3af;
+    padding: 24px;
+    font-size: 0.875rem;
+    border: 1px solid #e5e7eb;
+}
