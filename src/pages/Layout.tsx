@@ -25,13 +25,13 @@ function LayoutPage() {
         { id: "DASHBOARD", icon: "bi bi-grid", label: "DASHBOARD", path: "/EINS_ManageX/Dashboard"},
         { id: "USER REGISTRATION", icon: "bi bi-person-add", label: "MANAGE USERS", path: "",children: [              
       { id: "User_Registration", label: "User Registration", path: "/EINS_ManageX/User/UserRegistration" },
-      { id: "User_Search", label: "User Search", path: "/EINS_ManageX/User/Edit" }, ], },
+      { id: "User_Search", label: "User Search", path: "/EINS_ManageX/User/UserSearch" }, ], },
         { id: "CONFIGURATION", icon: "bi bi-gear-wide-connected", label: "CONFIGURATION",path: "/EINS_ManageX/Configuration"},
         { id: "TEMPLATE TRANSFER", icon: "bi bi-shuffle", label: "TEMPLATES",path: "/EINS_ManageX/TemplateTransfer" },
         { id: "TRANSACTION",icon: "bi bi-send", label: "TRANSACTION",path: "/EINS_ManageX/Transaction"  },
         { id: "PROFILE", icon: "bi bi-person-circle", label: "PROFILE",path: "",children: [              
-      { id: "License", label: "License Details", path: "/EINS_ManageX/License" },
-      { id: "Login History", label: "Login History", path: "/EINS_ManageX/Login_History" }, 
+      { id: "License", label: "License Details", path: "/EINS_ManageX/Profile/License" },
+      { id: "Login History", label: "Login History", path: "/EINS_ManageX/Profile/Login_History" }, 
      { id: "Logout", label: "Logout", path: "/EINS_ManageX/" }, ], },
         { id: "HELP", icon: "bi bi-patch-question", label: "HELP",path: "/EINS_ManageX/Help" }
     ];

@@ -1,9 +1,9 @@
-import '../styles/UserRegistration.css'
+import '../../styles/UserRegistration.css'
 import { useNavigate } from "react-router-dom";
-import { Tabs } from '../components/TabShadowcn';
-import { UserFace } from '../components/UserFace';
-import { UserCard } from '../components/UserCard';
-import { UserPin } from '../components/UserPin';
+import { Tabs } from '../../components/TabShadowcn';
+import { UserFace } from '../../components/UserFace';
+import { UserCard } from '../../components/UserCard';
+import { UserPin } from '../../components/UserPin';
 
 function UserRegistration() {
     const myTabs = [
