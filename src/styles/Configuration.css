@@ -482,3 +482,244 @@
  .cssbuttons-io-buttonConfi:active .icon {
      transform: scale(0.95);
  }
+
+ .hid-container {
+  padding: 20px;
+  
+
+  /* overflow: hidden; */
+}
+
+.hid-header {
+  background: #ffffff;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.logo {
+  height: 35px;
+}
+
+
+
+.hid-nav div {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.hid-nav div p {
+  margin: 5px 0 0;
+}
+
+.hid-card {
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid #e2e2e2;
+ box-shadow: 0 0 3px 2px rgb(225 217 218 / 50%);
+
+
+  overflow-y: auto;
+}
+
+.device-info p {
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.device-footer {
+  background: #e9eef5;
+  padding: 8px;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.hid-nav {
+  background: #fff;
+  padding: 12px 0;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 0 3px 2px rgb(225 217 218 / 50%);
+  border-radius:6px;
+  
+}
+
+.nav-item {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 10px 0;
+  border-radius: 8px;
+}
+
+.nav-item:hover {
+ 
+  
+  transition: all 0.3s ease;
+}
+
+.nav-item:hover .nav-icon {
+  color: #2f4ac2;
+}
+.nav-item:hover p {
+ 
+  text-shadow:
+    
+   
+    0 0 2px #1f66eb;
+}
+.nav-item:active {
+  transform: scale(0.95);
+}
+
+.nav-icon {
+  font-size: 26px;
+  color: #495057;
+  transition: all 0.3s ease;
+}
+
+.nav-item p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+.connect-section {
+  min-width: 120px;
+  cursor: pointer;
+}
+
+.connect-img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.connect-img:hover {
+  transform: scale(1.1);
+}
+
+.connect-text {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #0d6efd;
+}
+
+
+
+
+.text-input-group {
+    border: 0.5px solid #ccc;
+    border-radius: 4px;
+    padding: 3px 10px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.text-input-group label {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 0;
+    display: block;
+}
+
+.text-input-group input {
+    border: none;
+    outline: none;
+    padding: 0;
+    width: 100%;
+    font-size: 14px;
+    background-color: transparent;
+    color: black;
+}
+
+.text-input-group:focus-within {
+    border: 1px solid #811023;
+}
+
+.text-input-group input:focus {
+    box-shadow: none;
+}
+
+.ip-input-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;              /* take full field width */
+}
+
+.ip-input-wrapper input {
+    flex: 1;                   /* each box grows equally */
+    min-width: 0;
+    text-align: center;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    background: transparent;
+    padding: 0;
+}
+
+.ip-input-wrapper span {
+    padding: 0 6px;
+    font-weight: 600;
+    color: #555;
+}
+.device-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.device-image {
+  max-height: 280px;
+  object-fit: contain;
+}
+
+.device-label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #444;
+}
+
+.cloud-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    margin-bottom:8px;
+    font-size: 14px;
+}
+
+.cloud-checkbox input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.cloud-checkbox label {
+    cursor: pointer;
+    color:#888;
+}
+
+.cloud-checkbox.inside {
+    margin-top: 6px;
+}
+
+.password-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.password-wrapper input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 14px;
+
+    padding: 0;
+}
+
+.eye-icon {
+    cursor: pointer;
+    font-size: 16px;
+    padding-left: 8px;
+    user-select: none;
+}
