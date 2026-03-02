@@ -490,7 +490,7 @@
   /* overflow: hidden; */
 }
 
-.hid-header {
+.hid-container .hid-header {
   background: #ffffff;
   padding: 10px 20px;
   border-bottom: 1px solid #ddd;
@@ -502,16 +502,16 @@
 
 
 
-.hid-nav div {
+.hid-container .hid-nav div {
   font-size: 14px;
   cursor: pointer;
 }
 
-.hid-nav div p {
+.hid-container .hid-nav div p {
   margin: 5px 0 0;
 }
 
-.hid-card {
+.hid-container .hid-card {
   padding: 15px;
   border-radius: 6px;
   border: 1px solid #e2e2e2;
@@ -521,19 +521,19 @@
   overflow-y: auto;
 }
 
-.device-info p {
+.hid-container .device-info p {
   margin-bottom: 6px;
   font-size: 14px;
 }
 
-.device-footer {
+.hid-container .device-footer {
   background: #e9eef5;
   padding: 8px;
   margin-top: 10px;
   font-size: 13px;
 }
 
-.hid-nav {
+.hid-container .hid-nav {
   background: #fff;
   padding: 12px 0;
   border-bottom: 1px solid #ddd;
@@ -542,61 +542,61 @@
   
 }
 
-.nav-item {
+.hid-container .nav-item {
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 10px 0;
   border-radius: 8px;
 }
 
-.nav-item:hover {
+.hid-container .nav-item:hover {
  
   
   transition: all 0.3s ease;
 }
 
-.nav-item:hover .nav-icon {
+.hid-container .nav-item:hover .nav-icon {
   color: #2f4ac2;
 }
-.nav-item:hover p {
+.hid-container .nav-item:hover p {
  
   text-shadow:
     
    
     0 0 2px #1f66eb;
 }
-.nav-item:active {
+.hid-container .nav-item:active {
   transform: scale(0.95);
 }
 
-.nav-icon {
+.hid-container .nav-icon {
   font-size: 26px;
   color: #495057;
   transition: all 0.3s ease;
 }
 
-.nav-item p {
+.hid-container .nav-item p {
   margin: 5px 0 0;
   font-size: 14px;
   font-weight: 500;
 }
-.connect-section {
+.hid-container .connect-section {
   min-width: 120px;
   cursor: pointer;
 }
 
-.connect-img {
+.hid-container .connect-img {
   width: 60px;
   height: 60px;
   object-fit: contain;
   transition: transform 0.2s ease;
 }
 
-.connect-img:hover {
+.hid-container .connect-img:hover {
   transform: scale(1.1);
 }
 
-.connect-text {
+.hid-container .connect-text {
   margin-top: 6px;
   font-size: 14px;
   color: #0d6efd;
@@ -605,7 +605,7 @@
 
 
 
-.text-input-group {
+.hid-container .text-input-group {
     border: 0.5px solid #ccc;
     border-radius: 4px;
     padding: 3px 10px;
@@ -613,14 +613,14 @@
     margin-bottom: 10px;
 }
 
-.text-input-group label {
+.hid-container .text-input-group label {
     font-size: 11px;
     color: #888;
     margin-bottom: 0;
     display: block;
 }
 
-.text-input-group input {
+.hid-container .text-input-group input {
     border: none;
     outline: none;
     padding: 0;
@@ -630,21 +630,21 @@
     color: black;
 }
 
-.text-input-group:focus-within {
+.hid-container .text-input-group:focus-within {
     border: 1px solid #811023;
 }
 
-.text-input-group input:focus {
+.hid-container .text-input-group input:focus {
     box-shadow: none;
 }
 
-.ip-input-wrapper {
+.hid-container .ip-input-wrapper {
     display: flex;
     align-items: center;
     width: 100%;              /* take full field width */
 }
 
-.ip-input-wrapper input {
+.hid-container .ip-input-wrapper input {
     flex: 1;                   /* each box grows equally */
     min-width: 0;
     text-align: center;
@@ -655,30 +655,30 @@
     padding: 0;
 }
 
-.ip-input-wrapper span {
+.hid-container .ip-input-wrapper span {
     padding: 0 6px;
     font-weight: 600;
     color: #555;
 }
-.device-wrapper {
+.hid-container .device-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.device-image {
+.hid-container .device-image {
   max-height: 280px;
   object-fit: contain;
 }
 
-.device-label {
+.hid-container .device-label {
   font-weight: 600;
   font-size: 14px;
   color: #444;
 }
 
-.cloud-checkbox {
+.hid-container .cloud-checkbox {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -687,28 +687,28 @@
     font-size: 14px;
 }
 
-.cloud-checkbox input {
+.hid-container .cloud-checkbox input {
     width: 16px;
     height: 16px;
     cursor: pointer;
 }
 
-.cloud-checkbox label {
+.hid-container .cloud-checkbox label {
     cursor: pointer;
     color:#888;
 }
 
-.cloud-checkbox.inside {
+.hid-container .cloud-checkbox.inside {
     margin-top: 6px;
 }
 
-.password-wrapper {
+.hid-container .password-wrapper {
     display: flex;
     align-items: center;
     width: 100%;
 }
 
-.password-wrapper input {
+.hid-container .password-wrapper input {
     flex: 1;
     border: none;
     outline: none;
@@ -717,7 +717,7 @@
     padding: 0;
 }
 
-.eye-icon {
+.hid-container .eye-icon {
     cursor: pointer;
     font-size: 16px;
     padding-left: 8px;
