@@ -1,6 +1,6 @@
 
 import type { DeviceCardDgProp } from "../ts";
-
+import {useNavigate} from 'react-router-dom';
 
 interface DeviceCardProps extends DeviceCardDgProp {
   title?: string;
@@ -15,6 +15,8 @@ function DeviceCardfunc({
   , IsDeviceImage
   , IsVisible }: DeviceCardProps
 ) {
+
+   const navigate=useNavigate();
   return (
     <div className="col-lg-6">
       <div className="card card-list">
@@ -35,8 +37,9 @@ function DeviceCardfunc({
           </div>
 
           <div className="col-lg-12  aligncenter margin1">
-            <button className="cssbuttons-io-buttonConfi device-list">
-              Configure
+            <button className="cssbuttons-io-buttonConfi device-list" onClick={() => navigate("/EINS_ManageX/ConfigurationPage")} > 
+               
+              Configure 
               <div className="icon device-list">
                 <svg height="24" width="24" viewBox="0 0 24 24">
                   <path d="M0 0h24v24H0z" fill="none" />
