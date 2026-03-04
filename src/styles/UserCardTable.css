@@ -2,17 +2,51 @@
     width: 100%;
     border-radius: 8px;
     border: 1px solid #e5e7eb;
-    overflow: hidden;
+    max-height: 350px;
+    overflow: auto;
+    /* Enables both X and Y scroll */
 }
 
+/* Scrollbar width */
+.user-card-table-tableWrapper::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    /* for horizontal scroll */
+}
+
+/* Track */
+.user-card-table-tableWrapper::-webkit-scrollbar-track {
+    background: #f8f9fb;
+    /* very light grey */
+    border-radius: 10px;
+}
+
+/* Thumb */
+.user-card-table-tableWrapper::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #811023, #E71D3E);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.user-card-table-tableWrapper::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #5e0c19, #b3142c);
+    box-shadow: 0 0 6px rgba(129, 16, 35, 0.4);
+}
+
+/* Table */
 .user-card-table-tableWrapper table {
-    width: 100%;
     border-collapse: collapse;
-    table-layout: fixed;
+
+    /* Forces horizontal scroll */
 }
 
+/* Header */
 .user-card-table-tableWrapper .tableHead {
     background-color: #f9fafb;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 .user-card-table-tableWrapper .tableHead th {
@@ -24,18 +58,13 @@
     border: 1px solid #e5e7eb;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    overflow: hidden;
-    text-overflow: ellipsis;
     white-space: nowrap;
 }
 
+/* Body */
 .user-card-table-tableWrapper .tableBody tr {
     border-bottom: 1px solid #e5e7eb;
     transition: background-color 0.15s ease;
-}
-
-.user-card-table-tableWrapper .tableBody tr:last-child {
-    border-bottom: none;
 }
 
 .user-card-table-tableWrapper .tableBody tr:hover {
@@ -47,19 +76,20 @@
     font-size: 0.875rem;
     color: #374151;
     border: 1px solid #e5e7eb;
-    overflow: hidden;
-    text-overflow: ellipsis;
     white-space: nowrap;
     vertical-align: middle;
+    text-align: center;
 }
 
+/* Buttons */
 .user-card-table-tableWrapper .deleteBtn {
     background: none;
     border: none;
     cursor: pointer;
     color: #d21a38;
-    padding: 4px;
+    /* padding: 4px; */
     border-radius: 4px;
+    margin: -3px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -70,6 +100,7 @@
     background-color: #fff5f7;
 }
 
+/* Empty Row */
 .user-card-table-tableWrapper .emptyRow td {
     text-align: center;
     color: #9ca3af;

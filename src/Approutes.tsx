@@ -11,6 +11,7 @@ import DeviceList from './pages/Devicelist'
 import License from "./pages/Profile/License";
 import Login_History from './pages/Profile/Login_History';
 import Configurationpage from './pages/Configuration';
+import HIDDeviceFeature from './pages/HIDDeviceFeature';
 
 const AppRoutes = () => {
   return (
@@ -30,6 +31,7 @@ const AppRoutes = () => {
         <Route path="Profile/Login_History" element={<Login_History />} />
         <Route path="Help" element={<Help />} />
         <Route path="Configurationpage" element={<Configurationpage/>}/>
+        <Route path="HIDDeviceFeature" element={<HIDDeviceFeature/>}/>
 
       </Route>
       
