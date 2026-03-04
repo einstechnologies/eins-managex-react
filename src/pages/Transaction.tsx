@@ -98,7 +98,7 @@ export default function Transactions() {
   return (
     <div className="user-content-screen">
 
-      <div className='header-title hedcol'>
+      <div className='header-title headcol'>
         <div className="col-md-4 col-12 d-flex align-items-center">
           <span>TRANSACTION</span>
         </div>
