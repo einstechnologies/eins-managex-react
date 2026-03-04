@@ -19,18 +19,7 @@ export function DeviceCardTable({ devices, onConnect, onView, onDelete }: Device
     return (
         <div className="user-card-table-tableWrapper">
             <table>
-                <colgroup>
-                    <col style={{ width: "10%" }} />
-                    <col style={{ width: "10%" }} />
-                    <col style={{ width: "10%" }} />
-                    <col style={{ width: "10%" }} />
-                    <col style={{ width: "10%" }} />
-                    <col style={{ width: "10%" }} />
-                    <col style={{ width: "10%" }} />
-                    <col style={{ width: "10%" }} />
 
-
-                </colgroup>
                 <thead className="tableHead">
                     <tr>
                         <th>#</th>
@@ -47,7 +36,7 @@ export function DeviceCardTable({ devices, onConnect, onView, onDelete }: Device
                 <tbody className="tableBody">
                     {devices.length === 0 ? (
                         <tr className="emptyRow">
-                            <td colSpan={6}>No Devices configured yet</td>
+                            <td colSpan={8}>No Devices configured yet</td>
                         </tr>
                     ) : (
                         devices.map((device, index) => (
@@ -61,9 +50,9 @@ export function DeviceCardTable({ devices, onConnect, onView, onDelete }: Device
                                     <button
                                         className="deleteBtn"
                                         onClick={() => onConnect(device.id)}
-                                        title="Connect"
+                                        title="Select"
                                     >
-                                        <i className="bi bi-hand-index"></i>
+                                        <i className="bi bi-card-checklist"></i>
                                     </button>
                                 </td>
                                 <td>
@@ -72,7 +61,7 @@ export function DeviceCardTable({ devices, onConnect, onView, onDelete }: Device
                                         onClick={() => onView(device.id)}
                                         title="View"
                                     >
-                                        <i className="bi bi-list"></i>
+                                        <i className="bi bi-eye"></i>
                                     </button>
                                 </td>
                                 <td>

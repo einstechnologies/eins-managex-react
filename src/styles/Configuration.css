@@ -602,10 +602,7 @@
 
  .hid-container .nav-item:hover p {
 
-     text-shadow:
-
-
-         0 0 2px #1f66eb;
+     text-shadow: 0 0 2px #1f66eb;
  }
 
  .hid-container .nav-item:active {
@@ -807,4 +804,97 @@
      .classmargin {
          margin-bottom: 1px;
      }
+ }
+
+
+
+ /* =========================
+   TABS CONTAINER
+========================= */
+ .hid-tabs {
+     display: flex;
+     align-items: center;
+     width: 100%;
+     padding: 10px 16px;
+     background: #f4f5fa;
+     border-radius: 10px;
+     gap: 8px;
+ }
+
+ /* =========================
+   DESKTOP VIEW
+========================= */
+ @media (min-width: 768px) {
+     .hid-tabs {
+         justify-content: space-between;
+     }
+
+     .hid-tab-item {
+         flex: 1;
+         justify-content: center;
+     }
+ }
+
+ /* =========================
+   MOBILE VIEW
+========================= */
+ @media (max-width: 767px) {
+     .hid-tabs {
+         overflow-x: auto;
+         /* horizontal scroll */
+         white-space: nowrap;
+     }
+
+     .hid-tab-item {
+         flex: 0 0 auto;
+         /* prevent shrinking */
+         padding: 10px 14px;
+     }
+ }
+
+ /* =========================
+   TAB ITEM
+========================= */
+ .hid-tab-item {
+     display: flex;
+     align-items: center;
+     gap: 6px;
+     padding: 12px 16px;
+     font-size: 14px;
+     font-weight: 500;
+     border-radius: 8px;
+     cursor: pointer;
+     color: #646464;
+     transition: all 0.3s ease;
+     position: relative;
+ }
+
+ /* Bigger icon */
+ .hid-tab-item i {
+     font-size: 30px;
+ }
+
+ /* Hover */
+ .hid-tab-item:hover {
+     background: #e9ebf3;
+     color: #111;
+ }
+
+ /* Active Tab */
+ .hid-tab-item.active-tab {
+     color: black;
+     font-weight: 600;
+ }
+
+ /* Animated underline */
+ .hid-tab-item.active-tab::after {
+     content: "";
+     position: absolute;
+     bottom: -10px;
+     left: 20%;
+     width: 60%;
+     height: 3px;
+     /* background: linear-gradient(90deg, #811023, #E71D3E); */
+     background: grey;
+     border-radius: 3px;
  }

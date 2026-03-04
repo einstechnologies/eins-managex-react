@@ -1,3 +1,3 @@
 window.__APP_CONFIG__ = {
-  API_URL: "http://192.168.0.111:5000"
+  API_URL: "http://192.168.1.211:5000"
 };

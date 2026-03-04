@@ -31,15 +31,17 @@ const HidConfiguration = () => {
         </span>
       </div>
       {/* Top Icon Navigation */}
-      <div className="hid-nav container-fluid">
+      {/* <div className="hid-nav container-fluid">
         <div className="row text-center">
 
-          <div className="col-4 col-md" onClick={() => setActiveSection("home")} >
-            <div className="nav-item">
+          <div className="col-4 col-md">
+            <div
+              className={`nav-item ${activeSection === "home" ? "active-nav" : ""}`}
+              onClick={() => setActiveSection("home")}
+            >
               <i className="bi bi-plus-square nav-icon"></i>
               <p>Configured</p>
             </div>
-
           </div>
 
           <div className="col-4 col-md" onClick={() => navigate("/EINS_ManageX/User/UserRegistration")}>
@@ -84,6 +86,34 @@ const HidConfiguration = () => {
           </div>
 
         </div>
+      </div> */}
+
+      <div className="hid-nav hid-tabs">
+        {[
+          { key: "home", label: "Configured", icon: "bi-plus-square" },
+          { key: "user", label: "User", icon: "bi-person-fill", route: "/EINS_ManageX/User/UserRegistration" },
+          { key: "feature", label: "Device Feature", icon: "bi-cpu-fill" },
+          { key: "setting", label: "Setting", icon: "bi-tools" },
+          { key: "info", label: "Info", icon: "bi-info-circle-fill" },
+          { key: "datetime", label: "Date/Time", icon: "bi-calendar-date-fill" },
+          { key: "timezone", label: "Time Zone", icon: "bi-globe2" },
+        ].map((item) => (
+          <div
+            key={item.key}
+            className={`hid-tab-item ${activeSection === item.key ? "active-tab" : ""
+              }`}
+            onClick={() => {
+              if (item.route) {
+                navigate(item.route);
+              } else {
+                setActiveSection(item.key);
+              }
+            }}
+          >
+            <i className={`bi ${item.icon}`}></i>
+            <span>{item.label}</span>
+          </div>
+        ))}
       </div>
 
 

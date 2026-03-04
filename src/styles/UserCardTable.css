@@ -36,6 +36,7 @@
 
 /* Table */
 .user-card-table-tableWrapper table {
+    width: 100%;
     border-collapse: collapse;
 
     /* Forces horizontal scroll */
@@ -51,7 +52,7 @@
 
 .user-card-table-tableWrapper .tableHead th {
     padding: 10px 16px;
-    text-align: left;
+    text-align: center;
     font-size: 0.8rem;
     font-weight: 600;
     color: #6b7280;
@@ -68,7 +69,7 @@
 }
 
 .user-card-table-tableWrapper .tableBody tr:hover {
-    background-color: #fff5f7;
+    background-color: rgb(248, 248, 248);
 }
 
 .user-card-table-tableWrapper .tableBody td {
@@ -89,16 +90,16 @@
     color: #d21a38;
     /* padding: 4px; */
     border-radius: 4px;
-    margin: -3px;
+
     display: flex;
     align-items: center;
     justify-content: center;
     transition: background-color 0.2s ease;
 }
 
-.user-card-table-tableWrapper .deleteBtn:hover {
+/* .user-card-table-tableWrapper .deleteBtn:hover {
     background-color: #fff5f7;
-}
+} */
 
 /* Empty Row */
 .user-card-table-tableWrapper .emptyRow td {

@@ -38,7 +38,7 @@ const ConfigurationHome = () => {
 
                             </h6>
 
-                            <button className="btn btn-outline-primary btnconfigurenew" onClick={() => setShowDeviceModal(true)}>Configure New</button>
+                            <button className="btn btn-primary btnconfigurenew" onClick={() => setShowDeviceModal(true)}>Configure New</button>
                         </div>
 
 
@@ -78,23 +78,23 @@ const ConfigurationHome = () => {
                             {/* LEFT SIDE - TEXT */}
                             <div className="col-md-7">
                                 <h6 className="text-danger fw">Steps to Configure the New Device</h6>
-                                <p className="para"><strong>Step 1 :</strong>Click on Add to configure new device.</p>
-                                <p className="para"><strong>Step 2 :</strong> Fill all details and click Finish.</p>
+                                <p className="para"><strong>Step 1 :</strong>Click on <b>Configure New</b> to configure new device.</p>
+                                <p className="para"><strong>Step 2 :</strong> Fill all details and click <b>Finish</b>.</p>
 
                                 <h6 className="text-danger fw mt-3">Steps to Configure Additional Settings</h6>
-                                <p className="para"><strong>Step 1 :</strong> Click on User tab to register new User.</p>
-                                <p className="para"><strong>Step 2 :</strong> Click on Device Feature to configure features in device</p>
-                                <p className="para"><strong>Step 3 :</strong> Click on Setting to do any settings for the device </p>
-                                <p className="para"><strong>Step 4 :</strong> Click on Info to get the device information</p>
-                                <p className="para"><strong>Step 5 :</strong> Click on Date/Time to set the Device's Date-time</p>
-                                <p className="para"><strong>Step 6 :</strong> Click on Timezone to set the timezone on the device.</p>
+                                <p className="para"><strong>Step 1 :</strong> Click on <b>User tab</b> to register new User.</p>
+                                <p className="para"><strong>Step 2 :</strong> Click on <b>Device Feature</b> to configure features in device</p>
+                                <p className="para"><strong>Step 3 :</strong> Click on <b>Setting</b> to do any settings for the device </p>
+                                <p className="para"><strong>Step 4 :</strong> Click on <b>Info</b> to get the device information</p>
+                                <p className="para"><strong>Step 5 :</strong> Click on <b>Date/Time</b>Date/Time to set the Device's Date-time</p>
+                                <p className="para"><strong>Step 6 :</strong> Click on <b>Timezone</b> to set the timezone on the device.</p>
 
                                 <h6 className="text-danger fw mt-3">Steps to Configure Existing Device</h6>
-                                <p className="para"><strong>Step 1 :</strong> Click Connect.</p>
-                                <p className="para"><strong>Step 2 :</strong> Click Disconnect.</p>
+                                <p className="para"><strong>Step 1 :</strong> Click <b>Connect</b>.</p>
+                                <p className="para"><strong>Step 2 :</strong> Click <b>Disconnect</b>.</p>
 
                                 <h6 className="text-danger fw mt-3">Steps to Delete Device</h6>
-                                <p className="para"><strong>Step 1 :</strong> Click Delete to delete the device from configured device list.</p>
+                                <p className="para"><strong>Step 1 :</strong> Click <b>Delete</b> to delete the device from configured device list.</p>
 
                             </div>
 
