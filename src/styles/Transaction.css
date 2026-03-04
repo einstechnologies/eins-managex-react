@@ -120,7 +120,7 @@
 }
 
 .square-photo {
-    width: 120px;
+    width: 260px;
     /* Adjust size as needed */
     height: 120px;
     display: flex;
@@ -149,7 +149,7 @@
     /* Bootstrap secondary color */
 }
 
-.photoMainDiv {
+.photoMainDivTransaction {
     border: 1px solid #ddd;
     background: #f8f9fa;
     min-height: 100%;

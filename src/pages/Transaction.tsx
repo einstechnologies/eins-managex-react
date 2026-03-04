@@ -402,7 +402,7 @@ export default function Transactions() {
 
                     {/* Photo Section */}
                     <div className='col-12 col-md-4 col-lg-4'>
-                      <div className='photoMainDiv square-photo h-100'>
+                      <div className='photoMainDivTransaction square-photo h-100'>
                         {/* {selectedTransaction?.PhotoUrl ? (
         <img
           src={selectedTransaction.PhotoUrl}
