@@ -2,7 +2,7 @@
     align-self: flex-start;
     margin-left: -40px;
     /* cancel parent padding */
-    margin-right: -20px;
+    margin-right: -36px;
     /* cancel parent padding on right too */
     margin-top: 10px;
     width: calc(100% + 40px);
