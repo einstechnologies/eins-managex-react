@@ -16,18 +16,37 @@ interface CardItem {
 }
 
 
-
 // =====================
 // Main App Component
 // =====================
 function App() {
   // Sample Dashboard Data
-  const cards: CardItem[] = [
-    { title: "Total Users", value: "100", gradient: "gradient-1", icon: <FaUsers /> },
-    { title: "Total Devices", value: "50", gradient: "gradient-2", icon: <FaLaptop /> },
-    { title: "Total Valid", value: "20", gradient: "gradient-3", icon: <FaUserCheck  /> },
-    { title: "Total Invalid", value: "30", gradient: "gradient-4", icon: <FaTimesCircle    /> },
-  ];
+const cards: CardItem[] = [
+  {
+    title: "Total Enrolled Users",
+    value: "100",
+    gradient: "card-users icon1",
+    icon: <FaUsers />,
+  },
+  {
+    title: "Total Devices Configured",
+    value: "50",
+    gradient: "card-devices icon2",
+    icon: <FaLaptop />,
+  },
+  {
+    title: "Total Valid Transaction",
+    value: "20",
+    gradient: "card-valid icon3",
+    icon: <FaUserCheck />,
+  },
+  {
+    title: "Total Invalid Transaction",
+    value: "30",
+    gradient: "card-invalid icon4",
+    icon: <FaTimesCircle />,
+  },
+];
 
 
 
@@ -35,26 +54,30 @@ function App() {
     <Container fluid className="dashboard-container">
       {/* Cards */}
       <Row className="g-4 row-bottom-space">
-        {cards.map((card, idx) => (
-          <Col key={idx} xl={3} lg={6} md={6} sm={12}>
-            <div className={`custom-card ${card.gradient}`}>
-              <div className="card-content">
-                <div>
-                  <p className="card-title">{card.title}</p>
-                  <h2 className="card-value">{card.value}</h2>
-                </div>
-                <div className="card-icon">{card.icon}</div>
-              </div>
+      {cards.map((card, index) => {
+    const [cardClass, iconClass] = card.gradient.split(" ");
+
+    return (
+      <Col xl={3} lg={6} md={6} sm={12} key={index}>
+        <div className="dashboard-cards-wrapper">
+          <div className={`dashboard-card ${cardClass}`}>
+            <div className={`card1-icon ${iconClass}`}>
+              {card.icon}
             </div>
-          </Col>
-        ))}
+            <h4 className="card1-title">{card.title}</h4>
+            <h2 className="card1-value">{card.value}</h2>
+          </div>
+        </div>
+      </Col>
+    );
+  })}
       </Row>
 
       {/* Device Health & Timeline */}
       <Row className="g-4 mb-4">
          {/* Live Transactions Table */}
           <Col xs={12} sm={12} md={12} xl={12} lg={12}>
-            <div className="Productheader">
+            <div className="Productheader row-bottom-space">
                 <h1 className='engraved-text'>EINS Manage<span className="highlight-x">X</span></h1>
                 <hr className="custom-hr"/>
                 <h1 className='engraved-text-para'>HID Amico Face Recognition Devices</h1>
@@ -63,7 +86,9 @@ function App() {
          
       </Row>
 
-     
+      
+
+
     </Container>
   );
 }

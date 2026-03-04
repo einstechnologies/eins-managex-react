@@ -47,21 +47,24 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  
 }
 
 .Productheader hr {
   border: none;
-  border-top: 2px solid #ccc;
+  border-top: 3px solid #343a40;
   margin: 20px 0;
+  margin: 16px 0 10px 0;
   width: 100%;
 }
 
 
   .Productheader .custom-hr {
     border: none;
-    border-top: 2px solid #ccc;
+    border-top: 3px solid #343a40;
     margin: 20px 0;
-    width: 40%; 
+    width: 35%; 
+     margin: 16px 0 10px 0;
 }
 /* Mobile */
 @media (max-width: 700px) {

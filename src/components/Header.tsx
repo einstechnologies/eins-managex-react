@@ -11,7 +11,7 @@ function Header({ isVisible, setVisible, isMobile }: HeaderProps) {
                 <img src={logo} alt='EINS Logo' />
             </div>
             <div>
-                <img src={hid} alt='HID Logo' />
+                <img  className="hid-logo" src={hid} alt='HID Logo' />
             </div>
         </div>
     );
