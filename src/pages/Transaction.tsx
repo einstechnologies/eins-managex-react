@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../styles/Dashboard.css";
+import "../styles/Transaction.css";
 import "../index.css";
 
 
