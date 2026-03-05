@@ -46,7 +46,7 @@ interface Transaction {
 const transactions: Transaction[] = [
   { CardNo: "123456", Name: "Hemangi Keluskar", EventDate: "04/03/2026", EventTime: "4:41 PM", Cardno: "123456", DeviceName: "HIDAMICO", EventType: "Valid", PhotoUrl: "./employeephotos/Hemangi.jpg" },
   { CardNo: "112111", Name: "Tanaya Ghosh", EventDate: "04/03/2026", EventTime: "4:41 PM", Cardno: "3453534", DeviceName: "HIDAMICO", EventType: "Invalid", PhotoUrl: "./employeephotos/Tanaya.jpg" },
-  { CardNo: "1233213123", Name: "Vishal Nadkar Ratnagiri Maharashtra Mumbai", EventDate: "04/03/2026", EventTime: "4:41 PM", Cardno: "23456", DeviceName: "HIDAMICO", EventType: "Door Secure", PhotoUrl: "./employeephotos/Vishal.jpeg" },
+  { CardNo: "1233213123", Name: "Anita Anpat", EventDate: "04/03/2026", EventTime: "4:41 PM", Cardno: "23456", DeviceName: "HIDAMICO", EventType: "Door Secure", PhotoUrl: "./employeephotos/Anita.jpeg" },
   { CardNo: "12311", Name: "Kunal Lohar", EventDate: "04/03/2026", EventTime: "4:41 PM", Cardno: "54544", DeviceName: "HIDAMICO", EventType: "Invalid", PhotoUrl: "./employeephotos/Kunal.jpg" },
   { CardNo: "131312", Name: "Rohit Salvi", EventDate: "04/03/2026", EventTime: "4:41 PM", Cardno: "2323232", DeviceName: "HIDAMICO", EventType: "Valid", PhotoUrl: "./employeephotos/Rohit.jpeg" },
   // { CardNo: "121212", Name: "Sachin", EventDateTime: "2018-01-03 4:41 PM", Cardno: "09898123", DeviceName: "HIDAMICO", EventType: "Valid", PhotoUrl: "./employeephotos/Sachin.jpg" },
