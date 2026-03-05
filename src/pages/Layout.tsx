@@ -10,9 +10,13 @@ import type { MenuItem } from '../ts/index';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useState, useRef } from 'react';
 import { useEffect } from 'react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 function LayoutPage() {
 
+
+  const ObjSwal = withReactContent(Swal);
   const { isVisible, setIsVisible, isMobile, enableTransition, activeMenuItem, setActiveMenuItem } = useSidebar();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [menuRect, setMenuRect] = useState<DOMRect | null>(null);
@@ -24,18 +28,20 @@ function LayoutPage() {
   const menuItems: MenuItem[] = [
     { id: "DASHBOARD", icon: "bi bi-grid", label: "DASHBOARD", path: "/EINS_ManageX/Dashboard" },
     {
-      id: "USER REGISTRATION", icon: "bi bi-person-add", label: "MANAGE USERS", path: "", children: [
-        { id: "User_Registration", label: "User Registration", path: "/EINS_ManageX/User/UserRegistration" },
-        { id: "User_Search", label: "User Search", path: "/EINS_ManageX/User/UserSearch" },],
+      id: "USER REGISTRATION", icon: "bi bi-person-add", label: "MANAGE USERS", path: "/EINS_ManageX/User/UserRegistration", children: [
+        // { id: "User_Registration", label: "User Registration", path: "/EINS_ManageX/User/UserRegistration" },
+        // { id: "User_Search", label: "User Search", path: "/EINS_ManageX/User/UserSearch" },],
+      ]
     },
     { id: "CONFIGURATION", icon: "bi bi-gear-wide-connected", label: "CONFIGURATION", path: "/EINS_ManageX/Configuration" },
     { id: "TEMPLATE TRANSFER", icon: "bi bi-shuffle", label: "INTEGRATION", path: "/EINS_ManageX/TemplateTransfer" },
     { id: "TRANSACTION", icon: "bi bi-send", label: "TRANSACTION", path: "/EINS_ManageX/Transaction" },
     {
-      id: "PROFILE", icon: "bi bi-person-circle", label: "PROFILE", path: "", children: [
-        { id: "License", label: "License Details", path: "/EINS_ManageX/Profile/License" },
-        { id: "Login History", label: "Login History", path: "/EINS_ManageX/Profile/Login_History" },
-        { id: "Logout", label: "Logout", path: "/EINS_ManageX/" },],
+      id: "PROFILE", icon: "bi bi-person-circle", label: "PROFILE", path: "/EINS_ManageX/",  children: [
+        // { id: "License", label: "License Details", path: "/EINS_ManageX/Profile/License" },
+        // { id: "Login History", label: "Login History", path: "/EINS_ManageX/Profile/Login_History" },
+        // { id: "Logout", label: "Logout", path: "/EINS_ManageX/" },],
+      ],
     },
     { id: "HELP", icon: "bi bi-patch-question", label: "HELP", path: "/EINS_ManageX/Help" }
   ];
@@ -81,8 +87,38 @@ function LayoutPage() {
   const handleMenuClick = (menuId: string) => {
     setActiveMenuItem(menuId);
     const item = menuItems.find(m => m.id === menuId);
+    
     if (item?.path) {
+      if(item?.id=="PROFILE")
+    {
+
+       
+      ObjSwal.fire({
+            title: 'Are you sure?',
+            text: 'Do you really want to logout?',
+            icon: 'warning',
+            buttonsStyling:false,
+            showCancelButton: true,
+            confirmButtonText: 'Yes, logout',
+            cancelButtonText: 'Cancel',
+            customClass:
+            {
+          confirmButton:"btnconfirm",
+           cancelButton:"btncancle",
+           actions: "btnAction",
+            },
+            reverseButtons: true,
+          }).then((result) => {
+            if (result.isConfirmed) {
+      
+        navigate(item.path);  
+
+      }
+        });
+    }
+    else{
       navigate(item.path);   //
+    }
     }
     if (!item) {
       menuItems.forEach(parent => {
