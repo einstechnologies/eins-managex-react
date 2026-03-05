@@ -79,19 +79,20 @@ const ConfigurationHome = () => {
                             <div className="col-md-7">
                                 <h6 className="text-danger fw">Steps to Configure the New Device</h6>
                                 <p className="para"><strong>Step 1 :</strong>Click on <b>Configure New</b> to configure new device.</p>
-                                <p className="para"><strong>Step 2 :</strong> Fill all details and click <b>Finish</b>.</p>
+                                <p className="para"><strong>Step 2 :</strong> Fill all details and enter the <b>UserName</b> and <b>Password</b> which you use for Login the device from the browser .</p>
+                                <p className="para"><strong>Step 3 :</strong> click <b>Finish</b></p>
 
                                 <h6 className="text-danger fw mt-3">Steps to Configure Additional Settings</h6>
                                 <p className="para"><strong>Step 1 :</strong> Click on <b>User tab</b> to register new User.</p>
                                 <p className="para"><strong>Step 2 :</strong> Click on <b>Device Feature</b> to configure features in device</p>
                                 <p className="para"><strong>Step 3 :</strong> Click on <b>Setting</b> to do any settings for the device </p>
                                 <p className="para"><strong>Step 4 :</strong> Click on <b>Info</b> to get the device information</p>
-                                <p className="para"><strong>Step 5 :</strong> Click on <b>Date/Time</b>Date/Time to set the Device's Date-time</p>
+                                <p className="para"><strong>Step 5 :</strong> Click on <b>Date/Time</b> to set the Device's Date-time</p>
                                 <p className="para"><strong>Step 6 :</strong> Click on <b>Timezone</b> to set the timezone on the device.</p>
 
                                 <h6 className="text-danger fw mt-3">Steps to Configure Existing Device</h6>
-                                <p className="para"><strong>Step 1 :</strong> Click <b>Connect</b>.</p>
-                                <p className="para"><strong>Step 2 :</strong> Click <b>Disconnect</b>.</p>
+                                <p className="para"><strong>Step 1 :</strong> Click <b>Connect</b> to connect the Device and do the further process or settings you want to do on the device.</p>
+                                <p className="para"><strong>Step 2 :</strong> Click <b>Disconnect</b> to disconnect the device.</p>
 
                                 <h6 className="text-danger fw mt-3">Steps to Delete Device</h6>
                                 <p className="para"><strong>Step 1 :</strong> Click <b>Delete</b> to delete the device from configured device list.</p>
