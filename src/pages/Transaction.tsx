@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Transaction.css";
 import "../index.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 
 type TransactionType = "Valid" | "Invalid" | "Door Secure";
@@ -42,11 +44,11 @@ interface Transaction {
 
 
 const transactions: Transaction[] = [
-  { CardNo: "123456", Name: "Hemangi Keluskar", EventDate: "2018-01-03", EventTime: "4:41 PM", Cardno: "123456", DeviceName: "HIDAMICO", EventType: "Valid", PhotoUrl: "./employeephotos/Hemangi.jpg" },
-  { CardNo: "112111", Name: "Tanaya Ghosh", EventDate: "2018-01-03", EventTime: "4:41 PM", Cardno: "3453534", DeviceName: "HIDAMICO", EventType: "Invalid", PhotoUrl: "./employeephotos/Tanaya.jpg" },
-  { CardNo: "1233213123", Name: "Vishal Nadkar Ratnagiri Maharashtra Mumbai", EventDate: "2018-01-03", EventTime: "4:41 PM", Cardno: "23456", DeviceName: "HIDAMICO", EventType: "Door Secure", PhotoUrl: "./employeephotos/Vishal.jpeg" },
-  { CardNo: "12311", Name: "Kunal Lohar", EventDate: "2018-01-03", EventTime: "4:41 PM", Cardno: "54544", DeviceName: "HIDAMICO", EventType: "Invalid", PhotoUrl: "./employeephotos/Kunal.jpg" },
-  { CardNo: "131312", Name: "Rohit Salvi", EventDate: "2018-01-03", EventTime: "4:41 PM", Cardno: "2323232", DeviceName: "HIDAMICO", EventType: "Valid", PhotoUrl: "./employeephotos/Rohit.jpeg" },
+  { CardNo: "123456", Name: "Hemangi Keluskar", EventDate: "04/03/2026", EventTime: "4:41 PM", Cardno: "123456", DeviceName: "HIDAMICO", EventType: "Valid", PhotoUrl: "./employeephotos/Hemangi.jpg" },
+  { CardNo: "112111", Name: "Tanaya Ghosh", EventDate: "04/03/2026", EventTime: "4:41 PM", Cardno: "3453534", DeviceName: "HIDAMICO", EventType: "Invalid", PhotoUrl: "./employeephotos/Tanaya.jpg" },
+  { CardNo: "1233213123", Name: "Vishal Nadkar Ratnagiri Maharashtra Mumbai", EventDate: "04/03/2026", EventTime: "4:41 PM", Cardno: "23456", DeviceName: "HIDAMICO", EventType: "Door Secure", PhotoUrl: "./employeephotos/Vishal.jpeg" },
+  { CardNo: "12311", Name: "Kunal Lohar", EventDate: "04/03/2026", EventTime: "4:41 PM", Cardno: "54544", DeviceName: "HIDAMICO", EventType: "Invalid", PhotoUrl: "./employeephotos/Kunal.jpg" },
+  { CardNo: "131312", Name: "Rohit Salvi", EventDate: "04/03/2026", EventTime: "4:41 PM", Cardno: "2323232", DeviceName: "HIDAMICO", EventType: "Valid", PhotoUrl: "./employeephotos/Rohit.jpeg" },
   // { CardNo: "121212", Name: "Sachin", EventDateTime: "2018-01-03 4:41 PM", Cardno: "09898123", DeviceName: "HIDAMICO", EventType: "Valid", PhotoUrl: "./employeephotos/Sachin.jpg" },
   // { CardNo: "4343433", Name: "Gaurav", EventDateTime: "2018-01-03 4:41 PM", Cardno: "867676", DeviceName: "HIDAMICO", EventType: "Door Secure", PhotoUrl: "./employeephotos/Gaurav.jpeg" },
 ];
@@ -67,6 +69,7 @@ export default function Transactions() {
 
   const [showModal, setShowModal] = useState(false);
   const [showViewModal, setShowViewModal] = useState(false);
+  const [date, setDate] = useState(null);
 
   // Open first modal
   const handleExportClick = () => {
@@ -96,14 +99,14 @@ export default function Transactions() {
   };
 
   return (
-    <div className="user-content-screen">
+    <div className="user-content-screen marginrght">
 
       <div className='header-title headcol'>
-        <div className="col-md-4 col-12 d-flex align-items-center">
+        <div className="col-md-3 col-12 d-flex align-items-center headerbottomspace">
           <span>TRANSACTION</span>
         </div>
         {/* Center: Transaction Summary */}
-        <div className="col-md-4 col-12">
+        <div className="col-md-6 col-12 headerbottomspace">
           <div className="card shadow-sm border-0 text-center">
             <div className="card-body py-1">
               <div className="row text-center align-items-center">
@@ -112,7 +115,7 @@ export default function Transactions() {
                 <div className="col-6 border-end">
                   <h6 className="mb-1 text-success">
                     Valid Transactions
-                    <span className="badge bg-success fs-6 px-3 py-1 ms-2">
+                    <span className="badge bg-success fs-6 px-3 py-1 ms-2 mt-2">
                       3
                       {/* {validCount} */}
                     </span>
@@ -123,7 +126,7 @@ export default function Transactions() {
                 <div className="col-6">
                   <h6 className="mb-1 text-danger">
                     Invalid Transactions
-                    <span className="badge bg-danger fs-6 px-3 py-1 ms-2">
+                    <span className="badge bg-danger fs-6 px-3 py-1 ms-2 mt-2">
                       3
                       {/* {invalidCount} */}
                     </span>
@@ -136,7 +139,7 @@ export default function Transactions() {
         </div>
 
         {/* Right: Print Button */}
-        <div className="col-md-4 col-12 d-flex justify-content-md-end mt-2 mt-md-0">
+        <div className="col-md-3 col-12 d-flex justify-content-md-end mt-2 mt-md-0 headerbottomspace">
           <button
             type="button"
             className="btn btn-warning custom-print-btn"
@@ -152,8 +155,8 @@ export default function Transactions() {
         <div id="transactions">
           {/* Table Header */}
           {/* <div className="transactions-table-th d-none d-md-block"> */}
-          <div className="transactions-table-tbody d-flex flex-column gap-3">
-            <div className="row px-1  text-center">
+          <div className="transactions-table-theader d-flex flex-column gap-3">
+            <div className="row px-1 py-3 text-center">
               <div className="col py-0"><p className="mb-0"><strong>Photo</strong></p></div>
               <div className="col py-0"><p className="mb-0"><strong>User Name</strong></p></div>
               <div className="col py-0"><p className="mb-0"><strong>Event Date <br />(dd-mm-yyyy)</strong></p></div>
@@ -174,7 +177,7 @@ export default function Transactions() {
                   <div className="card-body">
                     <div className="row text-center align-items-center">
                       {/* <div className="row"> */}
-                      <div className="col py-0">
+                      <div className="col-12 col-md py-0 palign">
                         {tx.PhotoUrl && (
                           <img
                             src={tx.PhotoUrl}
@@ -184,34 +187,34 @@ export default function Transactions() {
                         )}
                       </div>
 
-                      <div className="col py-0">
+                      <div className="col-12 col-md py-0 palign">
                         <p className="mb-0 ellipsis-two-line">
-                          <span className="d-inline-block d-md-none text-bold-700">Name: </span>
+                          <span className="d-inline-block d-md-none text-bold-700 spanbold">User Name : </span>
                           {tx.Name ?? "-"}
                         </p>
                       </div>
-                      <div className="col py-0">
+                      <div className="col-12 col-md py-0 palign">
                         <p className="mb-0">
-                          <span className="d-inline-block d-md-none text-bold-700">EventDate: </span>
+                          <span className="d-inline-block d-md-none text-bold-700 spanbold">Event Date (dd-mm-yyyy) : </span>
                           {tx.EventDate}
                         </p>
                       </div>
-                      <div className="col py-0">
+                      <div className="col-12 col-md py-0 palign">
                         <p className="mb-0">
-                          <span className="d-inline-block d-md-none text-bold-700">EventTime: </span>
+                          <span className="d-inline-block d-md-none text-bold-700 spanbold">Event Time (hh:mm) : </span>
                           {tx.EventTime}
                         </p>
                       </div>
-                      <div className="col py-0">
-                        <p className="mb-0"><span className="d-inline-block d-md-none text-bold-700">Cardno: </span>{tx.Cardno ?? "-"}</p>
+                      <div className="col-12 col-md py-0 palign">
+                        <p className="mb-0"><span className="d-inline-block d-md-none text-bold-700 spanbold">Card No. / Bio-User Id : </span>{tx.Cardno ?? "-"}</p>
                       </div>
-                      <div className="col py-0">
+                      <div className="col-12 col-md py-0 palign">
                         <p className="mb-0">
-                          <span className="d-inline-block d-md-none text-bold-700">DeviceName: </span>{tx.DeviceName}
+                          <span className="d-inline-block d-md-none text-bold-700 spanbold">Device Name : </span>{tx.DeviceName}
                         </p>
                       </div>
-                      <div className="col py-0">
-                        <span className="d-inline-block d-md-none text-bold-700">EventType: </span>
+                      <div className="col-12 col-md py-0 palign">
+                        <span className="d-inline-block d-md-none text-bold-700 spanbold">Event Type : </span>
                         <a
                           href="#"
                           className={`mb-0 btn-sm btn round event-btn ${tx.EventType === "Valid"
@@ -224,7 +227,7 @@ export default function Transactions() {
                           {tx.EventType}
                         </a>
                       </div>
-                      <div className="col py-0">
+                      <div className="col-12 col-md py-0 palign">
                         <p className="mb-0">
                           <button
                             type="button"
@@ -282,10 +285,10 @@ export default function Transactions() {
             <div className="modal-dialog modal-dialog-centered custom-modal" >
               <div className="modal-content">
                 <div className="modal-header">
-                  <h5 className="modal-title">Export</h5>
+                  <h5 className="modal-title headcol">Export</h5>
                   <button
                     type="button"
-                    className="btn-close"
+                    className="bi bi-x-circle-fill"
                     onClick={handleCloseFirstModal}
                   ></button>
                 </div>
@@ -296,9 +299,14 @@ export default function Transactions() {
                         <div className='dateRow'>
                           <div>
                             <label htmlFor="fromdate">From Date</label>
-                            <input type='date' id='fromdate' />
+                            <DatePicker
+                              selected={date}
+                              // onChange={(d: Date | null) => setDate(d)}
+                              dateFormat="dd/MM/yyyy" // <-- guaranteed format
+                              placeholderText="dd/mm/yyyy"
+                            />
+                            <i className="bi bi-calendar-date" style={{ position: "absolute", right: 10, top: 8 }}></i>
                           </div>
-                          <i className="bi bi-calendar-date"></i>
                         </div>
                       </fieldset>
                     </div>
@@ -308,9 +316,14 @@ export default function Transactions() {
                         <div className='dateRow'>
                           <div>
                             <label htmlFor="todate">To Date</label>
-                            <input type='date' id='todate' />
+                            <DatePicker
+                              selected={date}
+                              // onChange={(d: Date | null) => setDate(d)}
+                              dateFormat="dd/MM/yyyy" // <-- guaranteed format
+                              placeholderText="dd/mm/yyyy"
+                            />
+                            <i className="bi bi-calendar-date" style={{ position: "absolute", right: 10, top: 8 }}></i>
                           </div>
-                          <i className="bi bi-calendar-date"></i>
                         </div>
                       </fieldset>
                     </div>
@@ -358,7 +371,7 @@ export default function Transactions() {
                   </div>
                 </div>
 
-                <div className="modal-footer">
+                <div className="modal-footer justify-content-start">
 
                   <button
                     type="button"
@@ -393,10 +406,20 @@ export default function Transactions() {
         <div className="modal fade show" style={{ display: "block", backgroundColor: "rgba(0,0,0,0.5)" }}>
           <div className="modal-dialog modal-dialog-centered custom-modal">
             <div className="modal-content">
+              {/* Modal Header */}
+              <div className="modal-header">
+                <h5 className="modal-title">General Details</h5>
+                <button
+                  type="button"
+                  className="bi bi-x-circle-fill"
+                  onClick={handleCloseSecondModal}
+                ></button>
+              </div>
+
+
               <div className="modal-body">
                 <div className='card user-card'>
-                  <span className='card-title'>General Details</span>
-                  <hr />
+                  {/* <span className='card-title headcol'>General Details </span> */}
                   <div className='row gx-4 gy-3 align-items-stretch'>
 
 
@@ -467,15 +490,15 @@ export default function Transactions() {
                         </div>
                         <div className='col-12 col-md-6'>
                           <fieldset className='text-input-group'>
-                            <label htmlFor="ActivationDate">Activation Date</label>
-                            <input type='date' id='ActivationDate' readOnly />
+                            <label htmlFor="ActivationDate">Activation Date (dd/mm/yyyy)</label>
+                            <input id='ActivationDate' readOnly />
                           </fieldset>
                         </div>
 
                         <div className='col-12 col-md-6'>
                           <fieldset className='text-input-group'>
-                            <label htmlFor="ExpiryDate">Expiry Date</label>
-                            <input type='date' id='ExpiryDate' readOnly />
+                            <label htmlFor="ExpiryDate">Expiry Date (dd/mm/yyyy)</label>
+                            <input id='ExpiryDate' readOnly />
                           </fieldset>
                         </div>
 
@@ -500,13 +523,13 @@ export default function Transactions() {
                 </div>
               </div>
 
-              <div className="modal-footer">
+              <div className="modal-footer justify-content-start">
                 <button
                   type="button"
                   className="btn btn-secondary"
                   onClick={() => setShowViewModal(false)}
                 >
-                  Close
+                  Cancel
                 </button>
               </div>
             </div>
