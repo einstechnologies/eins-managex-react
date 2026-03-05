@@ -25,10 +25,12 @@
 
 .paginationspace {
     margin-top: 7px;
+    background-color: #f5f6fa !important;
 }
 
 .content-body {
     margin-top: 20px;
+    background: #f4f6f9;
 }
 
 
@@ -113,10 +115,9 @@
 }
 
 .custom-modal {
-    max-width: 900px;
-    /* width */
-    height: 800px;
-    /* height */
+    max-width: 95%;
+    width: 900px;
+    height: auto;
 }
 
 .square-photo {
@@ -156,6 +157,129 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.header-title.headcol {
+    color: black;
+    /* display: flex;
+    flex-wrap: wrap;
+    align-items: center; */
+}
+
+/* Responsive tweaks */
+@media (max-width: 575px) {
+    .transactionimg {
+        width: 60px;
+        height: 60px;
+    }
+
+    .event-btn {
+        width: 100px;
+        font-size: 12px;
+    }
+
+    .custom-modal {
+        width: 95%;
+    }
+
+    .pagination-container {
+        padding: 0.5rem 0;
+    }
+
+    .transactions-table-theader {
+        display: none !important;
+    }
+
+    .palign {
+        text-align: left;
+    }
+
+    .spanbold {
+        font-weight: 900;
+        /* Black / Extra Bold */
+    }
+
+    .headerbottomspace {
+        margin-bottom: 5px;
+    }
+
+    .marginrght {
+        margin-right: -40px;
+        margin-top: 15px;
+    }
+
+    .pagination-container {
+        margin-bottom: 90px;
+    }
+}
+
+@media (max-width: 768px) {
+    .square-photo {
+        width: 100px;
+        height: 100px;
+    }
+
+    .transactions-table-theader {
+        display: none !important;
+    }
+
+    .palign {
+        text-align: left;
+    }
+
+    .spanbold {
+        font-weight: 900;
+        /* Black / Extra Bold */
+    }
+
+    .headerbottomspace {
+        margin-bottom: 5px;
+    }
+
+    .marginrght {
+        margin-right: -40px;
+    }
+
+    .pagination-container {
+        margin-bottom: 90px;
+    }
+}
+
+@media (max-width: 767px) {
+    .transactions-table-theader {
+        display: none !important;
+    }
+
+    .palign {
+        text-align: left;
+        margin-bottom: 16px;
+    }
+
+    .spanbold {
+        font-weight: 900;
+        margin-right: 5px;
+        /* Black / Extra Bold */
+    }
+
+    .headerbottomspace {
+        margin-bottom: 5px;
+    }
+
+    .marginrght {
+        margin-right: -40px;
+    }
+
+    .pagination-container {
+        margin-bottom: 90px;
+    }
+}
+
+.user-content-screen.marginrght {
+    margin-right: -40px;
+}
+
+.card-title.headcol {
+    color: black;
 }
 
 .header-title.headcol {

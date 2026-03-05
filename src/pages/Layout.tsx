@@ -7,147 +7,151 @@ import '../styles/Sidebar.css';
 import '../styles/Header.css';
 import '../styles/Footer.css';
 import type { MenuItem } from '../ts/index';
-import { Outlet, useNavigate} from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { useState, useRef } from 'react';
 import { useEffect } from 'react';
 
 function LayoutPage() {
 
-    const { isVisible, setIsVisible, isMobile, enableTransition, activeMenuItem,setActiveMenuItem } = useSidebar();
-    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-    const [menuRect, setMenuRect] = useState<DOMRect | null>(null);
-    const hideTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);  
-     const navigate = useNavigate();
-     const isMounted = useRef(false); 
-     const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const { isVisible, setIsVisible, isMobile, enableTransition, activeMenuItem, setActiveMenuItem } = useSidebar();
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [menuRect, setMenuRect] = useState<DOMRect | null>(null);
+  const hideTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const navigate = useNavigate();
+  const isMounted = useRef(false);
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
 
-    const menuItems: MenuItem[] = [
-        { id: "DASHBOARD", icon: "bi bi-grid", label: "DASHBOARD", path: "/EINS_ManageX/Dashboard"},
-        { id: "USER REGISTRATION", icon: "bi bi-person-add", label: "MANAGE USERS", path: "",children: [              
-      { id: "User_Registration", label: "User Registration", path: "/EINS_ManageX/User/UserRegistration" },
-      { id: "User_Search", label: "User Search", path: "/EINS_ManageX/User/UserSearch" }, ], },
-        { id: "CONFIGURATION", icon: "bi bi-gear-wide-connected", label: "CONFIGURATION",path: "/EINS_ManageX/Configuration"},
-        { id: "TEMPLATE TRANSFER", icon: "bi bi-shuffle", label: "TEMPLATES",path: "/EINS_ManageX/TemplateTransfer" },
-        { id: "TRANSACTION",icon: "bi bi-send", label: "TRANSACTION",path: "/EINS_ManageX/Transaction"  },
-        { id: "PROFILE", icon: "bi bi-person-circle", label: "PROFILE",path: "",children: [              
-      { id: "License", label: "License Details", path: "/EINS_ManageX/Profile/License" },
-      { id: "Login History", label: "Login History", path: "/EINS_ManageX/Profile/Login_History" }, 
-     { id: "Logout", label: "Logout", path: "/EINS_ManageX/" }, ], },
-        { id: "HELP", icon: "bi bi-patch-question", label: "HELP",path: "/EINS_ManageX/Help" }
-    ];
+  const menuItems: MenuItem[] = [
+    { id: "DASHBOARD", icon: "bi bi-grid", label: "DASHBOARD", path: "/EINS_ManageX/Dashboard" },
+    {
+      id: "USER REGISTRATION", icon: "bi bi-person-add", label: "MANAGE USERS", path: "", children: [
+        { id: "User_Registration", label: "User Registration", path: "/EINS_ManageX/User/UserRegistration" },
+        { id: "User_Search", label: "User Search", path: "/EINS_ManageX/User/UserSearch" },],
+    },
+    { id: "CONFIGURATION", icon: "bi bi-gear-wide-connected", label: "CONFIGURATION", path: "/EINS_ManageX/Configuration" },
+    { id: "TEMPLATE TRANSFER", icon: "bi bi-shuffle", label: "INTEGRATION", path: "/EINS_ManageX/TemplateTransfer" },
+    { id: "TRANSACTION", icon: "bi bi-send", label: "TRANSACTION", path: "/EINS_ManageX/Transaction" },
+    {
+      id: "PROFILE", icon: "bi bi-person-circle", label: "PROFILE", path: "", children: [
+        { id: "License", label: "License Details", path: "/EINS_ManageX/Profile/License" },
+        { id: "Login History", label: "Login History", path: "/EINS_ManageX/Profile/Login_History" },
+        { id: "Logout", label: "Logout", path: "/EINS_ManageX/" },],
+    },
+    { id: "HELP", icon: "bi bi-patch-question", label: "HELP", path: "/EINS_ManageX/Help" }
+  ];
 
-    useEffect(() => {
-  isMounted.current = true;  
-  return () => {
-    isMounted.current = false;
+  useEffect(() => {
+    isMounted.current = true;
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
+
+
+  const handleSidebarHover = (data: any) => {
+    if (!isMounted.current) return;
+    if (hideTimeout.current) clearTimeout(hideTimeout.current);
+    if (data?.id) {
+      const idx = menuItems.findIndex(m => m.id === data.id);
+      setHoveredIndex(idx);
+      setHoveredId(data.id);
+      setMenuRect(data.boundingRect);
+    }
+    else {
+
+      hideTimeout.current = setTimeout(() => {
+        setHoveredIndex(null);
+        setHoveredId(null);
+        setMenuRect(null);
+      }, 150);
+    }
   };
-}, []);
 
-
-const handleSidebarHover = (data: any) => {
-    if (!isMounted.current) return;      
-  if (hideTimeout.current) clearTimeout(hideTimeout.current);
-  if (data?.id) {
-    const idx = menuItems.findIndex(m => m.id === data.id); 
-    setHoveredIndex(idx);
-     setHoveredId(data.id); 
-    setMenuRect(data.boundingRect);
-  }
-  else {
-   
-    hideTimeout.current = setTimeout(() => {
+  const handleSubmenuEnter = () => {
+    if (hideTimeout.current) clearTimeout(hideTimeout.current);  //  cancel hide
+  };
+  const handleSubmenuLeave = () => {
+    hideTimeout.current = setTimeout(() => {  //  delay hide
       setHoveredIndex(null);
       setHoveredId(null);
       setMenuRect(null);
     }, 150);
-  }
-};
+  };
 
-const handleSubmenuEnter = () => {
-  if (hideTimeout.current) clearTimeout(hideTimeout.current);  //  cancel hide
-};
-const handleSubmenuLeave = () => {
-  hideTimeout.current = setTimeout(() => {  //  delay hide
-    setHoveredIndex(null);
-     setHoveredId(null);
-    setMenuRect(null);
-  }, 150);
-};
-
-    const handleMenuClick = (menuId: string) => {
-         setActiveMenuItem(menuId);   
-        const item = menuItems.find(m => m.id === menuId);
-        if (item?.path) {
+  const handleMenuClick = (menuId: string) => {
+    setActiveMenuItem(menuId);
+    const item = menuItems.find(m => m.id === menuId);
+    if (item?.path) {
       navigate(item.path);   //
     }
-     if (!item) {
-        menuItems.forEach(parent => {
-            const child = parent.children?.find((c: any) => c.id === menuId);
-            if (child?.path) navigate(child.path);
-        });
-    }  
-        if (isMobile) {
-            setIsVisible(false);
-        }
-    };
+    if (!item) {
+      menuItems.forEach(parent => {
+        const child = parent.children?.find((c: any) => c.id === menuId);
+        if (child?.path) navigate(child.path);
+      });
+    }
+    if (isMobile) {
+      setIsVisible(false);
+    }
+  };
 
-    return (
-        <>
-            {isMobile && isVisible && (
-                <div className="drawer-overlay" onClick={() => setIsVisible(false)} />
-            )}
+  return (
+    <>
+      {isMobile && isVisible && (
+        <div className="drawer-overlay" onClick={() => setIsVisible(false)} />
+      )}
 
-            <nav>
-                <Header isVisible={isVisible} setVisible={setIsVisible} isMobile={isMobile} />
-            </nav>
+      <nav>
+        <Header isVisible={isVisible} setVisible={setIsVisible} isMobile={isMobile} />
+      </nav>
 
-          <aside>
-  <Sidebar
-  hoveredId={hoveredId} 
-    isVisible={isVisible}
-    isMobile={isMobile}
-    enableTransition={enableTransition}
-    onMenuItemClick={handleMenuClick}
-    customMenuItems={menuItems}
-    activeMenuItem={activeMenuItem}
-onHoverItem={handleSidebarHover}  
-  />
-</aside>
+      <aside>
+        <Sidebar
+          hoveredId={hoveredId}
+          isVisible={isVisible}
+          isMobile={isMobile}
+          enableTransition={enableTransition}
+          onMenuItemClick={handleMenuClick}
+          customMenuItems={menuItems}
+          activeMenuItem={activeMenuItem}
+          onHoverItem={handleSidebarHover}
+        />
+      </aside>
 
-{hoveredIndex !== null && 
- menuItems[hoveredIndex]?.children && 
- menuItems[hoveredIndex].children!.length > 0 && (
-  <div 
-    className="global-submenu"
-    style={{ top: `${menuRect?.top ?? 200}px` }}
-     onMouseEnter={handleSubmenuEnter}   //  cancel hide
-   onMouseLeave={handleSubmenuLeave}        // delay hide
-  >
-    {menuItems[hoveredIndex].children!.map((child: any) => (
-      <button
-        key={child.id}
-        className="submenu-btn"
-        onClick={() => {
-          navigate(child.path);
-          setHoveredIndex(null);  //  correct state
-        }}
-      >
-        {child.label}
-      </button>
-    ))}
-  </div>
-)}
-            <main>
-                <MainContent isVisible={isVisible} isMobile={isMobile}>
-                  <Outlet />
-                </MainContent>
-            </main>
+      {hoveredIndex !== null &&
+        menuItems[hoveredIndex]?.children &&
+        menuItems[hoveredIndex].children!.length > 0 && (
+          <div
+            className="global-submenu"
+            style={{ top: `${menuRect?.top ?? 200}px` }}
+            onMouseEnter={handleSubmenuEnter}   //  cancel hide
+            onMouseLeave={handleSubmenuLeave}        // delay hide
+          >
+            {menuItems[hoveredIndex].children!.map((child: any) => (
+              <button
+                key={child.id}
+                className="submenu-btn"
+                onClick={() => {
+                  navigate(child.path);
+                  setHoveredIndex(null);  //  correct state
+                }}
+              >
+                {child.label}
+              </button>
+            ))}
+          </div>
+        )}
+      <main>
+        <MainContent isVisible={isVisible} isMobile={isMobile}>
+          <Outlet />
+        </MainContent>
+      </main>
 
-            <footer>
-                <Footer isVisible={isVisible} isMobile={isMobile} />
-            </footer>
-        </>
-    );
+      <footer>
+        <Footer isVisible={isVisible} isMobile={isMobile} />
+      </footer>
+    </>
+  );
 }
 
 export default LayoutPage;
