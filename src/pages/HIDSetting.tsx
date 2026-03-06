@@ -1,0 +1,47 @@
+import { Tabs } from "../components/TabShadowcn";
+import Sound from "../components/Sound";
+import OSDPSettings from "../components/OSDPSettings";
+import Cardsettings from "../components/Cardsettings";
+import MFAuthentication from "../components/MFAuthentication";
+import Custommsg from "../components/Custommsg";
+
+const HIDSetting = () => {
+  const myTabs = [
+    {
+      id: "Sound",
+      label: "Sound",
+      content: <Sound />,
+    },
+    {
+      id: "OSDP",
+      label: "OSDP Settings",
+      content: <OSDPSettings />,
+    },
+    {
+      id: "Custommsg",
+      label: "Custom Messages",
+      content: <Custommsg />,
+    },
+    {
+      id: "MFAuthentication",
+      label: "Multi Factor Authentication",
+      content: <MFAuthentication />,
+    },
+    {
+      id: "Cardsettings",
+      label: "Card Settings",
+      content: <Cardsettings />,
+    },
+  ];
+
+  return (
+    <>
+      <div className="row mt-3 g-3">
+        <div className="col-12 tabbgcolor">
+          <Tabs tabs={myTabs} />
+        </div>
+      </div>
+    </>
+  );
+};
+export default HIDSetting;

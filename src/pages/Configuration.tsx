@@ -1,7 +1,4 @@
-
 import "bootstrap-icons/font/bootstrap-icons.css";
-
-
 
 import "../styles/CustomModal.css";
 import { useNavigate } from "react-router-dom";
@@ -9,25 +6,22 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ConfigurationHome from "../components/ConfigurationHome";
 import HIDFeature from "../components/HIDDeviceFeature";
-
+import HIDSetting from "./HIDSetting";
 
 const HidConfiguration = () => {
   const [activeSection, setActiveSection] = useState("home");
 
   const navigate = useNavigate();
   return (
-
     <div className="user-content-screen hid-container">
-      <div className='header-title'>
+      <div className="header-title">
         <span>DEVICE CONFIGURATION</span>
 
-        <span className='header-title-navigate-section'>
+        <span className="header-title-navigate-section">
           <span
-            className='link'
+            className="link"
             onClick={() => navigate("/EINS_ManageX/Home")}
-          >
-
-          </span>
+          ></span>
         </span>
       </div>
       {/* Top Icon Navigation */}
@@ -91,17 +85,27 @@ const HidConfiguration = () => {
       <div className="hid-nav hid-tabs">
         {[
           { key: "home", label: "Configured", icon: "bi-plus-square" },
-          { key: "user", label: "User", icon: "bi-person-fill", route: "/EINS_ManageX/User/UserRegistration" },
+          {
+            key: "user",
+            label: "User",
+            icon: "bi-person-fill",
+            route: "/EINS_ManageX/User/UserRegistration",
+          },
           { key: "feature", label: "Device Feature", icon: "bi-cpu-fill" },
           { key: "setting", label: "Setting", icon: "bi-tools" },
           { key: "info", label: "Info", icon: "bi-info-circle-fill" },
-          { key: "datetime", label: "Date/Time", icon: "bi-calendar-date-fill" },
+          {
+            key: "datetime",
+            label: "Date/Time",
+            icon: "bi-calendar-date-fill",
+          },
           { key: "timezone", label: "Time Zone", icon: "bi-globe2" },
         ].map((item) => (
           <div
             key={item.key}
-            className={`hid-tab-item ${activeSection === item.key ? "active-tab" : ""
-              }`}
+            className={`hid-tab-item ${
+              activeSection === item.key ? "active-tab" : ""
+            }`}
             onClick={() => {
               if (item.route) {
                 navigate(item.route);
@@ -116,16 +120,10 @@ const HidConfiguration = () => {
         ))}
       </div>
 
-
       {activeSection === "home" && <ConfigurationHome />}
       {activeSection === "feature" && <HIDFeature />}
-
-
-
-
-    </div >
-
-
+      {activeSection === "setting" && <HIDSetting />}
+    </div>
   );
 };
 
