@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 import ConfigurationHome from "../components/ConfigurationHome";
-import HIDFeature from "./HIDDeviceFeature";
+import HIDFeature from "../components/HIDDeviceFeature";
 
 
 const HidConfiguration = () => {
