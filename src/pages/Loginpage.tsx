@@ -13,7 +13,7 @@ const LoginPage: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const { mutate, isPending, isError, error } = useLogin();
+  const { mutate, isPending } = useLogin();
 
   const togglePassword = () => {
     setShowPassword(prev => !prev);
@@ -58,41 +58,53 @@ const LoginPage: React.FC = () => {
       });
       return;
     }
-    mutate({ username, password });
-  };
+    mutate({ username, password }, {
+      onError: (error: any) => {
+        const resData = (error as any)?.response?.data;
 
-  useEffect(() => {
-    if (isError && error) {
-      const resData = (error as any)?.response?.data;
+        const errors: string[] = resData?.errors || [];
 
-      const errors: string[] = resData?.errors || [];
+        // Build HTML content for Swal
+        const html = (() => {
+          if (errors.length === 0) return "";
 
-      // Build HTML content for Swal
-      const html = (() => {
-        if (errors.length === 0) return "";
+          if (errors.length === 1) {
+            // Single error - just show as plain text (no list)
+            return errors[0];
+          }
 
-        if (errors.length === 1) {
-          // Single error - just show as plain text (no list)
-          return errors[0];
-        }
-
-        // Multiple errors - show as bulleted list
-        return `<ul style="text-align:left; margin:0 auto; padding-left:1.2rem; max-width:300px;">
+          // Multiple errors - show as bulleted list
+          return `<ul style="text-align:left; margin:0 auto; padding-left:1.2rem; max-width:300px;">
             ${errors.map((e) => `<li>${e}</li>`).join("")}
           </ul>`;
-      })();
+        })();
 
-      MySwal.fire({
-        html, // use html instead of text
-        icon: "error",
-        buttonsStyling: false,
-        customClass: {
-          confirmButton: "swal-mygradient",
-        },
-        confirmButtonText: "OK",
-      });
-    }
-  }, [isError, error]);
+        MySwal.fire({
+          html, // use html instead of text
+          icon: "error",
+          buttonsStyling: false,
+          customClass: {
+            confirmButton: "swal-mygradient",
+          },
+          confirmButtonText: "OK",
+        });
+      }
+    });
+  };
+
+  // Inside your /EINS_ManageX/ page component
+  useEffect(() => {
+    // Push a dummy state so back button has something to pop to
+    window.history.pushState(null, "", window.location.href);
+
+    const handlePopState = () => {
+      // Re-push to prevent going back
+      window.history.pushState(null, "", window.location.href);
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
 
   return (
     <>
