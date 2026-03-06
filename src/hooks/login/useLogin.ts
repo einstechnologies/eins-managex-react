@@ -8,12 +8,15 @@ export const useLogin = () => {
     const navigate = useNavigate();
     return useMutation({
         mutationFn: (credentials: LoginRequest) => loginUser(credentials),
-        onSuccess:async (data) => {
+        onSuccess: async (data) => {
             localStorage.setItem('token', data.token);
-             await new Promise((resolve) => setTimeout(resolve, 800));
+            localStorage.setItem('loginUserId', data.userId.toString());
+            await new Promise((resolve) => setTimeout(resolve, 800));
+            // Push a blocker entry BEFORE replacing with Home
+            window.history.pushState(null, "", "/EINS_ManageX/Home");
             navigate("/EINS_ManageX/Home", { replace: true });
             console.log('Logged in as:', data.username, '| Role:', data.userRole)
         },
-       
+
     });
 }
