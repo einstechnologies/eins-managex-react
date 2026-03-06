@@ -9,20 +9,15 @@ function DeviceInfo() {
           <h6>
             <b>Device Information</b>
           </h6>
-          {/* <b className="device-card-title device-information"></b> */}
-
-
 
           <div className="d-flex align-items-start gap-3 mt-4 flex-wrap">
 
-
             <div className="col-12 col-md-3">
               <fieldset className="device-information dev-info-text-input-group">
-                <label htmlFor="biouserid">Device Name</label>
-                <input id="biouserid" className="form-control" />
+                <label htmlFor="devicename">Device Name</label>
+                <input id="devicename" className="form-control" />
               </fieldset>
             </div>
-
 
             <div className="d-flex gap-2">
               <button className="btn-outline-soft-green">Get Info</button>
@@ -142,14 +137,10 @@ function DeviceInfo() {
                 </div>
               </div>
 
-
             </div>
-
           </div>
         </div>
       </div>
-
-
 
     </div>
 

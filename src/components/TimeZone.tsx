@@ -84,29 +84,29 @@ function TimeZone() {
           <div className="row mt-4">
             <div className="col-12 col-md-3">
               <fieldset className="time-zone tz-info-text-input-group">
-                <label htmlFor="device1">Device Name</label>
-                <input id="device1" className="form-control" />
+                <label htmlFor="devicename">Device Name</label>
+                <input id="devicename" className="form-control" />
               </fieldset>
             </div>
 
             <div className="col-12 col-md-3">
               <fieldset className="time-zone tz-info-text-input-group">
-                <label htmlFor="device2">Time Zone Name</label>
-                <input id="device2" className="form-control" />
+                <label htmlFor="timezonename">Time Zone Name</label>
+                <input id="timezonename" className="form-control" />
               </fieldset>
             </div>
 
             <div className="col-12 col-md-3">
               <fieldset className="time-zone tz-info-text-input-group">
-                <label htmlFor="device3">Start Time</label>
-                <input id="device3" type="time" className="form-control" />
+                <label htmlFor="starttime">Start Time</label>
+                <input id="starttime" type="time" className="form-control" />
               </fieldset>
             </div>
 
             <div className="col-12 col-md-3">
               <fieldset className="time-zone tz-info-text-input-group">
-                <label htmlFor="device4">End Time</label>
-                <input id="device4" type="time" className="form-control" />
+                <label htmlFor="endtime">End Time</label>
+                <input id="endtime" type="time" className="form-control" />
               </fieldset>
             </div>
 
@@ -128,7 +128,6 @@ function TimeZone() {
               <button className="time-zone btn-outline-soft-green me-2">Save</button>
               <button className="time-zone btn-outline-soft-red">Clear</button>
             </div>
-
 
             <div className="col-12 mt-5">
               <div className="time-zone tz-table-tableWrapper">
@@ -196,8 +195,6 @@ function TimeZone() {
                 </table>
               </div>
             </div>
-
-
           </div>
         </div>
       </div>
