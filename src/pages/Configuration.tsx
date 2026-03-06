@@ -7,6 +7,8 @@ import { useState } from "react";
 import ConfigurationHome from "../components/ConfigurationHome";
 import HIDFeature from "../components/HIDDeviceFeature";
 import HIDSetting from "./HIDSetting";
+import DeviceInformation from "../components/DeviceInformation";
+import TimeZone from "../components/TimeZone";
 
 const HidConfiguration = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -123,6 +125,8 @@ const HidConfiguration = () => {
       {activeSection === "home" && <ConfigurationHome />}
       {activeSection === "feature" && <HIDFeature />}
       {activeSection === "setting" && <HIDSetting />}
+      {activeSection === "info" && <DeviceInformation />}
+      {activeSection === "timezone" && <TimeZone />}
     </div>
   );
 };

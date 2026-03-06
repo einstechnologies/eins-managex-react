@@ -1,0 +1,196 @@
+.device-information.device-user-card {
+    margin-bottom: 1.875rem;
+    border: none;
+    box-shadow: 0px 1px 15px 1px rgba(62, 57, 107, 0.07);
+    padding: 15px;
+    width: 100%;
+}
+
+.device-information.device-card-title {
+    color: #212529;
+    margin-bottom: 0px;
+}
+
+.device-information hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    opacity: 0.8;
+    margin: 11px 0 16px 0;
+}
+
+.device-information.dev-info-text-input-group {
+    border: 0.5px solid #ccc;
+    border-radius: 4px;
+    padding: 3px 10px;
+    position: relative;
+    margin-bottom: 20px;
+    background-color: #f9fafb;
+}
+
+.device-information.dev-info-text-input-group label {
+    font-size: 11px;
+    color: #ababab;
+    margin-bottom: 0;
+    display: block;
+}
+
+.device-information.dev-info-text-input-group input {
+    border: none;
+    outline: none;
+    padding: 0;
+    width: 100%;
+    font-size: 14px;
+    background-color: transparent;
+    color: black;
+}
+
+.device-information.dev-info-text-input-group:focus-within {
+    border: 1px solid #E71D3E;
+}
+
+.device-information.dev-info-text-input-group input:focus {
+    box-shadow: none;
+}
+
+
+
+.device-information .btn-outline-soft-green {
+    background-color: #f3fbf6;
+    /* mostly white, green hint */
+    color: #1f9d55;
+    border: 1.5px solid #1f9d55;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.15s ease;
+    margin-bottom: 15px;
+}
+
+.device-information .btn-outline-soft-green:hover {
+    background-color: #e9f7ef;
+    box-shadow:
+        0 6px 16px rgba(31, 157, 85, 0.18),
+        inset 0 0 0 1px rgba(31, 157, 85, 0.15);
+    transform: translateY(-1px);
+    outline: none;
+    border: 1.5px solid #1f9d55;
+}
+
+.device-information .btn-outline-soft-green:active {
+    transform: translateY(0);
+    box-shadow:
+        0 3px 8px rgba(31, 157, 85, 0.15);
+}
+
+.device-information .btn-outline-soft-green:focus {
+    outline: none;
+}
+
+.device-information .btn-outline-soft-green:focus-visible {
+    box-shadow: 0 0 0 3px rgba(31, 157, 85, 0.25);
+}
+
+.device-information .btn-outline-soft-red {
+    background-color: #fff5f7;
+    color: #E71D3E;
+    border: 1.5px solid #E71D3E;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.15s ease;
+    margin-bottom: 15px;
+}
+
+.device-information .btn-outline-soft-red:hover {
+    background-color: #fff0f3;
+    box-shadow:
+        0 6px 16px rgba(231, 29, 62, 0.18),
+        inset 0 0 0 1px rgba(231, 29, 62, 0.15);
+    transform: translateY(-1px);
+    outline: none;
+    border: 1.5px solid #e55f76;
+}
+
+.device-information .btn-outline-soft-red:hover,
+.device-information .btn-outline-soft-red:focus {
+    outline: none;
+}
+
+.device-information .btn-outline-soft-red:focus-visible {
+    box-shadow: 0 0 0 3px rgba(231, 29, 62, 0.25);
+}
+
+.device-information .btn-outline-soft-red:active {
+    transform: translateY(0);
+    box-shadow:
+        0 3px 8px rgba(231, 29, 62, 0.15);
+}
+
+.device-information .btn-outline-soft-red:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(231, 29, 62, 0.25);
+}
+
+
+
+
+.device-information .device-information-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    column-gap: 40px; 
+    row-gap: 25px;
+}
+
+
+.device-information .device-information-field {
+    display: grid;
+    grid-template-columns: 140px 20px 1fr; 
+    align-items: center; 
+}
+
+
+.device-information .device-information-label {
+    width: 140px; 
+    /* font-weight: 600; */
+    text-align: left;
+    margin-right: 10px; 
+    white-space: nowrap;
+    color: #000000; 
+}
+
+
+.device-information .device-information-colon {
+   margin-right: 10px; 
+    font-weight: 600;
+}
+
+
+.device-information .device-information-value {
+    flex: 1; 
+    text-align: left;
+    color: #575757;
+}
+
+@media(width <= 700px) {
+     .device-information .dev-if-mt {
+         margin-bottom: 10%;
+     }
+ }
+
+ @media(width <= 400px) {
+     .device-information .dev-if-mt {
+         margin-bottom: 25%;
+     }
+ }
+
+ 
