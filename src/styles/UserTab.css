@@ -10,6 +10,14 @@
     padding: 4px;
     border-radius: 8px;
     background-color: #f3f4f6;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: thin;
+    /* Firefox */
+    -ms-overflow-style: auto;
+    /* IE */
+
+
 }
 
 .user-tab-Wrapper .tabButton {

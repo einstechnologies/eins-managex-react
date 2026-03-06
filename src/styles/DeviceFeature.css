@@ -3,3 +3,52 @@
   padding: 10px 20px;
   border-bottom: 1px solid #ddd;
 }
+
+.spaceBetweencontentdevicefeatr {
+  margin-bottom: 30px;
+}
+
+
+/* Restart Device */
+
+.restartdiv {
+  display: flex;
+  gap: 10px;
+  /* space between select and button */
+  align-items: flex-start;
+  margin-bottom: 10px;
+
+  /* optional */
+}
+
+@media (max-width: 576px) {
+  .restartdiv {
+    display: block;
+    /* remove flex for mobile */
+  }
+
+  .restartdiv .col-lg-3,
+  .restartdiv .col-lg-1 {
+    width: 100% !important;
+    /* make each element full width */
+    margin-bottom: 10px;
+    /* add spacing between rows */
+  }
+
+  .restartdiv button {
+    width: 100% !important;
+  }
+
+  .spacebottom {
+    margin-bottom: 100px;
+    ;
+  }
+
+}
+
+/* Door sensor settings */
+
+.togglesize {
+  width: 40px !important;
+  height: 25px;
+}
