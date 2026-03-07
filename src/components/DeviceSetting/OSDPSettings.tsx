@@ -26,17 +26,26 @@ const OSDPSetting = () => {
           <p className="sound-page-subtitle">Configure OSDP(RS-485) settings</p>
         </div>
         {/* ── Device Name ── */}
+
         <div className="sound-section-card mb-4">
-          <div className="sound-section-label">
-            <span></span> Select Device
-          </div>
-          <div className="col-lg-4">
-            <fieldset className="text-input-group">
-              <label htmlFor="listdevice">Device Name</label>
-              <select id="listdevice">
-                <option value="">Select Device</option>
-              </select>
-            </fieldset>
+          <div className="row col-lg-12 align-items-center">
+            <div className="col-lg-2 alignleft text-nowrap">
+              <div className="sound-section-label">
+                <span></span> Select Device
+              </div>
+            </div>
+            <div className="col-lg-6">
+              <fieldset className="text-input-group">
+                <label htmlFor="listdevice">Device Name</label>
+                <select id="listdevice">
+                  <option value="">Select Device</option>
+                </select>
+              </fieldset>
+            </div>
+            <div className="col-lg-4 d-flex alignleft">
+              <button className="mb-2 btn-outline-soft-green mx-1">Save</button>
+              <button className="mb-2 btn-outline-soft-red mx-1">Cancel</button>
+            </div>
           </div>
         </div>
         <div className="sound-section-card mb-4">
@@ -45,7 +54,7 @@ const OSDPSetting = () => {
             <div className="osdp-col">
               {/* OSDP Toggle */}
               <div className="osdp-row">
-                <label className="osdp-label">OSDP:</label>
+                <label>OSDP :</label>
                 <label className="toggle-switch">
                   <input
                     id="rdoOSDP"
@@ -58,13 +67,13 @@ const OSDPSetting = () => {
 
               {/* Module Address */}
               <div className="osdp-row">
-                <label className="osdp-label">Module Address:</label>
+                <label>Module Address :</label>
                 <input type="number" className="osdp-input" min={0} max={126} />
               </div>
 
               {/* Enforce Secure Channel */}
               <div className="osdp-row">
-                <label className="osdp-label">Enforce Secure Channel:</label>
+                <label>Enforce Secure Channel :</label>
                 <label className="toggle-switch">
                   <input type="checkbox" />
                   <span className="toggle-slider"></span>
@@ -73,9 +82,7 @@ const OSDPSetting = () => {
 
               {/* Enable Special Function Keys */}
               <div className="osdp-row">
-                <label className="osdp-label">
-                  Enable Special Function Keys:
-                </label>
+                <label>Enable Special Function Keys :</label>
                 <label className="toggle-switch">
                   <input type="checkbox" />
                   <span className="toggle-slider"></span>
@@ -84,9 +91,7 @@ const OSDPSetting = () => {
 
               {/* Auto Enable Keypad */}
               <div className="osdp-row">
-                <label className="osdp-label">
-                  Automatically Enable Keypad after Card Swipe:
-                </label>
+                <label>Automatically Enable Keypad after Card Swipe :</label>
                 <label className="toggle-switch">
                   <input type="checkbox" />
                   <span className="toggle-slider"></span>
@@ -95,7 +100,7 @@ const OSDPSetting = () => {
 
               {/* Card Read Report Format */}
               <div className="osdp-row">
-                <label className="osdp-label">Card Read Report Format:</label>
+                <label>Card Read Report Format :</label>
                 <select className="osdp-select">
                   <option value="Raw">Raw (Default)</option>
                   <option value="Wiegand">Wiegand</option>
@@ -108,13 +113,13 @@ const OSDPSetting = () => {
             <div className="osdp-col">
               {/* Output Mode */}
               <div className="osdp-row">
-                <label className="osdp-label">Output Mode:</label>
+                <label>Output Mode :</label>
                 <div className="osdp-radio-group">
                   {["ID", "Authorized Card", "Any Card /QR Code/PIN"].map(
                     (opt) => (
                       <label key={opt} className="osdp-radio-label">
                         <input type="radio" name="outputMode" value={opt} />
-                        <span>{opt}</span>
+                        <label>{opt}</label>
                       </label>
                     ),
                   )}
@@ -123,7 +128,7 @@ const OSDPSetting = () => {
 
               {/* Baud Rate */}
               <div className="osdp-row">
-                <label className="osdp-label">Baud Rate:</label>
+                <label>Baud Rate :</label>
                 <select className="osdp-select">
                   <option selected value="1">
                     9600
@@ -138,7 +143,7 @@ const OSDPSetting = () => {
 
               {/* Installation Mode */}
               <div className="osdp-row">
-                <label className="osdp-label">Installation Mode:</label>
+                <label>Installation Mode :</label>
                 <label className="toggle-switch">
                   <input type="checkbox" />
                   <span className="toggle-slider"></span>
@@ -147,13 +152,13 @@ const OSDPSetting = () => {
 
               {/* Automatic Keypad Timeout */}
               <div className="osdp-row">
-                <label className="osdp-label">Automatic Keypad Timeout:</label>
+                <label>Automatic Keypad Timeout :</label>
                 <input type="number" min={0} max={126} className="osdp-input" />
               </div>
 
               {/* Wiegand Size */}
               <div className="osdp-row">
-                <label className="osdp-label">Wiegand Size:</label>
+                <label>Wiegand Size :</label>
                 <select className="osdp-select">
                   <option selected value="1">
                     Manual

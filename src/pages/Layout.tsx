@@ -1,23 +1,28 @@
-import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
-import MainContent from '../components/MainContent';
-import Footer from '../components/Footer';
-import { useSidebar } from '../hooks/useSidebar';
-import '../styles/Sidebar.css';
-import '../styles/Header.css';
-import '../styles/Footer.css';
-import type { MenuItem } from '../ts/index';
-import { Outlet, useNavigate } from 'react-router-dom';
-import { useState, useRef } from 'react';
-import { useEffect } from 'react';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
+import Header from "../components/Header";
+import Sidebar from "../components/Sidebar";
+import MainContent from "../components/MainContent";
+import Footer from "../components/Footer";
+import { useSidebar } from "../hooks/useSidebar";
+import "../styles/Sidebar.css";
+import "../styles/Header.css";
+import "../styles/Footer.css";
+import type { MenuItem } from "../ts/index";
+import { Outlet, useNavigate } from "react-router-dom";
+import { useState, useRef } from "react";
+import { useEffect } from "react";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 function LayoutPage() {
-
-
   const ObjSwal = withReactContent(Swal);
-  const { isVisible, setIsVisible, isMobile, enableTransition, activeMenuItem, setActiveMenuItem } = useSidebar();
+  const {
+    isVisible,
+    setIsVisible,
+    isMobile,
+    enableTransition,
+    activeMenuItem,
+    setActiveMenuItem,
+  } = useSidebar();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [menuRect, setMenuRect] = useState<DOMRect | null>(null);
   const hideTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -26,24 +31,57 @@ function LayoutPage() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   const menuItems: MenuItem[] = [
-    { id: "DASHBOARD", icon: "bi bi-grid", label: "DASHBOARD", path: "/EINS_ManageX/Dashboard" },
     {
-      id: "USER REGISTRATION", icon: "bi bi-person-add", label: "MANAGE USERS", path: "/EINS_ManageX/User/UserRegistration", children: [
+      id: "DASHBOARD",
+      icon: "bi bi-grid",
+      label: "DASHBOARD",
+      path: "/EINS_ManageX/Dashboard",
+    },
+    {
+      id: "USER REGISTRATION",
+      icon: "bi bi-person-add",
+      label: "MANAGE USERS",
+      path: "/EINS_ManageX/User/UserRegistration",
+      children: [
         // { id: "User_Registration", label: "User Registration", path: "/EINS_ManageX/User/UserRegistration" },
         // { id: "User_Search", label: "User Search", path: "/EINS_ManageX/User/UserSearch" },],
-      ]
+      ],
     },
-    { id: "CONFIGURATION", icon: "bi bi-gear-wide-connected", label: "CONFIGURATION", path: "/EINS_ManageX/Configuration" },
-    { id: "TEMPLATE TRANSFER", icon: "bi bi-shuffle", label: "INTEGRATION", path: "/EINS_ManageX/TemplateTransfer" },
-    { id: "TRANSACTION", icon: "bi bi-send", label: "TRANSACTION", path: "/EINS_ManageX/Transaction" },
     {
-      id: "PROFILE", icon: "bi bi-person-circle", label: "PROFILE", path: "/EINS_ManageX/",  children: [
+      id: "CONFIGURATION",
+      icon: "bi bi-gear-wide-connected",
+      label: "CONFIGURATION",
+      path: "/EINS_ManageX/Configuration",
+    },
+    {
+      id: "TEMPLATE TRANSFER",
+      icon: "bi bi-shuffle",
+      label: "INTEGRATION",
+      path: "/EINS_ManageX/TemplateTransfer",
+    },
+    {
+      id: "TRANSACTION",
+      icon: "bi bi-send",
+      label: "TRANSACTION",
+      path: "/EINS_ManageX/Transaction",
+    },
+    {
+      id: "PROFILE",
+      icon: "bi bi-person-circle",
+      label: "PROFILE",
+      path: "/EINS_ManageX/",
+      children: [
         // { id: "License", label: "License Details", path: "/EINS_ManageX/Profile/License" },
         // { id: "Login History", label: "Login History", path: "/EINS_ManageX/Profile/Login_History" },
         // { id: "Logout", label: "Logout", path: "/EINS_ManageX/" },],
       ],
     },
-    { id: "HELP", icon: "bi bi-patch-question", label: "HELP", path: "/EINS_ManageX/Help" }
+    {
+      id: "HELP",
+      icon: "bi bi-patch-question",
+      label: "HELP",
+      path: "/EINS_ManageX/Help",
+    },
   ];
 
   useEffect(() => {
@@ -53,18 +91,15 @@ function LayoutPage() {
     };
   }, []);
 
-
   const handleSidebarHover = (data: any) => {
     if (!isMounted.current) return;
     if (hideTimeout.current) clearTimeout(hideTimeout.current);
     if (data?.id) {
-      const idx = menuItems.findIndex(m => m.id === data.id);
+      const idx = menuItems.findIndex((m) => m.id === data.id);
       setHoveredIndex(idx);
       setHoveredId(data.id);
       setMenuRect(data.boundingRect);
-    }
-    else {
-
+    } else {
       hideTimeout.current = setTimeout(() => {
         setHoveredIndex(null);
         setHoveredId(null);
@@ -74,10 +109,11 @@ function LayoutPage() {
   };
 
   const handleSubmenuEnter = () => {
-    if (hideTimeout.current) clearTimeout(hideTimeout.current);  //  cancel hide
+    if (hideTimeout.current) clearTimeout(hideTimeout.current); //  cancel hide
   };
   const handleSubmenuLeave = () => {
-    hideTimeout.current = setTimeout(() => {  //  delay hide
+    hideTimeout.current = setTimeout(() => {
+      //  delay hide
       setHoveredIndex(null);
       setHoveredId(null);
       setMenuRect(null);
@@ -86,42 +122,35 @@ function LayoutPage() {
 
   const handleMenuClick = (menuId: string) => {
     setActiveMenuItem(menuId);
-    const item = menuItems.find(m => m.id === menuId);
-    
+    const item = menuItems.find((m) => m.id === menuId);
+
     if (item?.path) {
-      if(item?.id=="PROFILE")
-    {
-
-       
-      ObjSwal.fire({
-            title: 'Are you sure?',
-            text: 'Do you really want to logout?',
-            icon: 'warning',
-            buttonsStyling:false,
-            showCancelButton: true,
-            confirmButtonText: 'Yes, logout',
-            cancelButtonText: 'Cancel',
-            customClass:
-            {
-          confirmButton:"btnconfirm",
-           cancelButton:"btncancle",
-           actions: "btnAction",
-            },
-            reverseButtons: true,
-          }).then((result) => {
-            if (result.isConfirmed) {
-      
-        navigate(item.path);  
-
-      }
+      if (item?.id == "PROFILE") {
+        ObjSwal.fire({
+          title: "Are you sure?",
+          text: "Do you really want to logout?",
+          icon: "warning",
+          buttonsStyling: false,
+          showCancelButton: true,
+          confirmButtonText: "Yes, logout",
+          cancelButtonText: "Cancel",
+          customClass: {
+            confirmButton: "btnconfirm",
+            cancelButton: "btncancle",
+            actions: "btnAction",
+          },
+          reverseButtons: true,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            navigate(item.path);
+          }
         });
-    }
-    else{
-      navigate(item.path);   //
-    }
+      } else {
+        navigate(item.path); //
+      }
     }
     if (!item) {
-      menuItems.forEach(parent => {
+      menuItems.forEach((parent) => {
         const child = parent.children?.find((c: any) => c.id === menuId);
         if (child?.path) navigate(child.path);
       });
@@ -138,7 +167,11 @@ function LayoutPage() {
       )}
 
       <nav>
-        <Header isVisible={isVisible} setVisible={setIsVisible} isMobile={isMobile} />
+        <Header
+          isVisible={isVisible}
+          setVisible={setIsVisible}
+          isMobile={isMobile}
+        />
       </nav>
 
       <aside>
@@ -160,8 +193,8 @@ function LayoutPage() {
           <div
             className="global-submenu"
             style={{ top: `${menuRect?.top ?? 200}px` }}
-            onMouseEnter={handleSubmenuEnter}   //  cancel hide
-            onMouseLeave={handleSubmenuLeave}        // delay hide
+            onMouseEnter={handleSubmenuEnter} //  cancel hide
+            onMouseLeave={handleSubmenuLeave} // delay hide
           >
             {menuItems[hoveredIndex].children!.map((child: any) => (
               <button
@@ -169,7 +202,7 @@ function LayoutPage() {
                 className="submenu-btn"
                 onClick={() => {
                   navigate(child.path);
-                  setHoveredIndex(null);  //  correct state
+                  setHoveredIndex(null); //  correct state
                 }}
               >
                 {child.label}

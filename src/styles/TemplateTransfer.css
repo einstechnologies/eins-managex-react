@@ -122,13 +122,13 @@
 
 .templateTransfer.Ttnfr-content-screen {
     align-self: flex-start;
-    margin-left: -40px;
+    margin-left: auto;
     /* cancel parent padding */
-    margin-right: -36px;
+    margin-right: auto;
     /* cancel parent padding on right too */
     /* margin-top: 10px;*/
     /* margin-bottom: 27px; */
-    width: calc(100% + 40px);
+    width: 100%;
     /* compensate both sides */
     flex: 1;
     padding: 0 20px;
