@@ -1,10 +1,10 @@
 import { Tabs } from "../components/TabShadowcn";
 import Sound from "../components/DeviceSetting/Sound";
 import OSDPSettings from "../components/DeviceSetting/OSDPSettings";
-import Cardsettings from "../components/Cardsettings";
-import MFAuthentication from "../components/MFAuthentication";
-import Custommsg from "../components/Custommsg";
-
+import Cardsettings from "../components/DeviceSetting/Cardsettings";
+import MFAuthentication from "../components/DeviceSetting/MFAuthentication";
+import Custommsg from "../components/DeviceSetting/Custommsg";
+import "../styles/DeviceSettings.css";
 const HIDSetting = () => {
   const myTabs = [
     {
