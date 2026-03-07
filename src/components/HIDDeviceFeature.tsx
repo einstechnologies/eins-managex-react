@@ -1,14 +1,13 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
 import "../styles/UserTab.css";
-import { Tabs } from "./TabShadowcn";
-import { RestartDevice } from "./RestartDevice";
-import { TimeBasedAntipassback } from "./TimeBasedAntipassback";
-import { DoorSensorSettings } from "./DoorSensorSettings";
-import { DeliberateEmergency } from "./DeliberateEmergency";
-import { BuzzerSettings } from "./BuzzerSettings";
-import { AlarmsSettings } from "./AlarmsSettings";
-import { SetLogo } from "./SetLogo";
+import { Tabs } from './TabShadowcn';
+import { RestartDevice } from './RestartDevice';
+import { TimeBasedAntipassback } from './TimeBasedAntipassback';
+import { DoorSensorSettings } from './DoorSensorSettings';
+import { DeliberateEmergency } from './DeliberateEmergency';
+import { BuzzerSettings } from './BuzzerSettings';
+import { AlarmsSettings } from './AlarmsSettings';
+import { SetLogo } from './SetLogo';
+import '../styles/DeviceFeature.css'
 
 // import { UserFace } from './components/UserFace';
 // import { UserCard } from './components/UserCard';
@@ -22,45 +21,25 @@ const HIDFeature = () => {
   //     ];
 
   const myTabs = [
-    {
-      id: "RestartDevice",
-      label: "Restart Device",
-      content: <RestartDevice />,
-    },
-    {
-      id: "TimeBasedAntipassback",
-      label: "Time Based Antipassback",
-      content: <TimeBasedAntipassback />,
-    },
-    {
-      id: "DoorSensorSettings",
-      label: "Door Sensor Settings",
-      content: <DoorSensorSettings />,
-    },
-    {
-      id: "DeliberateEmergency",
-      label: "Deliberate Emergency",
-      content: <DeliberateEmergency />,
-    },
-    {
-      id: "BuzzerSettings",
-      label: "Buzzer Settings",
-      content: <BuzzerSettings />,
-    },
-    {
-      id: "AlarmsSettings",
-      label: "Alarms Settings",
-      content: <AlarmsSettings />,
-    },
+    { id: "RestartDevice", label: "Restart Device", content: <RestartDevice /> },
+    { id: "TimeBasedAntipassback", label: "Time Based Antipassback", content: <TimeBasedAntipassback /> },
+    { id: "DoorSensorSettings", label: "Door Sensor Settings", content: <DoorSensorSettings /> },
+    { id: "DeliberateEmergency", label: "Deliberate Emergency", content: <DeliberateEmergency /> },
+    { id: "BuzzerSettings", label: "Buzzer Settings", content: <BuzzerSettings /> },
+    { id: "AlarmsSettings", label: "Alarms Settings", content: <AlarmsSettings /> },
     { id: "SetLogo", label: "Set Logo", content: <SetLogo /> },
   ];
 
   return (
-    <div className="row mt-3 g-3">
-      <div className="col-12 tabbgcolor">
-        <Tabs tabs={myTabs} />
+    <>
+      <div className="row mt-3 g-3 spacebottom">
+        <div className="card hid-card spacebottomwhitediv">
+          <div className='col-12 tabbgcolor'>
+            <Tabs tabs={myTabs} />
+          </div>
+        </div>
       </div>
-    </div>
-  );
-};
+    </>
+  )
+}
 export default HIDFeature;
