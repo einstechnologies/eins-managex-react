@@ -9,6 +9,7 @@ import HIDFeature from "../components/HIDDeviceFeature";
 import HIDSetting from "./HIDSetting";
 import DeviceInformation from "../components/DeviceInformation";
 import TimeZone from "../components/TimeZone";
+import DateTime from "../components/DateTime";
 
 const HidConfiguration = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -105,9 +106,8 @@ const HidConfiguration = () => {
         ].map((item) => (
           <div
             key={item.key}
-            className={`hid-tab-item ${
-              activeSection === item.key ? "active-tab" : ""
-            }`}
+            className={`hid-tab-item ${activeSection === item.key ? "active-tab" : ""
+              }`}
             onClick={() => {
               if (item.route) {
                 navigate(item.route);
@@ -127,6 +127,7 @@ const HidConfiguration = () => {
       {activeSection === "setting" && <HIDSetting />}
       {activeSection === "info" && <DeviceInformation />}
       {activeSection === "timezone" && <TimeZone />}
+      {activeSection === "datetime" && <DateTime />}
     </div>
   );
 };
