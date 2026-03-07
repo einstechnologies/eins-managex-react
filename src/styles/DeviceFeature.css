@@ -8,6 +8,33 @@
   margin-bottom: 30px;
 }
 
+.commonwidth {
+  width: 100%;
+}
+
+.alignright {
+  text-align: right;
+}
+
+.toggle-bottom {
+  margin-top: -6px;
+}
+
+.spacetop {
+  margin-top: 5px;
+}
+
+.spacetopmax {
+  margin-top: 10px;
+}
+
+.radioActive {
+  margin-right: 10px;
+}
+
+.center-heading {
+  text-align: center;
+}
 
 /* Restart Device */
 
@@ -44,6 +71,11 @@
     ;
   }
 
+  .spacebottomwhitediv {
+    margin-bottom: 20px;
+    ;
+  }
+
 }
 
 /* Door sensor settings */
@@ -51,4 +83,26 @@
 .togglesize {
   width: 40px !important;
   height: 25px;
+}
+
+.btnmarginleft {
+  margin-left: 20px;
+}
+
+/* TimeBasedAntipass */
+
+.checkboxmarginRight {
+  margin-right: 10px;
+}
+
+/* SetLogo */
+
+.photoradious {
+  border-radius: 10% !important;
+}
+
+.no-nc-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
