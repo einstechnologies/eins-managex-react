@@ -30,7 +30,7 @@ function UserRegistration() {
     const [emailId, setEmailId] = useState<string>("");
     const [mobileNo, setMobileNo] = useState<string>("");
     const [gender, setGender] = useState<string>("");
-    const [userType, setUserType] = useState<string>("");
+    const [userTypeDr, setUserType] = useState<string>("");
     const [activationDateStr, setActivationDate] = useState<string>("");
     const [expiryDateStr, setExpiryDate] = useState<string>("");
 
@@ -47,7 +47,7 @@ function UserRegistration() {
 
     const onSaveEvent = async () => {
         setIsSubmitting(true);
-        if (!userid && !userFirstName && !userType && !activationDateStr && !expiryDateStr && !userLastName) {
+        if (!userid && !userFirstName && !userTypeDr && !activationDateStr && !expiryDateStr && !userLastName) {
             MySwal.fire({
                 icon: 'warning',
                 text: 'UserID, User Name, User Type, Activation Date and Expiry Date is required!',
@@ -93,7 +93,7 @@ function UserRegistration() {
             });
             return;
         }
-        else if (!userType) {
+        else if (!userTypeDr) {
             MySwal.fire({
                 text: 'User Type is required!',
                 icon: "warning",
@@ -136,6 +136,7 @@ function UserRegistration() {
             const pin = "";
             const activationDate = new Date(activationDateStr).toJSON();
             const expiryDate = new Date(expiryDateStr).toJSON();
+            const userType = userTypeDr == '0' ? false : true;
             const saveUser = await registerUser({
                 bioUserID,
                 userFirstName,
@@ -146,7 +147,8 @@ function UserRegistration() {
                 activationDate,
                 expiryDate,
                 mobileNo,
-                gender
+                gender,
+                userType
             });
 
             await new Promise((resolve) => setTimeout(resolve, 900));
@@ -573,12 +575,12 @@ function UserRegistration() {
                                                     <label htmlFor="usertype">User Type <span>*</span></label>
                                                     <select
                                                         id='usertype'
-                                                        value={userType}
+                                                        value={userTypeDr}
                                                         onChange={(data) => setUserType(data.target.value)}
                                                     >
                                                         <option value="">Select User Type</option>
-                                                        <option value="1">Normal User</option>
-                                                        <option value="0">Admin</option>
+                                                        <option value="0">Normal User</option>
+                                                        <option value="1">Admin</option>
                                                     </select>
                                                 </fieldset>
                                             </div>

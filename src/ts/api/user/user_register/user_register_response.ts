@@ -9,6 +9,7 @@ export type UserRegisterRequest = {
     "expiryDate": string;
     "mobileNo": string;
     "gender": string;
+    "userType": boolean;
 }
 
 export type UserRegisterResponse = {
