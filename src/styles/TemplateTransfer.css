@@ -82,21 +82,6 @@
     text-align: center;
 }
 
-/* Buttons */
-.Template-transfer-table .deleteBtn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #d21a38;
-    /* padding: 4px; */
-    border-radius: 4px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.2s ease;
-}
-
 /* .Template-transfer-table .deleteBtn:hover {
     background-color: #fff5f7;
 } */
@@ -258,34 +243,6 @@
     margin-bottom: 5px;
 }
 
-.Ttnfr-content-screen .photoMainDiv {
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    /* ✅ constrain to column width */
-    box-sizing: border-box;
-    overflow: hidden;
-    /* ✅ clip at photo container level */
-}
-
-.Ttnfr-content-screen .photoMainDiv .biggerCircle {
-    height: 150px;
-    width: 150px;
-    max-width: 100%;
-    /* ✅ won't exceed parent on small screens */
-    max-height: 100%;
-    border-radius: 50%;
-    align-items: center;
-    justify-content: center;
-    border: 0.5px solid #fff5f7;
-    display: flex;
-    background-color: #e46e86;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-
-}
 
 .Ttnfr-content-screen .rowCheckPlease {
     display: flex;
@@ -317,62 +274,6 @@
 }
 
 
-
-.Ttnfr-content-screen .photoMainDiv .photoCircle {
-    height: 142px;
-    width: 142px;
-    max-width: 100%;
-    /* ✅ won't exceed biggerCircle */
-    max-height: 100%;
-    border-radius: 50%;
-    align-items: center;
-    justify-content: center;
-    border: 4px solid white;
-    display: flex;
-    background-color: #f6f6f6;
-    box-sizing: border-box;
-
-}
-
-.Ttnfr-content-screen .photoCircle i {
-    font-size: 60px;
-}
-
-.Ttnfr-content-screen .photoMainDiv .checkRow {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    /* Key: Wrap to next line when no space */
-    margin: 0;
-    gap: 10px;
-    width: 100%;
-    padding: 0 10px;
-    box-sizing: border-box;
-}
-
-.Ttnfr-content-screen .iconCircle {
-    width: 60px;
-    height: 60px;
-    min-width: 60px;
-    min-height: 60px;
-    border-radius: 50%;
-    background-color: #f0fdf4;
-    border: 1px solid #16a34a;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #16a34a;
-    font-size: 2.5rem;
-}
-
-.Ttnfr-content-screen .facescan {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
 
 
 
@@ -531,47 +432,6 @@
 }
 
 .Ttnfr-content-screen .btn-outline-soft-green:focus-visible {
-    box-shadow: 0 0 0 3px rgba(31, 157, 85, 0.25);
-}
-
-.Ttnfr-content-screen .btn-outline-soft-blue {
-    background-color: rgb(244, 244, 255);
-    /* mostly white, green hint */
-    color: blue;
-    border: 1.5px solid rgb(144, 144, 255);
-    padding: 10px 18px;
-    font-size: 14px;
-    font-weight: 500;
-    border-radius: 6px;
-    cursor: pointer;
-    transition:
-        background-color 0.2s ease,
-        box-shadow 0.2s ease,
-        transform 0.15s ease;
-    margin-bottom: 15px;
-}
-
-.Ttnfr-content-screen .btn-outline-soft-blue:hover {
-    background-color: rgb(244, 244, 255);
-    box-shadow:
-        0 6px 16px rgb(185, 185, 255),
-        inset 0 0 0 1px rgb(185, 185, 255);
-    transform: translateY(-1px);
-    outline: none;
-    border: 1.5px solid rgb(144, 144, 255);
-}
-
-.Ttnfr-content-screen .btn-outline-soft-blue:active {
-    transform: translateY(0);
-    box-shadow:
-        0 3px 8px rgba(31, 157, 85, 0.15);
-}
-
-.btn-outline-soft-blue:focus {
-    outline: none;
-}
-
-.Ttnfr-content-screen .btn-outline-soft-blue:focus-visible {
     box-shadow: 0 0 0 3px rgba(31, 157, 85, 0.25);
 }
 
