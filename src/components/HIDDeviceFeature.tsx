@@ -1,12 +1,12 @@
 import "../styles/UserTab.css";
 import { Tabs } from './TabShadowcn';
-import { RestartDevice } from './RestartDevice';
-import { TimeBasedAntipassback } from './TimeBasedAntipassback';
-import { DoorSensorSettings } from './DoorSensorSettings';
-import { DeliberateEmergency } from './DeliberateEmergency';
-import { BuzzerSettings } from './BuzzerSettings';
-import { AlarmsSettings } from './AlarmsSettings';
-import { SetLogo } from './SetLogo';
+import { RestartDevice } from './DeviceFeature/RestartDevice';
+import { TimeBasedAntipassback } from './DeviceFeature/TimeBasedAntipassback';
+import { DoorSensorSettings } from './DeviceFeature/DoorSensorSettings';
+import { DeliberateEmergency } from './DeviceFeature/DeliberateEmergency';
+import { BuzzerSettings } from './DeviceFeature/BuzzerSettings';
+import { AlarmsSettings } from './DeviceFeature/AlarmsSettings';
+import { SetLogo } from './DeviceFeature/SetLogo';
 import '../styles/DeviceFeature.css'
 
 // import { UserFace } from './components/UserFace';

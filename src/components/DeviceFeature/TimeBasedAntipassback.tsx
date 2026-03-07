@@ -1,4 +1,4 @@
-import '../styles/DeviceFeature.css'
+import '../../styles/DeviceFeature.css'
 
 export function TimeBasedAntipassback() {
     return (
