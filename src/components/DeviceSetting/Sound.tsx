@@ -1,5 +1,5 @@
 import "../styles/DeviceSettings.css";
-import DragDropUpload from "../components/DragDropUpload ";
+import DragDropUpload from "../DragDropUpload ";
 import { useState } from "react";
 
 // ─── Reusable Audio Event Row ─────────────────────────────────────────────────
@@ -92,7 +92,9 @@ const Sound = () => {
       <div className="hid-card">
         {/* ── Header ── */}
         <div className="sound-page-header">
-          <h5 className="sound-page-title">🔊 Sound Settings</h5>
+          <h5 className="sound-page-title">
+            <i className="bi bi-volume-up-fill"></i> Sound Settings
+          </h5>
           <p className="sound-page-subtitle">
             Configure audio messages and volume for device events
           </p>
@@ -119,7 +121,11 @@ const Sound = () => {
           <div className="col-lg-6">
             <div className="sound-card h-100">
               <div className="sound-card-header">
-                <span>🎙️</span> Create Custom Audio
+                <span>
+                  {" "}
+                  <i className="bi bi-mic-fill iconsize20"></i>
+                </span>{" "}
+                Create Custom Audio
               </div>
               <div className="sound-card-body">
                 <div className="row g-2">
@@ -174,7 +180,10 @@ const Sound = () => {
           <div className="col-lg-6">
             <div className="sound-card h-100">
               <div className="sound-card-header">
-                <span>📂</span> Upload Audio File
+                <span>
+                  <i className="bi bi-folder2-open iconsize20"></i>
+                </span>{" "}
+                Upload Audio File
               </div>
               <div className="sound-card-body">
                 <DragDropUpload accept="audio/wav" />
@@ -194,7 +203,10 @@ const Sound = () => {
         {/* ── Audio Event Rows ── */}
         <div className="sound-card mb-4">
           <div className="sound-card-header">
-            <span>🎚️</span> Audio Messages per Event
+            <span>
+              <i className="bi bi-chat-quote iconsize20"></i>
+            </span>{" "}
+            Audio Messages per Event
           </div>
           <div className="sound-card-body p-0">
             {audioEvents.map((ev, i) => (
@@ -216,7 +228,11 @@ const Sound = () => {
         {/* ── Volume Setting ── */}
         <div className="sound-card">
           <div className="sound-card-header">
-            <span>🔉</span> Volume Setting
+            <span>
+              {" "}
+              <i className="bi bi-volume-up-fill iconsize20"></i>
+            </span>{" "}
+            Volume Setting
           </div>
           <div className="sound-card-body">
             <div className="d-flex align-items-center justify-content-between flex-wrap gap-3">
@@ -234,7 +250,13 @@ const Sound = () => {
                       onChange={() => setVolume(opt)}
                       style={{ display: "none" }}
                     />
-                    {opt === "Normal" ? "🔈" : opt === "Medium" ? "🔉" : "🔊"}{" "}
+                    {opt === "Normal" ? (
+                      <i className="bi bi-volume-down iconsize"></i>
+                    ) : opt === "Medium" ? (
+                      <i className="bi bi-volume-up iconsize"></i>
+                    ) : (
+                      <i className="bi bi-volume-up-fill iconsize"></i>
+                    )}{" "}
                     {opt}
                   </label>
                 ))}

@@ -1,6 +1,6 @@
 import { Tabs } from "../components/TabShadowcn";
-import Sound from "../components/Sound";
-import OSDPSettings from "../components/OSDPSettings";
+import Sound from "../components/DeviceSetting/Sound";
+import OSDPSettings from "../components/DeviceSetting/OSDPSettings";
 import Cardsettings from "../components/Cardsettings";
 import MFAuthentication from "../components/MFAuthentication";
 import Custommsg from "../components/Custommsg";
