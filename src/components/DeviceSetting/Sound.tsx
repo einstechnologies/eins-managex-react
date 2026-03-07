@@ -101,16 +101,20 @@ const Sound = () => {
 
         {/* ── Device Name ── */}
         <div className="sound-section-card mb-4">
-          <div className="sound-section-label">
-            <span></span> Select Device
-          </div>
-          <div className="col-lg-4">
-            <fieldset className="text-input-group">
-              <label htmlFor="listdevice">Device Name</label>
-              <select id="listdevice">
-                <option value="">Select Device</option>
-              </select>
-            </fieldset>
+          <div className="row col-lg-12 align-items-center">
+            <div className="col-lg-2 alignleft text-nowrap">
+              <div className="sound-section-label">
+                <span></span> Select Device
+              </div>
+            </div>
+            <div className="col-lg-6">
+              <fieldset className="text-input-group">
+                <label htmlFor="listdevice">Device Name</label>
+                <select id="listdevice">
+                  <option value="">Select Device</option>
+                </select>
+              </fieldset>
+            </div>
           </div>
         </div>
 
@@ -235,7 +239,7 @@ const Sound = () => {
           </div>
           <div className="sound-card-body">
             <div className="d-flex align-items-center justify-content-between flex-wrap gap-3">
-              <div className="d-flex gap-2">
+              <div className="d-flex audio-row-center gap-2">
                 {["Normal", "Medium", "High"].map((opt) => (
                   <label
                     key={opt}
