@@ -1,4 +1,3 @@
-import "../styles/DeviceSettings.css";
 import DragDropUpload from "../DragDropUpload ";
 import { useState } from "react";
 

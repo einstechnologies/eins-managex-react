@@ -1,10 +1,29 @@
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
 const OSDPSetting = () => {
+  const rdoOSDPChnage = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.checked) {
+      MySwal.fire({
+        icon: "warning",
+        titleText: "Attention",
+        text: "When enabling OSDP, communication with the EAM will not work and the equipment will act as a Peripheral Device (PD) according to the OSDP interface.",
+        buttonsStyling: false,
+        customClass: {
+          confirmButton: "swal-mygradient",
+        },
+        confirmButtonText: "OK",
+      });
+    }
+  };
+  const MySwal = withReactContent(Swal);
+
   return (
     <>
       <div className="hid-card">
         <div className="sound-page-header">
           <h5 className="sound-page-title">OSDP Settings</h5>
-          <p className="sound-page-subtitle">Configure OSDP(RS485) settings</p>
+          <p className="sound-page-subtitle">Configure OSDP(RS-485) settings</p>
         </div>
         {/* ── Device Name ── */}
         <div className="sound-section-card mb-4">
@@ -28,7 +47,11 @@ const OSDPSetting = () => {
               <div className="osdp-row">
                 <label className="osdp-label">OSDP:</label>
                 <label className="toggle-switch">
-                  <input type="checkbox" />
+                  <input
+                    id="rdoOSDP"
+                    type="checkbox"
+                    onChange={rdoOSDPChnage}
+                  />
                   <span className="toggle-slider"></span>
                 </label>
               </div>

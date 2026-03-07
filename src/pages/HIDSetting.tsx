@@ -4,7 +4,7 @@ import OSDPSettings from "../components/DeviceSetting/OSDPSettings";
 import Cardsettings from "../components/Cardsettings";
 import MFAuthentication from "../components/MFAuthentication";
 import Custommsg from "../components/Custommsg";
-
+import "../styles/DeviceSettings.css";
 const HIDSetting = () => {
   const myTabs = [
     {
