@@ -430,10 +430,9 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 13px;
     color: #475569;
     cursor: pointer;
-    font-weight: 500;
+
 }
 
 .osdp-radio-label input[type="radio"] {

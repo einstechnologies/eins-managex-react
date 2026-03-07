@@ -10,6 +10,7 @@ import HIDSetting from "./HIDSetting";
 import DeviceInformation from "../components/DeviceInformation";
 import TimeZone from "../components/TimeZone";
 import DateTime from "../components/DateTime";
+import TemplateTransfer from "./TemplateTransfer";
 
 const HidConfiguration = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -92,7 +93,6 @@ const HidConfiguration = () => {
             key: "user",
             label: "User",
             icon: "bi-person-fill",
-            route: "",
           },
           { key: "feature", label: "Device Feature", icon: "bi-cpu-fill" },
           { key: "setting", label: "Setting", icon: "bi-tools" },
@@ -106,14 +106,16 @@ const HidConfiguration = () => {
         ].map((item) => (
           <div
             key={item.key}
-            className={`hid-tab-item ${activeSection === item.key ? "active-tab" : ""
-              }`}
+            className={`hid-tab-item ${
+              activeSection === item.key ? "active-tab" : ""
+            }`}
             onClick={() => {
-              if (item.route) {
-                navigate(item.route);
-              } else {
-                setActiveSection(item.key);
-              }
+              // if (item.route) {
+              //   navigate(item.route);
+              // } else {
+              //   setActiveSection(item.key);
+              // }
+              setActiveSection(item.key);
             }}
           >
             <i className={`bi ${item.icon}`}></i>
@@ -123,6 +125,7 @@ const HidConfiguration = () => {
       </div>
 
       {activeSection === "home" && <ConfigurationHome />}
+      {activeSection === "user" && <TemplateTransfer />}
       {activeSection === "feature" && <HIDFeature />}
       {activeSection === "setting" && <HIDSetting />}
       {activeSection === "info" && <DeviceInformation />}
