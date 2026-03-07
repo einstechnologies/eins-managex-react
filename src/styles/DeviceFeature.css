@@ -1,0 +1,108 @@
+.hid-container .devicefeature {
+  background: #ffffff;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.spaceBetweencontentdevicefeatr {
+  margin-bottom: 30px;
+}
+
+.commonwidth {
+  width: 100%;
+}
+
+.alignright {
+  text-align: right;
+}
+
+.toggle-bottom {
+  margin-top: -6px;
+}
+
+.spacetop {
+  margin-top: 5px;
+}
+
+.spacetopmax {
+  margin-top: 10px;
+}
+
+.radioActive {
+  margin-right: 10px;
+}
+
+.center-heading {
+  text-align: center;
+}
+
+/* Restart Device */
+
+.restartdiv {
+  display: flex;
+  gap: 10px;
+  /* space between select and button */
+  align-items: flex-start;
+  margin-bottom: 10px;
+
+  /* optional */
+}
+
+@media (max-width: 576px) {
+  .restartdiv {
+    display: block;
+    /* remove flex for mobile */
+  }
+
+  .restartdiv .col-lg-3,
+  .restartdiv .col-lg-1 {
+    width: 100% !important;
+    /* make each element full width */
+    margin-bottom: 10px;
+    /* add spacing between rows */
+  }
+
+  .restartdiv button {
+    width: 100% !important;
+  }
+
+  .spacebottom {
+    margin-bottom: 100px;
+    ;
+  }
+
+  .spacebottomwhitediv {
+    margin-bottom: 20px;
+    ;
+  }
+
+}
+
+/* Door sensor settings */
+
+.togglesize {
+  width: 40px !important;
+  height: 25px;
+}
+
+.btnmarginleft {
+  margin-left: 20px;
+}
+
+/* TimeBasedAntipass */
+
+.checkboxmarginRight {
+  margin-right: 10px;
+}
+
+/* SetLogo */
+
+.photoradious {
+  border-radius: 10% !important;
+}
+
+.no-nc-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

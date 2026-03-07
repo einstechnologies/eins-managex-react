@@ -1,0 +1,142 @@
+.date-time.dt-user-card {
+    margin-bottom: 1.875rem;
+    border: none;
+    box-shadow: 0px 1px 15px 1px rgba(62, 57, 107, 0.07);
+    padding: 15px;
+    width: 100%;
+}
+
+.date-time.dt-info-text-input-group {
+    border: 0.5px solid #ccc;
+    border-radius: 4px;
+    padding: 3px 10px;
+    position: relative;
+    margin-bottom: 20px;
+    background-color: #f9fafb;
+}
+
+.date-time.dt-info-text-input-group label {
+    font-size: 11px;
+    color: #ababab;
+    margin-bottom: 0;
+    display: block;
+}
+
+.date-time.dt-info-text-input-group input {
+    border: none;
+    outline: none;
+    padding: 0;
+    width: 100%;
+    font-size: 14px;
+    background-color: transparent;
+    color: black;
+}
+
+.date-time.dt-info-text-input-group:focus-within {
+    border: 1px solid #E71D3E;
+}
+
+.date-time.dt-info-text-input-group input:focus {
+    box-shadow: none;
+}
+
+.date-time .btn-datetime {
+    text-align: left;
+}
+
+
+.date-time .dt-btn-outline-soft-blue {
+    background-color: rgb(244, 244, 255);
+    /* mostly white, green hint */
+    color: blue;
+    border: 1.5px solid rgb(144, 144, 255);
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.15s ease;
+    margin-bottom: 15px;
+}
+
+.date-time .dt-btn-outline-soft-blue:hover {
+    background-color: rgb(244, 244, 255);
+    box-shadow:
+        0 6px 16px rgb(185, 185, 255),
+        inset 0 0 0 1px rgb(185, 185, 255);
+    transform: translateY(-1px);
+    outline: none;
+    border: 1.5px solid rgb(144, 144, 255);
+}
+
+.date-time .dt-btn-outline-soft-blue:active {
+    transform: translateY(0);
+    box-shadow:
+        0 3px 8px rgba(31, 157, 85, 0.15);
+}
+
+.date-time .dt-btn-outline-soft-blue:focus {
+    outline: none;
+}
+
+.date-time .dt-btn-outline-soft-blue:focus-visible {
+    box-shadow: 0 0 0 3px rgba(31, 157, 85, 0.25);
+}
+
+.date-time .dt-btn-outline-soft-green {
+    background-color: #f3fbf6;
+    /* mostly white, green hint */
+    color: #1f9d55;
+    border: 1.5px solid #1f9d55;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.15s ease;
+    margin-bottom: 15px;
+}
+
+.date-time .dt-btn-outline-soft-green:hover {
+    background-color: #e9f7ef;
+    box-shadow:
+        0 6px 16px rgba(31, 157, 85, 0.18),
+        inset 0 0 0 1px rgba(31, 157, 85, 0.15);
+    transform: translateY(-1px);
+    outline: none;
+    border: 1.5px solid #1f9d55;
+}
+
+.date-time .dt-btn-outline-soft-green:active {
+    transform: translateY(0);
+    box-shadow:
+        0 3px 8px rgba(31, 157, 85, 0.15);
+}
+
+.date-time .dt-btn-outline-soft-green:focus {
+    outline: none;
+}
+
+.date-time .dt-btn-outline-soft-green:focus-visible {
+    box-shadow: 0 0 0 3px rgba(31, 157, 85, 0.25);
+}
+
+
+
+@media(width <=760px) {
+    .date-time.dt-bottom {
+        margin-bottom: 10%;
+    }
+}
+
+@media(width <=400px) {
+    .date-time.dt-bottom {
+        margin-bottom: 25%;
+    }
+}
