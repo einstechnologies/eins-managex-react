@@ -89,7 +89,7 @@ const HidConfiguration = () => {
             key: "user",
             label: "User",
             icon: "bi-person-fill",
-            route: "/EINS_ManageX/User/UserRegistration",
+            route: "",
           },
           { key: "feature", label: "Device Feature", icon: "bi-cpu-fill" },
           { key: "setting", label: "Setting", icon: "bi-tools" },

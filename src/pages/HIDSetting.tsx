@@ -37,8 +37,10 @@ const HIDSetting = () => {
   return (
     <>
       <div className="row mt-3 g-3">
-        <div className="col-12 tabbgcolor">
-          <Tabs tabs={myTabs} />
+        <div className="card hid-card">
+          <div className="col-12 tabbgcolor">
+            <Tabs tabs={myTabs} />
+          </div>
         </div>
       </div>
     </>
