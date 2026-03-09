@@ -1,4 +1,5 @@
 import { useState } from "react";
+import HelpIcon from "../HelpIcon";
 
 interface CustomMsgRowProps {
   label: string;
@@ -51,8 +52,8 @@ const Custommsg = () => {
   return (
     <>
       <div className="hid-card">
-        <div className="row align-items-center">
-          <div className="col-lg-9">
+        <div className="sound-page-header">
+          <div className="sound-page-header-left">
             <h5 className="sound-page-title">
               <i className="bi bi-chat-left-text iconsize20 me-2"></i>
               Custom Messages
@@ -61,12 +62,18 @@ const Custommsg = () => {
               Create Custom messages for each event
             </p>
           </div>
-          <div className="col-lg-3 d-flex gap-2">
+          <div className="sound-page-header-right">
+            <HelpIcon />
+          </div>
+        </div>
+        <div className="row col-lg-12 mt-neg-20">
+          <div className="col-lg-4"></div>
+          <div className="col-lg-4"></div>
+          <div className="col-lg-4 d-flex justify-content-end align-items-center gap-2">
             <button className="btn-outline-soft-green">Save</button>
             <button className="btn-outline-soft-red">Cancel</button>
           </div>
         </div>
-
         <div className="sound-card mb-4">
           <div className="sound-card-header">
             <i className="bi bi-chat-left-text iconsize20 me-2"></i>

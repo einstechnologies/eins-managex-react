@@ -43,7 +43,7 @@ const HIDSetting = () => {
         mac="00:18:9E:6A:B8:35"
         terminalid="5382314504545"
       />
-      <div className="row mb-3 mt-1 g-3">
+      <div className="row mb-3 g-3">
         <div className="card hid-card">
           <div className="col-12 tabbgcolor">
             <Tabs tabs={myTabs} />

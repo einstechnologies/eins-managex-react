@@ -1,4 +1,5 @@
 import DragDropUpload from "../DragDropUpload ";
+import HelpIcon from "../HelpIcon";
 import { useState } from "react";
 
 // ─── Reusable Audio Event Row ─────────────────────────────────────────────────
@@ -91,33 +92,19 @@ const Sound = () => {
       <div className="hid-card">
         {/* ── Header ── */}
         <div className="sound-page-header">
-          <h5 className="sound-page-title">
-            <i className="bi bi-volume-up-fill"></i> Sound Settings
-          </h5>
-          <p className="sound-page-subtitle">
-            Configure audio messages and volume for device events
-          </p>
-        </div>
-
-        {/* ── Device Name ── */}
-        {/* <div className="sound-section-card mb-4">
-          <div className="row col-lg-12 align-items-center">
-            <div className="col-lg-2 alignleft text-nowrap">
-              <div className="sound-section-label">
-                <span></span> Select Device
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <fieldset className="text-input-group">
-                <label htmlFor="listdevice">Device Name</label>
-                <select id="listdevice">
-                  <option value="">Select Device</option>
-                </select>
-              </fieldset>
-            </div>
+          <div className="sound-page-header-left">
+            <h5 className="sound-page-title">
+              <i className="bi bi-volume-up-fill"></i> Sound Settings
+            </h5>
+            <p className="sound-page-subtitle">
+              Configure audio messages and volume for device events
+            </p>
           </div>
-        </div> */}
 
+          <div className="sound-page-header-right">
+            <HelpIcon />
+          </div>
+        </div>
         {/* ── Create Audio + Upload ── */}
         <div className="row g-3 mb-4">
           {/* Create Custom Audio */}

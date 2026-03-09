@@ -167,7 +167,32 @@ button:focus-visible {
   margin: 50px;
 }
 
+.mt-neg-20 {
+  margin-top: -20px;
+}
+
+.mt-neg-16 {
+  margin-top: -16px;
+}
+
+.mt-neg-24 {
+  margin-top: -24px;
+}
+
 .fieldsetborder {
   box-shadow: 0 0 3px 2px rgb(225 217 218 / 50%);
   border: 1px solid #858789;
+}
+
+.help-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 25px;
+}
+
+.help-icon-wrapper:hover {
+  color: #3b82f6;
 }
