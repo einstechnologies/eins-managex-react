@@ -2,7 +2,7 @@ import { Tabs } from "../components/TabShadowcn";
 import Sound from "../components/DeviceSetting/Sound";
 import OSDPSettings from "../components/DeviceSetting/OSDPSettings";
 import Cardsettings from "../components/DeviceSetting/Cardsettings";
-import MFAuthentication from "../components/DeviceSetting/MFAuthentication";
+import IdentificationMode from "../components/DeviceSetting/IdentificationMode";
 import Custommsg from "../components/DeviceSetting/Custommsg";
 import ConnectedDevice from "../components/ConnectedDevice";
 import "../styles/DeviceSettings.css";
@@ -24,9 +24,9 @@ const HIDSetting = () => {
       content: <Custommsg />,
     },
     {
-      id: "MFAuthentication",
-      label: "Multi Factor Authentication",
-      content: <MFAuthentication />,
+      id: "IdentificationMode",
+      label: "Identification Mode",
+      content: <IdentificationMode />,
     },
     {
       id: "Cardsettings",

@@ -51,7 +51,7 @@ const Custommsg = () => {
   return (
     <>
       <div className="hid-card">
-        <div className="row align-items-center mb-4">
+        <div className="row align-items-center">
           <div className="col-lg-9">
             <h5 className="sound-page-title">
               <i className="bi bi-chat-left-text iconsize20 me-2"></i>
@@ -61,7 +61,7 @@ const Custommsg = () => {
               Create Custom messages for each event
             </p>
           </div>
-          <div className="col-lg-3 d-flex justify-content-end gap-2">
+          <div className="col-lg-3 d-flex gap-2">
             <button className="btn-outline-soft-green">Save</button>
             <button className="btn-outline-soft-red">Cancel</button>
           </div>
