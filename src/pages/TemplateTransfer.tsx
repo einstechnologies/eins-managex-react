@@ -157,7 +157,7 @@ function TemplateTransfer() {
                               Show All Devices
                             </label>
                           </div>
-                          <div className="col-6 col-sm-6 col-md-6 col-lg-6 showAllRadioTextAlign">
+                          <div className="col-6 col-sm-6 col-md-6 col-lg-6 showAllRadioTextAlign1">
                             <div className="savebuttonTemplateTrans Ttnfr-content-screen">
                               <button className="btn-outline-soft-greenTT Ttnfr-content-screen">
                                 Search
@@ -247,7 +247,7 @@ function TemplateTransfer() {
                               Show All User
                             </label>
                           </div>
-                          <div className="col-6 col-lg-6 showAllRadioTextAlign">
+                          <div className="col-6 col-lg-6 showAllRadioTextAlign1">
                             <div className="savebuttonTemplateTrans Ttnfr-content-screen">
                               <button className="btn-outline-soft-greenTT Ttnfr-content-screen">
                                 Search

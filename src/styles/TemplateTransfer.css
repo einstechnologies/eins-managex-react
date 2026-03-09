@@ -265,12 +265,25 @@
         margin-bottom: 1rem !important;
     }
 
+    .Ttnfr-content-screen .rowCheckPlease .showAllRadioTextAlign1 {
+
+        justify-content: normal !important;
+    }
+
+
 }
 
 .Ttnfr-content-screen .rowCheckPlease .showAllRadioTextAlign {
     display: flex;
     align-items: center;
     justify-content: start;
+    flex-direction: row;
+}
+
+.Ttnfr-content-screen .rowCheckPlease .showAllRadioTextAlign1 {
+    display: flex;
+    align-items: center;
+    justify-content: end;
     flex-direction: row;
 }
 
