@@ -185,7 +185,7 @@ const Sound = () => {
               <div className="sound-card-header">
                 <span>
                   <i className="bi bi-folder2-open iconsize20"></i>
-                </span>{" "}
+                </span>
                 Upload Audio File
               </div>
               <div className="sound-card-body">
@@ -232,9 +232,8 @@ const Sound = () => {
         <div className="sound-card">
           <div className="sound-card-header">
             <span>
-              {" "}
               <i className="bi bi-volume-up-fill iconsize20"></i>
-            </span>{" "}
+            </span>
             Volume Setting
           </div>
           <div className="sound-card-body">
