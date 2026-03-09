@@ -2,7 +2,7 @@ import { Tabs } from "../components/TabShadowcn";
 import Sound from "../components/DeviceSetting/Sound";
 import OSDPSettings from "../components/DeviceSetting/OSDPSettings";
 import Cardsettings from "../components/DeviceSetting/Cardsettings";
-import MFAuthentication from "../components/DeviceSetting/MFAuthentication";
+import IdentificationMode from "../components/DeviceSetting/IdentificationMode";
 import Custommsg from "../components/DeviceSetting/Custommsg";
 import ConnectedDevice from "../components/ConnectedDevice";
 import "../styles/DeviceSettings.css";
@@ -24,9 +24,9 @@ const HIDSetting = () => {
       content: <Custommsg />,
     },
     {
-      id: "MFAuthentication",
-      label: "Multi Factor Authentication",
-      content: <MFAuthentication />,
+      id: "IdentificationMode",
+      label: "Identification Mode",
+      content: <IdentificationMode />,
     },
     {
       id: "Cardsettings",
@@ -43,7 +43,7 @@ const HIDSetting = () => {
         mac="00:18:9E:6A:B8:35"
         terminalid="5382314504545"
       />
-      <div className="row mb-3 mt-1 g-3">
+      <div className="row mb-3 g-3">
         <div className="card hid-card">
           <div className="col-12 tabbgcolor">
             <Tabs tabs={myTabs} />

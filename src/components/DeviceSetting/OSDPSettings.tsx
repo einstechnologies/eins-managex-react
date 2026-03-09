@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import HelpIcon from "../HelpIcon";
 
 const OSDPSetting = () => {
   const rdoOSDPChnage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,20 +22,23 @@ const OSDPSetting = () => {
   return (
     <>
       <div className="hid-card">
-        <div className="row col-lg-12">
-          <div className="col-lg-9 alignleft">
-            <div className="sound-page-header">
-              <h5 className="sound-page-title">OSDP Settings</h5>
-              <p className="sound-page-subtitle">
-                Configure OSDP(RS-485) settings
-              </p>
-            </div>
+        <div className="sound-page-header">
+          <div className="sound-page-header-left">
+            <h5 className="sound-page-title">OSDP Settings</h5>
+            <p className="sound-page-subtitle">
+              Configure OSDP(RS-485) settings
+            </p>
           </div>
-          <div className="col-lg-3">
-            <div className="d-flex gap-2">
-              <button className="btn-outline-soft-green">Save</button>
-              <button className="btn-outline-soft-red">Cancel</button>
-            </div>
+          <div className="sound-page-header-right">
+            <HelpIcon />
+          </div>
+        </div>
+        <div className="row col-lg-12 mt-neg-20">
+          <div className="col-lg-4"></div>
+          <div className="col-lg-4"></div>
+          <div className="col-lg-4 d-flex justify-content-end align-items-center gap-2">
+            <button className="btn-outline-soft-green">Save</button>
+            <button className="btn-outline-soft-red">Cancel</button>
           </div>
         </div>
 
@@ -91,7 +95,7 @@ const OSDPSetting = () => {
               {/* Card Read Report Format */}
               <div className="osdp-row">
                 <label>Card Read Report Format :</label>
-                <select className="osdp-select">
+                <select className="osdp-select" defaultValue="Raw">
                   <option value="Raw">Raw (Default)</option>
                   <option value="Wiegand">Wiegand</option>
                   <option value="ASCII">ASCII</option>
@@ -119,10 +123,8 @@ const OSDPSetting = () => {
               {/* Baud Rate */}
               <div className="osdp-row">
                 <label>Baud Rate :</label>
-                <select className="osdp-select">
-                  <option selected value="1">
-                    9600
-                  </option>
+                <select defaultValue="1" className="osdp-select">
+                  <option value="1">9600</option>
                   <option value="2">19200</option>
                   <option value="3">38400</option>
                   <option value="4">57600</option>
@@ -149,10 +151,8 @@ const OSDPSetting = () => {
               {/* Wiegand Size */}
               <div className="osdp-row">
                 <label>Wiegand Size :</label>
-                <select className="osdp-select">
-                  <option selected value="1">
-                    Manual
-                  </option>
+                <select defaultValue="1" className="osdp-select">
+                  <option value="1">Manual</option>
                   <option value="2">W26</option>
                   <option value="3">W32</option>
                   <option value="4">W34</option>

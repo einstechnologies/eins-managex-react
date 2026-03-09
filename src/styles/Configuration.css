@@ -581,6 +581,7 @@
      box-shadow: 0 0 3px 2px rgb(225 217 218 / 50%);
      border-radius: 6px;
 
+     overflow-x: auto;
  }
 
  .hid-container .nav-item {
@@ -909,6 +910,7 @@
      padding: 8px 16px;
      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
      margin-top: 8px;
+     margin-bottom: 8px;
  }
 
  .connected-device-grid {
@@ -940,7 +942,7 @@
  .device-info-label {
      font-size: 15px;
      font-weight: 600;
-     /* color: #0061ff; */
+     color: #0061ff;
      /* blue */
      text-transform: uppercase;
      letter-spacing: 0.5px;

@@ -56,8 +56,24 @@
 }
 
 .sound-page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
     margin-bottom: 24px;
 }
+
+.sound-page-header-right {
+    display: flex;
+    align-items: center;
+}
+
+.sound-page-header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+
 
 .sound-page-title {
     font-weight: 700;
@@ -124,7 +140,7 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 16px;
-    padding: 14px 20px;
+    padding: 10px 20px;
     transition: background 0.15s ease;
 }
 
@@ -278,6 +294,10 @@
     background: #fee2e2;
     color: #ef4444;
     border-color: #ef4444;
+}
+
+.display-none {
+    display: none;
 }
 
 .btn-create {
