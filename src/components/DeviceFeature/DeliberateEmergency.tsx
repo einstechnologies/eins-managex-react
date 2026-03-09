@@ -5,13 +5,16 @@ export function DeliberateEmergency() {
         <>
             <div className="col-lg-12">
                 <div className="card hid-card">
-                    <h6>
-                        <b>Deliberate Emergency</b>
-                    </h6>
-                    <div className="spaceBetweencontentdevicefeatr"></div>
+                    <div className="row">
+                        <div className='col-lg-2'>
+                            <h6>
+                                <b>Deliberate Emergency</b>
+                            </h6></div> <div className='col-lg-4'><label htmlFor="device">Communication Mode : Default</label></div>
+                    </div>
+                    <div className="spaceBetweencontentdevicefeatrdeleberate"></div>
                     <div className="col-12 restartdiv">
                         <div className='col-lg-4 commonwidth'>
-                            <label htmlFor="device">Communication Mode : Default</label>
+
                         </div>
                         <div className='col-lg-4'></div>
                     </div>
