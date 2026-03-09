@@ -25,9 +25,11 @@ export function DeviceTable({
                     <tr>
                         <th>Select</th>
                         <th className="hidden-col template-transfer">#</th>
-                        <th>Terminal Id</th>
-                        <th>Device Name</th>
+
                         <th>IP Address</th>
+                        <th>Device Name</th>
+                        <th>Terminal Id</th>
+
 
                     </tr>
                 </thead>
@@ -55,9 +57,10 @@ export function DeviceTable({
                                     </td>
 
                                     <td className="hidden-col template-transfer">{index + 1}</td>
-                                    <td>{device.TerminalId}</td>
-                                    <td>{device.deviceName}</td>
                                     <td>{device.ipAddress}</td>
+                                    <td>{device.deviceName}</td>
+
+                                    <td>{device.TerminalId}</td>
 
 
                                 </tr>

@@ -156,25 +156,26 @@
 .Ttnfr-content-screen .Ttnfr-card {
     margin-bottom: 1.875rem;
     border: none;
-    box-shadow: 0px 1px 15px 1px rgba(62, 57, 107, 0.07);
+    box-shadow: 0px 1px 15px 1px rgba(62, 57, 107, 0.15);
+    /* box-shadow: 0 0 3px 2px rgb(225 217 218 / 50%); */
     padding: 15px;
     width: 100%;
 
 }
 
-.Ttnfr-content-screen {
-    align-self: flex-start;
-    margin-left: -40px;
-    /* cancel parent padding */
-    margin-right: -36px;
-    /* cancel parent padding on right too */
-    margin-top: 10px;
-    width: calc(100% + 40px);
-    /* compensate both sides */
-    flex: 1;
-    padding: 0 20px;
-    /* add your own controlled padding */
-}
+/* .Ttnfr-content-screen { */
+/* align-self: flex-start;
+    margin-left: -40px; */
+/* cancel parent padding */
+/* margin-right: -36px; */
+/* cancel parent padding on right too */
+/* margin-top: 10px;
+    width: calc(100% + 40px); */
+/* compensate both sides */
+/* flex: 1;
+    padding: 0 20px; */
+/* add your own controlled padding */
+/* } */
 
 .Ttnfr-content-screen .header-title {
     font-size: 20px;
@@ -277,7 +278,7 @@
 
 
 
-.Ttnfr-content-screen .savebuttonDiv {
+.Ttnfr-content-screen .savebuttonTemplateTrans {
 
     display: flex;
     align-items: center;
@@ -298,6 +299,7 @@
     justify-content: center;
     flex-direction: row;
     gap: 15px;
+    padding-bottom: 10px;
 
 }
 
@@ -348,7 +350,7 @@
     box-shadow: none;
 }
 
-.Ttnfr-content-screen .btn-outline-soft-red {
+.Ttnfr-content-screen .btn-outline-soft-redTT {
     background-color: #fff5f7;
     color: #E71D3E;
     border: 1.5px solid #E71D3E;
@@ -364,7 +366,7 @@
 
 }
 
-.Ttnfr-content-screen .btn-outline-soft-red:hover {
+.Ttnfr-content-screen .btn-outline-soft-redTT:hover {
     background-color: #fff0f3;
     box-shadow:
         0 6px 16px rgba(231, 29, 62, 0.18),
@@ -374,27 +376,27 @@
     border: 1.5px solid #e55f76;
 }
 
-.Ttnfr-content-screen .btn-outline-soft-red:hover,
-.Ttnfr-content-screen .btn-outline-soft-red:focus {
+.Ttnfr-content-screen .btn-outline-soft-redTT:hover,
+.Ttnfr-content-screen .btn-outline-soft-redTT:focus {
     outline: none;
 }
 
-.Ttnfr-content-screen .btn-outline-soft-red:focus-visible {
+.Ttnfr-content-screen .btn-outline-soft-redTT:focus-visible {
     box-shadow: 0 0 0 3px rgba(231, 29, 62, 0.25);
 }
 
-.Ttnfr-content-screen .btn-outline-soft-red:active {
+.Ttnfr-content-screen .btn-outline-soft-redTT:active {
     transform: translateY(0);
     box-shadow:
         0 3px 8px rgba(231, 29, 62, 0.15);
 }
 
-.Ttnfr-content-screen .btn-outline-soft-red:focus {
+.Ttnfr-content-screen .btn-outline-soft-redTT:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(231, 29, 62, 0.25);
 }
 
-.Ttnfr-content-screen .btn-outline-soft-green {
+.Ttnfr-content-screen .btn-outline-soft-greenTT {
     background-color: #f3fbf6;
     /* mostly white, green hint */
     color: #1f9d55;
@@ -411,7 +413,7 @@
 
 }
 
-.Ttnfr-content-screen .btn-outline-soft-green:hover {
+.Ttnfr-content-screen .btn-outline-soft-greenTT:hover {
     background-color: #e9f7ef;
     box-shadow:
         0 6px 16px rgba(31, 157, 85, 0.18),
@@ -421,17 +423,17 @@
     border: 1.5px solid #1f9d55;
 }
 
-.Ttnfr-content-screen .btn-outline-soft-green:active {
+.Ttnfr-content-screen .btn-outline-soft-greenTT:active {
     transform: translateY(0);
     box-shadow:
         0 3px 8px rgba(31, 157, 85, 0.15);
 }
 
-.Ttnfr-content-screen .btn-outline-soft-green:focus {
+.Ttnfr-content-screen .btn-outline-soft-greenTT:focus {
     outline: none;
 }
 
-.Ttnfr-content-screen .btn-outline-soft-green:focus-visible {
+.Ttnfr-content-screen .btn-outline-soft-greenTT:focus-visible {
     box-shadow: 0 0 0 3px rgba(31, 157, 85, 0.25);
 }
 
