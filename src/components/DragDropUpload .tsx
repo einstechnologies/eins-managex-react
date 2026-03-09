@@ -41,6 +41,14 @@ const DragDropUpload = ({
     return "Drag & drop your file here";
   };
 
+  const getPlaceholdericon = (accept: string) => {
+    if (accept.startsWith("audio")) return "bi bi-music-note-beamed iconsize20";
+    if (accept.startsWith("image")) return "bi bi-image iconsize20";
+    if (accept.startsWith("video")) return "bi bi-camera-video iconsize20";
+    if (accept.includes("pdf")) return "bi bi-filetype-pdf iconsize20";
+    return "bi bi-file iconsize20";
+  };
+
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     setIsDragging(false);
@@ -78,7 +86,7 @@ const DragDropUpload = ({
         style={{ display: "none" }}
       />
       <div className="fontmusic">
-        <i className="bi bi-music-note-beamed iconsize20"></i>
+        <i className={getPlaceholdericon(accept)}></i>
       </div>
       <p className=".music_icon">{fileName || getPlaceholderText(accept)}</p>
       <p className="lblfont">
