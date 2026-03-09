@@ -100,7 +100,7 @@ const Sound = () => {
         </div>
 
         {/* ── Device Name ── */}
-        <div className="sound-section-card mb-4">
+        {/* <div className="sound-section-card mb-4">
           <div className="row col-lg-12 align-items-center">
             <div className="col-lg-2 alignleft text-nowrap">
               <div className="sound-section-label">
@@ -116,7 +116,7 @@ const Sound = () => {
               </fieldset>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* ── Create Audio + Upload ── */}
         <div className="row g-3 mb-4">

@@ -21,33 +21,23 @@ const OSDPSetting = () => {
   return (
     <>
       <div className="hid-card">
-        <div className="sound-page-header">
-          <h5 className="sound-page-title">OSDP Settings</h5>
-          <p className="sound-page-subtitle">Configure OSDP(RS-485) settings</p>
-        </div>
-        {/* ── Device Name ── */}
-
-        <div className="sound-section-card mb-4">
-          <div className="row col-lg-12 align-items-center">
-            <div className="col-lg-2 alignleft text-nowrap">
-              <div className="sound-section-label">
-                <span></span> Select Device
-              </div>
+        <div className="row col-lg-12">
+          <div className="col-lg-9 alignleft">
+            <div className="sound-page-header">
+              <h5 className="sound-page-title">OSDP Settings</h5>
+              <p className="sound-page-subtitle">
+                Configure OSDP(RS-485) settings
+              </p>
             </div>
-            <div className="col-lg-6">
-              <fieldset className="text-input-group">
-                <label htmlFor="listdevice">Device Name</label>
-                <select id="listdevice">
-                  <option value="">Select Device</option>
-                </select>
-              </fieldset>
-            </div>
-            <div className="col-lg-4 d-flex alignleft">
-              <button className="mb-2 btn-outline-soft-green mx-1">Save</button>
-              <button className="mb-2 btn-outline-soft-red mx-1">Cancel</button>
+          </div>
+          <div className="col-lg-3">
+            <div className="d-flex gap-2">
+              <button className="btn-outline-soft-green">Save</button>
+              <button className="btn-outline-soft-red">Cancel</button>
             </div>
           </div>
         </div>
+
         <div className="sound-section-card mb-4">
           <div className="osdp-grid margin1">
             {/* ── LEFT COLUMN ── */}
