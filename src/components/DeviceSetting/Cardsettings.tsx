@@ -50,7 +50,7 @@ const Cardsettings = () => {
                         value={opt}
                         checked={selectedCardFormat === opt}
                         onChange={() => setselectedCardFormat(opt)}
-                        style={{ display: "none" }}
+                        className="display-none"
                       />
                       {opt}
                     </label>
@@ -70,12 +70,12 @@ const Cardsettings = () => {
                       className={`radio-pill ${selectedCSNFormat === opt ? "active" : ""}`}
                     >
                       <input
+                        className="display-none"
                         type="radio"
                         name="rdoCSNFomrat"
                         value={opt}
                         checked={selectedCardFormat === opt}
                         onChange={() => setselectedCSNFormat(opt)}
-                        style={{ display: "none" }}
                       />
                       {opt}
                     </label>
@@ -100,7 +100,7 @@ const Cardsettings = () => {
                         value={opt}
                         checked={selectedCardFormat === opt}
                         onChange={() => setselectedPACSFormat(opt)}
-                        style={{ display: "none" }}
+                        className="display-none"
                       />
                       {opt}
                     </label>

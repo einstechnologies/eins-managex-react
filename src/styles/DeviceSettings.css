@@ -296,6 +296,10 @@
     border-color: #ef4444;
 }
 
+.display-none {
+    display: none;
+}
+
 .btn-create {
     padding: 7px 16px;
     background: #f59e0b;
