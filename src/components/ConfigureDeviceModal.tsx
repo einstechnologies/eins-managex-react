@@ -74,7 +74,7 @@ const ConfigureDeviceModal = ({
   const { mutateAsync: connectDeviceAsync } = usehidLogin();
   const { mutateAsync: getDeviceInfoAsync } = useHidGetInfo();
 
-  const { mutateAsync: savedevicedetails } = usedevice();
+  const { mutateAsync } = usedevice();
 
   const [showModal, setShowModal] = useState(false);
   const handleSaveDevice = async () => {
