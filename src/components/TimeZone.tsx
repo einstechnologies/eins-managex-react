@@ -2,6 +2,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import '../styles/TimeZone.css'
 import { useState } from "react";
 import ConnectedDevice from "../components/ConnectedDevice";
+import HelpIcon from "./HelpIcon";
 
 function TimeZone() {
 
@@ -86,8 +87,11 @@ function TimeZone() {
 
         <div className="col-12 mt-3 g-3">
           <div className="card tz-user-card time-zone div-bottom">
-            <h6>
+            <h6 className="d-flex justify-content-between">
               <b>Schedule</b>
+              <div>
+                <HelpIcon />
+              </div>
             </h6>
 
             <div className="row mt-4">
