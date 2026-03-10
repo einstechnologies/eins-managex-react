@@ -1,6 +1,7 @@
 import '../styles/DateTime.css'
 import { useState } from "react";
 import ConnectedDevice from "../components/ConnectedDevice";
+import HelpIcon from "./HelpIcon";
 
 function DateTime() {
 
@@ -36,8 +37,11 @@ function DateTime() {
 
                 <div className="col-12 mt-3 g-3 date-time dt-bottom">
                     <div className="card dt-user-card date-time">
-                        <h6>
+                        <h6 className="d-flex justify-content-between">
                             <b>Date/Time</b>
+                            <div>
+                                <HelpIcon />
+                            </div>
                         </h6>
 
                         <div className="row mt-4">
