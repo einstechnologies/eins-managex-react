@@ -156,25 +156,13 @@
 .Ttnfr-content-screen .Ttnfr-card {
     margin-bottom: 1.875rem;
     border: none;
-    box-shadow: 0px 1px 15px 1px rgba(62, 57, 107, 0.07);
+    box-shadow: 0px 1px 15px 1px rgba(62, 57, 107, 0.15);
+    /* box-shadow: 0 0 3px 2px rgb(225 217 218 / 50%); */
     padding: 15px;
     width: 100%;
 
 }
 
-.Ttnfr-content-screen {
-    align-self: flex-start;
-    margin-left: -40px;
-    /* cancel parent padding */
-    margin-right: -36px;
-    /* cancel parent padding on right too */
-    margin-top: 10px;
-    width: calc(100% + 40px);
-    /* compensate both sides */
-    flex: 1;
-    padding: 0 20px;
-    /* add your own controlled padding */
-}
 
 .Ttnfr-content-screen .header-title {
     font-size: 20px;
@@ -229,14 +217,6 @@
 
 }
 
-/* .Ttnfr-content-screen .user-card {
-    margin-bottom: 1.875rem;
-    border: none;
-    box-shadow: 0px 1px 15px 1px rgba(62, 57, 107, 0.07);
-    padding: 15px;
-    width: 100%;
-} */
-
 
 
 .Ttnfr-content-screen .spaceBetweencontent {
@@ -264,6 +244,16 @@
         margin-bottom: 1rem !important;
     }
 
+    .Ttnfr-content-screen .rowCheckPlease .showAllRadioTextAlign1 {
+
+        justify-content: normal !important;
+    }
+
+    .Ttnfr-content-screen .btntemplateTransfer {
+        flex-direction: column !important;
+        align-items: self-start !important;
+    }
+
 }
 
 .Ttnfr-content-screen .rowCheckPlease .showAllRadioTextAlign {
@@ -273,11 +263,18 @@
     flex-direction: row;
 }
 
+.Ttnfr-content-screen .rowCheckPlease .showAllRadioTextAlign1 {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-direction: row;
+}
 
 
 
 
-.Ttnfr-content-screen .savebuttonDiv {
+
+.Ttnfr-content-screen .savebuttonTemplateTrans {
 
     display: flex;
     align-items: center;
@@ -298,6 +295,7 @@
     justify-content: center;
     flex-direction: row;
     gap: 15px;
+    padding-bottom: 10px;
 
 }
 
@@ -348,7 +346,7 @@
     box-shadow: none;
 }
 
-.Ttnfr-content-screen .btn-outline-soft-red {
+.Ttnfr-content-screen .btn-outline-soft-redTT {
     background-color: #fff5f7;
     color: #E71D3E;
     border: 1.5px solid #E71D3E;
@@ -364,7 +362,7 @@
 
 }
 
-.Ttnfr-content-screen .btn-outline-soft-red:hover {
+.Ttnfr-content-screen .btn-outline-soft-redTT:hover {
     background-color: #fff0f3;
     box-shadow:
         0 6px 16px rgba(231, 29, 62, 0.18),
@@ -374,27 +372,27 @@
     border: 1.5px solid #e55f76;
 }
 
-.Ttnfr-content-screen .btn-outline-soft-red:hover,
-.Ttnfr-content-screen .btn-outline-soft-red:focus {
+.Ttnfr-content-screen .btn-outline-soft-redTT:hover,
+.Ttnfr-content-screen .btn-outline-soft-redTT:focus {
     outline: none;
 }
 
-.Ttnfr-content-screen .btn-outline-soft-red:focus-visible {
+.Ttnfr-content-screen .btn-outline-soft-redTT:focus-visible {
     box-shadow: 0 0 0 3px rgba(231, 29, 62, 0.25);
 }
 
-.Ttnfr-content-screen .btn-outline-soft-red:active {
+.Ttnfr-content-screen .btn-outline-soft-redTT:active {
     transform: translateY(0);
     box-shadow:
         0 3px 8px rgba(231, 29, 62, 0.15);
 }
 
-.Ttnfr-content-screen .btn-outline-soft-red:focus {
+.Ttnfr-content-screen .btn-outline-soft-redTT:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(231, 29, 62, 0.25);
 }
 
-.Ttnfr-content-screen .btn-outline-soft-green {
+.Ttnfr-content-screen .btn-outline-soft-greenTT {
     background-color: #f3fbf6;
     /* mostly white, green hint */
     color: #1f9d55;
@@ -411,7 +409,7 @@
 
 }
 
-.Ttnfr-content-screen .btn-outline-soft-green:hover {
+.Ttnfr-content-screen .btn-outline-soft-greenTT:hover {
     background-color: #e9f7ef;
     box-shadow:
         0 6px 16px rgba(31, 157, 85, 0.18),
@@ -421,17 +419,17 @@
     border: 1.5px solid #1f9d55;
 }
 
-.Ttnfr-content-screen .btn-outline-soft-green:active {
+.Ttnfr-content-screen .btn-outline-soft-greenTT:active {
     transform: translateY(0);
     box-shadow:
         0 3px 8px rgba(31, 157, 85, 0.15);
 }
 
-.Ttnfr-content-screen .btn-outline-soft-green:focus {
+.Ttnfr-content-screen .btn-outline-soft-greenTT:focus {
     outline: none;
 }
 
-.Ttnfr-content-screen .btn-outline-soft-green:focus-visible {
+.Ttnfr-content-screen .btn-outline-soft-greenTT:focus-visible {
     box-shadow: 0 0 0 3px rgba(31, 157, 85, 0.25);
 }
 
@@ -545,4 +543,88 @@ input[type="checkbox"]:checked::after {
     top: 45%;
     left: 50%;
     transform: translate(-50%, -60%) rotate(45deg);
+}
+
+
+.Ttnfr-content-screen.btn-outline-soft-yellowTT {
+    background-color: #fffbf5;
+    /* mostly white, green hint */
+    color: #efa131;
+    border: 1.5px solid #efa131;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.15s ease;
+
+}
+
+.btn-outline-soft-yellowTT:hover {
+    background-color: #fffbf5;
+    box-shadow:
+        0 6px 16px rgba(157, 128, 31, 0.18),
+        inset 0 0 0 1px rgba(157, 134, 31, 0.15);
+    transform: translateY(-1px);
+    outline: none;
+    border: 1.5px solid #efa131;
+}
+
+.btn-outline-soft-yellowTT:active {
+    transform: translateY(0);
+    box-shadow:
+        0 3px 8px rgba(157, 134, 31, 0.15);
+}
+
+.btn-outline-soft-yellowTT:focus {
+    outline: none;
+}
+
+.btn-outline-soft-yellowTT:focus-visible {
+    box-shadow: 0 0 0 3px rgba(157, 144, 31, 0.25);
+}
+
+
+.Ttnfr-content-screen .btn-outline-soft-blueTT {
+    background-color: rgb(244, 244, 255);
+    /* mostly white, green hint */
+    color: blue;
+    border: 1.5px solid rgb(144, 144, 255);
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.15s ease;
+
+}
+
+.Ttnfr-content-screen .btn-outline-soft-blueTT:hover {
+    background-color: rgb(244, 244, 255);
+    box-shadow:
+        0 6px 16px rgb(185, 185, 255),
+        inset 0 0 0 1px rgb(185, 185, 255);
+    transform: translateY(-1px);
+    outline: none;
+    border: 1.5px solid rgb(144, 144, 255);
+}
+
+.Ttnfr-content-screen .btn-outline-soft-blueTT:active {
+    transform: translateY(0);
+    box-shadow:
+        0 3px 8px rgba(31, 157, 85, 0.15);
+}
+
+.btn-outline-soft-blueTT:focus {
+    outline: none;
+}
+
+.Ttnfr-content-screen .btn-outline-soft-blueTT:focus-visible {
+    box-shadow: 0 0 0 3px rgba(31, 157, 85, 0.25);
 }

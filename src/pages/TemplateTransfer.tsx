@@ -4,6 +4,7 @@ import { DeviceTable } from "../components/TemplateTransferDeviceList";
 import { UserTable } from "../components/TemplateTransferEmployeeList";
 import type { User } from "../components/TemplateTransferEmployeeList";
 import type { Device } from "../components/TemplateTransferDeviceList";
+import HelpIcon from "../components/HelpIcon";
 
 function TemplateTransfer() {
   const [devices] = useState<Device[]>([
@@ -75,11 +76,15 @@ function TemplateTransfer() {
 
   return (
     <>
-      <div className="row mb-3 mt-3 g-3">
+      <div className="row mb-3 mt-1 g-3">
         <div className="card hid-card">
           <div className="Ttnfr-content-screen templateTransfer">
-            <div className="header-title">
+            <div className="header-title d-flex justify-content-between">
               <span>TEMPLATE TRANSFER</span>
+
+              <div>
+                <HelpIcon />
+              </div>
               {/* <span className='vertical-divider'></span>
                     <span
                         className='link'
@@ -93,7 +98,7 @@ function TemplateTransfer() {
             <div className="col-12">
               <div className="row">
                 <div className="col-12 col-md-12 col-lg-6">
-                  <div className="card Ttnfr-card  TemplateDevice template-transfer">
+                  <div className="card Ttnfr-card Ttnfr-content-screen template-transfer">
                     <span className="card-title">Device list</span>
                     <hr />
 
@@ -157,12 +162,12 @@ function TemplateTransfer() {
                               Show All Devices
                             </label>
                           </div>
-                          <div className="col-6 col-sm-6 col-md-6 col-lg-6 showAllRadioTextAlign">
-                            <div className="savebuttonDiv templateTransfer">
-                              <button className="btn-outline-soft-green templateTransfer">
+                          <div className="col-6 col-sm-6 col-md-6 col-lg-6 showAllRadioTextAlign1">
+                            <div className="savebuttonTemplateTrans Ttnfr-content-screen">
+                              <button className="btn-outline-soft-greenTT Ttnfr-content-screen">
                                 Search
                               </button>
-                              <button className="btn-outline-soft-red templateTransfer">
+                              <button className="btn-outline-soft-redTT Ttnfr-content-screen">
                                 Clear
                               </button>
                             </div>
@@ -172,13 +177,13 @@ function TemplateTransfer() {
 
                       {/* Show All + Buttons */}
                       <div className="col-12">
-                        <div className="row align-items-center">
-                          <DeviceTable
-                            devices={devices}
-                            selectedDevices={selectedDevices}
-                            onSelect={handleSelect}
-                          />
-                        </div>
+
+                        <DeviceTable
+                          devices={devices}
+                          selectedDevices={selectedDevices}
+                          onSelect={handleSelect}
+                        />
+
                       </div>
                     </div>
                   </div>
@@ -247,12 +252,12 @@ function TemplateTransfer() {
                               Show All User
                             </label>
                           </div>
-                          <div className="col-6 col-lg-6 showAllRadioTextAlign">
-                            <div className="savebuttonDiv templateTransfer">
-                              <button className="btn-outline-soft-green templateTransfer">
+                          <div className="col-6 col-lg-6 showAllRadioTextAlign1">
+                            <div className="savebuttonTemplateTrans Ttnfr-content-screen">
+                              <button className="btn-outline-soft-greenTT Ttnfr-content-screen">
                                 Search
                               </button>
-                              <button className="btn-outline-soft-red templateTransfer">
+                              <button className="btn-outline-soft-redTT Ttnfr-content-screen">
                                 Clear
                               </button>
                             </div>
@@ -271,10 +276,16 @@ function TemplateTransfer() {
                 </div>
                 <div className="col-12">
                   <div className="btntemplateTransfer templateTransfer">
-                    <button className="btn-outline-soft-green templateTransfer">
-                      Template Transfer
+                    <button className=" btn-outline-soft-greenTT templateTransfer">
+                      Transfer
                     </button>
-                    <button className="btn-outline-soft-red templateTransfer">
+                    <button className="  btn-outline-soft-yellowTT Ttnfr-content-screen">
+                      Remove
+                    </button>
+                    <button className="btn-outline-soft-blueTT templateTransfer">
+                      Sync
+                    </button>
+                    <button className="btn-outline-soft-redTT templateTransfer">
                       Cancel
                     </button>
                   </div>
