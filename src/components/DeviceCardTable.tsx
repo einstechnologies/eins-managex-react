@@ -1,5 +1,5 @@
 import "../styles/UserCardTable.css";
-import type { GetDeviceDetailsResponse } from "../ts/api/eins/device/device_details/device_details_request_response";
+import type { GetDeviceDetailsResponse } from "../ts/api/eins/device/device_details/get_deviceDetails_response";
 
 interface DeviceTableProps {
   devices: GetDeviceDetailsResponse[];

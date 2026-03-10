@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { DeviceCardTable } from "../components/DeviceCardTable";
-import { GetConfiuredDevicelist } from "../hooks/eins/device/configuration/usedevice";
-import type { GetDeviceDetailsResponse } from "../ts/api/eins/device/device_details/device_details_request_response";
+import { GetConfiuredDevicelist } from "../hooks/eins/device/configuration/usegetdevice";
+import type { GetDeviceDetailsResponse } from "../ts/api/eins/device/device_details/get_deviceDetails_response";
 
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
