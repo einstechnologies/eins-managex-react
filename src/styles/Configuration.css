@@ -975,3 +975,7 @@
          width: 100%;
      }
  }
+
+ .swal-top-layer {
+     z-index: 99999 !important;
+ }
