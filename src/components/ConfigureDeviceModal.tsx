@@ -4,13 +4,9 @@ import CustomModal from "../components/CustomModal";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
-
-
-import { usehidLogin } from "../hooks/device_credential/hid/usehidLogin";
-import { useHidGetInfo } from "../hooks/device_credential/hid/hidgetinfo/usehidgetinfo";
-import { usedevice } from "../hooks/device_credential/device/usedevice";
-
-
+import { usehidLogin } from "../hooks/hid/hidlogin/usehidLogin";
+import { useHidGetInfo } from "../hooks/hid/hidgetinfo/usehidgetinfo";
+import { usedevice } from "../hooks/eins/device/configuration/usedevice";
 
 import { useNavigate } from "react-router-dom";
 interface ConfigureDeviceModalProps {
@@ -21,9 +17,6 @@ interface ConfigureDeviceModalProps {
 const MySwal = withReactContent(Swal);
 
 const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
-
-
-
   const [step, setStep] = useState<number>(1);
   const [showPassword, setShowPassword] = useState(false);
   const [isCloud, setIsCloud] = useState(false);
@@ -52,9 +45,8 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
     index: number,
     value: string,
     parts: string[],
-    setParts: React.Dispatch<React.SetStateAction<string[]>>
+    setParts: React.Dispatch<React.SetStateAction<string[]>>,
   ) => {
-
     const cleanedValue = value.replace(/\D/g, "");
 
     if (Number(cleanedValue) > 255) return;
@@ -66,7 +58,7 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
     if (cleanedValue.length === 3) {
       const inputs = document.querySelectorAll(".ip-input-wrapper input");
       const currentIndex = Array.from(inputs).indexOf(
-        document.activeElement as Element
+        document.activeElement as Element,
       );
 
       if (currentIndex < inputs.length - 1) {
@@ -79,13 +71,10 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
 
   const { mutateAsync: savedevicedetails } = usedevice();
 
-
-
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const { mutate: getDeviceInfo } = useHidGetInfo();
   const [showModal, setShowModal] = useState(false);
   const handleSaveDevice = async () => {
-
     setIsSubmitting(true);
 
     const ipAddress = ipParts.join(".");
@@ -94,14 +83,13 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
     const serverIP = serverIPParts.join(".");
 
     try {
-
       // 1️⃣ CONNECT DEVICE
       const loginData = await connectDeviceAsync({
         ipAddress,
         credentials: {
           login: username,
-          password: password
-        }
+          password: password,
+        },
       });
 
       const session = loginData.session;
@@ -109,15 +97,14 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
       if (!session) {
         MySwal.fire({
           icon: "error",
-          text: "Login failed"
+          text: "Login failed",
         });
         return;
-
 
         // 2️⃣ GET DEVICE INFO
         const info = await getDeviceInfoAsync({
           host: `http://${ipAddress}`,
-          session: session
+          session: session,
         });
 
         console.log("Device Info", info);
@@ -129,11 +116,6 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
 
         const primaryDNS = info?.network?.primary_dns ?? "";
         const secondaryDNS = info?.network?.secondary_dns ?? "";
-
-
-
-
-
 
         // 3️⃣ SAVE DEVICE
         const devdetails = await savedevicedetails({
@@ -155,15 +137,17 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
           SecondaryDNS: secondaryDNS,
           FirmwareVersion: firmwareValue,
           SerialNumber: serialValue,
-          ListeningPort: 3000
+          ListeningPort: 3000,
         });
-
 
         MySwal.fire({
           icon: "success",
           text: "Device configured successfully!",
           buttonsStyling: false,
-          customClass: { confirmButton: "swal-mygradient", container: "swal-top-layer" },
+          customClass: {
+            confirmButton: "swal-mygradient",
+            container: "swal-top-layer",
+          },
           confirmButtonText: "OK",
         }).then(() => {
           // close modal here
@@ -172,20 +156,17 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
 
         resetForm();
         onClose();
-
       }
     } catch (error: any) {
       const resData = error?.response?.data;
       const errors: string[] = resData?.errors || [];
 
-      if (resData?.message == 'Unauthorized') {
+      if (resData?.message == "Unauthorized") {
         navigate("/EINS_ManageX/", { replace: true });
         return;
       }
 
-
       const html = (() => {
-
         if (errors.length === 0) {
           // ✅ handles null, undefined, and empty string ""
           return resData?.message?.trim()
@@ -204,7 +185,10 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
         html,
         icon: "error", // ✅ warning for image, error for register
         buttonsStyling: false,
-        customClass: { confirmButton: "swal-mygradient", container: "swal-top-layer" },
+        customClass: {
+          confirmButton: "swal-mygradient",
+          container: "swal-top-layer",
+        },
         confirmButtonText: "OK",
       });
     } finally {
@@ -212,15 +196,7 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
     }
   };
 
-
-
-
-
-
-
-
   const resetForm = () => {
-
     setDeviceName("");
     setDeviceModel("");
     setPort("");
@@ -236,10 +212,8 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
     setDnsParts(["", "", "", ""]);
   };
 
-
   return (
     <CustomModal show={show} onClose={onClose} title="Configure Device">
-
       {/* STEP 1 */}
 
       {step === 1 && (
@@ -266,10 +240,7 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
             />
           </fieldset>
 
-          <button
-            className="btn btn-primary"
-            onClick={() => setStep(2)}
-          >
+          <button className="btn btn-primary" onClick={() => setStep(2)}>
             Next
           </button>
         </>
@@ -279,7 +250,6 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
 
       {step === 2 && (
         <>
-
           <h6>Step 2: Network Settings</h6>
 
           {/* IP Address */}
@@ -288,7 +258,6 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
             <label>IP Address</label>
 
             <div className="ip-input-wrapper">
-
               {ipParts.map((part, index) => (
                 <React.Fragment key={index}>
                   <input
@@ -300,14 +269,13 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
                         index,
                         e.target.value,
                         ipParts,
-                        setIpParts
+                        setIpParts,
                       )
                     }
                   />
                   {index < 3 && <span>.</span>}
                 </React.Fragment>
               ))}
-
             </div>
           </fieldset>
 
@@ -337,15 +305,11 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
             </div>
           </fieldset> */}
 
-
           {/* PORT */}
 
           <fieldset className="text-input-group">
             <label>Device Port</label>
-            <input
-              value={port}
-              onChange={(e) => setPort(e.target.value)}
-            />
+            <input value={port} onChange={(e) => setPort(e.target.value)} />
           </fieldset>
 
           {/* Subnetmask */}
@@ -353,7 +317,6 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
           <fieldset className="text-input-group">
             <label>Subnet Mask</label>
             <div className="ip-input-wrapper">
-
               {subnetParts.map((part, index) => (
                 <>
                   <input
@@ -365,14 +328,13 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
                         index,
                         e.target.value,
                         subnetParts,
-                        setSubnetParts
+                        setSubnetParts,
                       )
                     }
                   />
                   {index < 3 && <span>.</span>}
                 </>
               ))}
-
             </div>
           </fieldset>
 
@@ -381,7 +343,6 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
           <fieldset className="text-input-group">
             <label>Gateway</label>
             <div className="ip-input-wrapper">
-
               {gatewayParts.map((part, index) => (
                 <>
                   <input
@@ -393,24 +354,21 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
                         index,
                         e.target.value,
                         gatewayParts,
-                        setGatewayParts
+                        setGatewayParts,
                       )
                     }
                   />
                   {index < 3 && <span>.</span>}
                 </>
               ))}
-
             </div>
           </fieldset>
-
 
           {/* Server IP */}
 
           <fieldset className="text-input-group">
             <label>Server IP</label>
             <div className="ip-input-wrapper">
-
               {serverIPParts.map((part, index) => (
                 <>
                   <input
@@ -422,24 +380,21 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
                         index,
                         e.target.value,
                         serverIPParts,
-                        setServerIPParts
+                        setServerIPParts,
                       )
                     }
                   />
                   {index < 3 && <span>.</span>}
                 </>
               ))}
-
             </div>
           </fieldset>
-
 
           {/* Preferred DNS */}
 
           <fieldset className="text-input-group">
             <label>Preferred DNS</label>
             <div className="ip-input-wrapper">
-
               {dnsParts.map((part, index) => (
                 <>
                   <input
@@ -451,14 +406,13 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
                         index,
                         e.target.value,
                         dnsParts,
-                        setDnsParts
+                        setDnsParts,
                       )
                     }
                   />
                   {index < 3 && <span>.</span>}
                 </>
               ))}
-
             </div>
           </fieldset>
 
@@ -496,11 +450,9 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
           {/* PASSWORD */}
 
           <fieldset className="text-input-group password-field">
-
             <label>Password</label>
 
             <div className="password-wrapper">
-
               <input
                 type={showPassword ? "text" : "password"}
                 value={password}
@@ -513,15 +465,11 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
               >
                 <i
                   className={
-                    showPassword
-                      ? "bi bi-eye-fill"
-                      : "bi bi-eye-slash-fill"
+                    showPassword ? "bi bi-eye-fill" : "bi bi-eye-slash-fill"
                   }
                 ></i>
               </span>
-
             </div>
-
           </fieldset>
 
           {/* BUTTONS */}
@@ -533,7 +481,8 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
             Connect
           </button> */}
 
-          <button type="button"
+          <button
+            type="button"
             className="btn btn-secondary me-2"
             onClick={() => setStep(1)}
           >
@@ -544,14 +493,11 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
             type="button"
             className="btn btn-success"
             onClick={handleSaveDevice}
-
           >
             Finish
           </button>
-
         </>
       )}
-
     </CustomModal>
   );
 };
