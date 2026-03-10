@@ -1,182 +1,515 @@
+import React from "react";
 import { useState } from "react";
 import CustomModal from "../components/CustomModal";
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+
+
+import { usehidLogin } from "../hooks/device_credential/hid/usehidLogin";
+import { useHidGetInfo } from "../hooks/device_credential/hid/hidgetinfo/usehidgetinfo";
+import { usedevice } from "../hooks/device_credential/device/usedevice";
+
+
+
+import { useNavigate } from "react-router-dom";
 interface ConfigureDeviceModalProps {
   show: boolean;
   onClose: () => void;
 }
+
 const MySwal = withReactContent(Swal);
-const onButtonEvent = () => {
-
-  // alert('Username is required');
-  MySwal.fire({
-    icon: "success",
-    text: 'Configuration done succesfully!',
-    buttonsStyling: false,
-    customClass: {
-      confirmButton: 'swal-mygradient'
-    },
-    confirmButtonText: 'OK',
-  });
-  return;
-
-}
-
-
-const handleIPChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  const input = e.target;
-
-  // allow only numbers
-  input.value = input.value.replace(/\D/g, "");
-
-  if (input.value.length === 3) {
-    const inputs = document.querySelectorAll(".ip-input-wrapper input");
-    const index = Array.from(inputs).indexOf(input);
-
-    if (index < inputs.length - 1) {
-      (inputs[index + 1] as HTMLInputElement).focus();
-    }
-  }
-};
-
 
 const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
-  const [showPassword, setShowPassword] = useState(false);
+
+
+
   const [step, setStep] = useState<number>(1);
+  const [showPassword, setShowPassword] = useState(false);
+  const [isCloud, setIsCloud] = useState(false);
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [deviceName, setDeviceName] = useState("");
+  const [deviceModel, setDeviceModel] = useState("");
+  const [port, setPort] = useState("");
+  const [terminalId, setTerminalId] = useState("");
+  const [serialno, setserialno] = useState("");
+  const [firmware, setfirmware] = useState("");
+
+  const [ipParts, setIpParts] = useState(["", "", "", ""]);
+  const [subnetParts, setSubnetParts] = useState(["", "", "", ""]);
+  const [gatewayParts, setGatewayParts] = useState(["", "", "", ""]);
+  const [serverIPParts, setServerIPParts] = useState(["", "", "", ""]);
+  const [dnsParts, setDnsParts] = useState(["", "", "", ""]);
+  const [secondarydns, setsecondarydns] = useState(["", "", "", ""]);
+  const [macAddress, setMacAddress] = useState(["", "", "", "", "", ""]);
+
+  const navigate = useNavigate();
+
+  const handleIPAddressChange = (
+    index: number,
+    value: string,
+    parts: string[],
+    setParts: React.Dispatch<React.SetStateAction<string[]>>
+  ) => {
+
+    const cleanedValue = value.replace(/\D/g, "");
+
+    if (Number(cleanedValue) > 255) return;
+
+    const newParts = [...parts];
+    newParts[index] = cleanedValue;
+    setParts(newParts);
+
+    if (cleanedValue.length === 3) {
+      const inputs = document.querySelectorAll(".ip-input-wrapper input");
+      const currentIndex = Array.from(inputs).indexOf(
+        document.activeElement as Element
+      );
+
+      if (currentIndex < inputs.length - 1) {
+        (inputs[currentIndex + 1] as HTMLInputElement).focus();
+      }
+    }
+  };
+  const { mutateAsync: connectDeviceAsync } = usehidLogin();
+  const { mutateAsync: getDeviceInfoAsync } = useHidGetInfo();
+
+  const { mutateAsync: savedevicedetails } = usedevice();
+
+
+
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const { mutate: getDeviceInfo } = useHidGetInfo();
+  const [showModal, setShowModal] = useState(false);
+  const handleSaveDevice = async () => {
+
+    setIsSubmitting(true);
+
+    const ipAddress = ipParts.join(".");
+    const subnetMask = subnetParts.join(".");
+    const gateway = gatewayParts.join(".");
+    const serverIP = serverIPParts.join(".");
+
+    try {
+
+      // 1️⃣ CONNECT DEVICE
+      const loginData = await connectDeviceAsync({
+        ipAddress,
+        credentials: {
+          login: username,
+          password: password
+        }
+      });
+
+      const session = loginData.session;
+
+      if (!session) {
+        MySwal.fire({
+          icon: "error",
+          text: "Login failed"
+        });
+        return;
+
+
+        // 2️⃣ GET DEVICE INFO
+        const info = await getDeviceInfoAsync({
+          host: `http://${ipAddress}`,
+          session: session
+        });
+
+        console.log("Device Info", info);
+
+        const terminalIdValue = info?.device_id ?? "";
+        const macValue = info?.network?.mac ?? "";
+        const serialValue = info?.serial ?? "";
+        const firmwareValue = info?.version ?? "";
+
+        const primaryDNS = info?.network?.primary_dns ?? "";
+        const secondaryDNS = info?.network?.secondary_dns ?? "";
+
+
+
+
+
+
+        // 3️⃣ SAVE DEVICE
+        const devdetails = await savedevicedetails({
+          DeviceName: deviceName,
+          DeviceModel: deviceModel,
+          DeviceType: "HID",
+          IsPortForward: isCloud,
+          Mode: "LAN",
+          TerminalID: terminalIdValue,
+          IPAddress: ipAddress,
+          SubnetMask: subnetMask,
+          GatewayAddress: gateway,
+          PortNo: port,
+          GateName: deviceName,
+          MACAddress: macValue,
+          ServerIP: serverIP,
+          Status: true,
+          PrimaryDNS: primaryDNS,
+          SecondaryDNS: secondaryDNS,
+          FirmwareVersion: firmwareValue,
+          SerialNumber: serialValue,
+          ListeningPort: 3000
+        });
+
+
+        MySwal.fire({
+          icon: "success",
+          text: "Device configured successfully!",
+          buttonsStyling: false,
+          customClass: { confirmButton: "swal-mygradient", container: "swal-top-layer" },
+          confirmButtonText: "OK",
+        }).then(() => {
+          // close modal here
+          setShowModal(false);
+        });
+
+        resetForm();
+        onClose();
+
+      }
+    } catch (error: any) {
+      const resData = error?.response?.data;
+      const errors: string[] = resData?.errors || [];
+
+      if (resData?.message == 'Unauthorized') {
+        navigate("/EINS_ManageX/", { replace: true });
+        return;
+      }
+
+
+      const html = (() => {
+
+        if (errors.length === 0) {
+          // ✅ handles null, undefined, and empty string ""
+          return resData?.message?.trim()
+            ? resData.message
+            : "Something went wrong. Please try again.";
+        }
+
+        if (errors.length === 1) return errors[0];
+
+        return `<ul style="text-align:left; margin:0 auto; padding-left:1.2rem; max-width:300px;">
+      ${errors.map((e: string) => `<li>${e}</li>`).join("")}
+    </ul>`;
+      })();
+
+      MySwal.fire({
+        html,
+        icon: "error", // ✅ warning for image, error for register
+        buttonsStyling: false,
+        customClass: { confirmButton: "swal-mygradient", container: "swal-top-layer" },
+        confirmButtonText: "OK",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+
+
+
+
+
+
+
+  const resetForm = () => {
+
+    setDeviceName("");
+    setDeviceModel("");
+    setPort("");
+    setTerminalId("");
+
+    setUsername("");
+    setPassword("");
+
+    setIpParts(["", "", "", ""]);
+    setSubnetParts(["", "", "", ""]);
+    setGatewayParts(["", "", "", ""]);
+    setServerIPParts(["", "", "", ""]);
+    setDnsParts(["", "", "", ""]);
+  };
+
 
   return (
     <CustomModal show={show} onClose={onClose} title="Configure Device">
 
+      {/* STEP 1 */}
+
       {step === 1 && (
         <>
           <h6>Step 1: Device Info</h6>
-          <fieldset className='text-input-group'>
-            <label htmlFor="devicename">Device Name</label>
-            <input id='devicename' />
+
+          <fieldset className="text-input-group">
+            <label>Device Model</label>
+            <select
+              value={deviceModel}
+              onChange={(e) => setDeviceModel(e.target.value)}
+            >
+              <option value="">Select Model</option>
+              <option value="HID AMICOVL35LF">HID AMICOVL35LF</option>
+              <option value="HID AMICOVL70LF">HID AMICOVL70LF</option>
+            </select>
           </fieldset>
-          <button className="btn btn-primary" onClick={() => setStep(2)}>
+
+          <fieldset className="text-input-group">
+            <label>Device Name</label>
+            <input
+              value={deviceName}
+              onChange={(e) => setDeviceName(e.target.value)}
+            />
+          </fieldset>
+
+          <button
+            className="btn btn-primary"
+            onClick={() => setStep(2)}
+          >
             Next
           </button>
         </>
       )}
 
+      {/* STEP 2 */}
+
       {step === 2 && (
         <>
+
           <h6>Step 2: Network Settings</h6>
-          {/* <input className="form-control mb-3" placeholder="IP Address" /> */}
 
-
-
+          {/* IP Address */}
 
           <fieldset className="text-input-group">
-            <label htmlFor="ip1">IP Address</label>
+            <label>IP Address</label>
 
             <div className="ip-input-wrapper">
-              <input id="ip1" maxLength={3} onChange={handleIPChange} />
-              <span>.</span>
-              <input maxLength={3} onChange={handleIPChange} />
-              <span>.</span>
-              <input maxLength={3} onChange={handleIPChange} />
-              <span>.</span>
-              <input maxLength={3} onChange={handleIPChange} />
+
+              {ipParts.map((part, index) => (
+                <React.Fragment key={index}>
+                  <input
+                    key={index}
+                    maxLength={3}
+                    value={part}
+                    onChange={(e) =>
+                      handleIPAddressChange(
+                        index,
+                        e.target.value,
+                        ipParts,
+                        setIpParts
+                      )
+                    }
+                  />
+                  {index < 3 && <span>.</span>}
+                </React.Fragment>
+              ))}
+
             </div>
-
           </fieldset>
 
-          <fieldset className='text-input-group'>
-            <label htmlFor="deviceport">Device Port</label>
-            <input id='deviceport' />
-          </fieldset>
+          {/* MAC  Address */}
+
+          {/* <fieldset className="text-input-group">
+            <label>MAC Address</label>
+
+            <div className="ip-input-wrapper">
+
+              {macAddress.map((part, index) => (
+                <React.Fragment key={index}>
+                  <input
+                    maxLength={2}
+                    value={part}
+                    onChange={(e) => {
+                      const newParts = [...macAddress];
+                      newParts[index] = e.target.value.toUpperCase();
+                      setMacAddress(newParts);
+                    }}
+                  />
+
+                  {index < 5 && <span>:</span>}
+                </React.Fragment>
+              ))}
+
+            </div>
+          </fieldset> */}
+
+
+          {/* PORT */}
 
           <fieldset className="text-input-group">
-            <label htmlFor="ip2">Subnet Mask</label>
-
-            <div className="ip-input-wrapper">
-              <input id="ip2" maxLength={3} onChange={handleIPChange} />
-              <span>.</span>
-              <input maxLength={3} onChange={handleIPChange} />
-              <span>.</span>
-              <input maxLength={3} onChange={handleIPChange} />
-              <span>.</span>
-              <input maxLength={3} onChange={handleIPChange} />
-            </div>
-
+            <label>Device Port</label>
+            <input
+              value={port}
+              onChange={(e) => setPort(e.target.value)}
+            />
           </fieldset>
+
+          {/* Subnetmask */}
 
           <fieldset className="text-input-group">
-            <label htmlFor="ip3">Gateway</label>
-
+            <label>Subnet Mask</label>
             <div className="ip-input-wrapper">
-              <input id="ip3" maxLength={3} onChange={handleIPChange} />
-              <span>.</span>
-              <input maxLength={3} onChange={handleIPChange} />
-              <span>.</span>
-              <input maxLength={3} onChange={handleIPChange} />
-              <span>.</span>
-              <input maxLength={3} onChange={handleIPChange} />
-            </div>
 
+              {subnetParts.map((part, index) => (
+                <>
+                  <input
+                    key={index}
+                    maxLength={3}
+                    value={part}
+                    onChange={(e) =>
+                      handleIPAddressChange(
+                        index,
+                        e.target.value,
+                        subnetParts,
+                        setSubnetParts
+                      )
+                    }
+                  />
+                  {index < 3 && <span>.</span>}
+                </>
+              ))}
+
+            </div>
           </fieldset>
+
+          {/* Gateway */}
 
           <fieldset className="text-input-group">
-            <label htmlFor="ip4">Server IP</label>
-
+            <label>Gateway</label>
             <div className="ip-input-wrapper">
-              <input id="ip4" maxLength={3} onChange={handleIPChange} />
-              <span>.</span>
-              <input maxLength={3} onChange={handleIPChange} />
-              <span>.</span>
-              <input maxLength={3} onChange={handleIPChange} />
-              <span>.</span>
-              <input maxLength={3} onChange={handleIPChange} />
-            </div>
 
+              {gatewayParts.map((part, index) => (
+                <>
+                  <input
+                    key={index}
+                    maxLength={3}
+                    value={part}
+                    onChange={(e) =>
+                      handleIPAddressChange(
+                        index,
+                        e.target.value,
+                        gatewayParts,
+                        setGatewayParts
+                      )
+                    }
+                  />
+                  {index < 3 && <span>.</span>}
+                </>
+              ))}
+
+            </div>
           </fieldset>
+
+
+          {/* Server IP */}
 
           <fieldset className="text-input-group">
-            <label htmlFor="ip5">Preferred DNS</label>
-
+            <label>Server IP</label>
             <div className="ip-input-wrapper">
-              <input id="ip5" maxLength={3} onChange={handleIPChange} />
-              <span>.</span>
-              <input maxLength={3} onChange={handleIPChange} />
-              <span>.</span>
-              <input maxLength={3} onChange={handleIPChange} />
-              <span>.</span>
-              <input maxLength={3} onChange={handleIPChange} />
+
+              {serverIPParts.map((part, index) => (
+                <>
+                  <input
+                    key={index}
+                    maxLength={3}
+                    value={part}
+                    onChange={(e) =>
+                      handleIPAddressChange(
+                        index,
+                        e.target.value,
+                        serverIPParts,
+                        setServerIPParts
+                      )
+                    }
+                  />
+                  {index < 3 && <span>.</span>}
+                </>
+              ))}
+
             </div>
-
           </fieldset>
 
-          <fieldset className='text-input-group'>
-            <label htmlFor="deviceterminal">Terminal ID </label>
-            <input id='deviceterminal' />
+
+          {/* Preferred DNS */}
+
+          <fieldset className="text-input-group">
+            <label>Preferred DNS</label>
+            <div className="ip-input-wrapper">
+
+              {dnsParts.map((part, index) => (
+                <>
+                  <input
+                    key={index}
+                    maxLength={3}
+                    value={part}
+                    onChange={(e) =>
+                      handleIPAddressChange(
+                        index,
+                        e.target.value,
+                        dnsParts,
+                        setDnsParts
+                      )
+                    }
+                  />
+                  {index < 3 && <span>.</span>}
+                </>
+              ))}
+
+            </div>
           </fieldset>
 
-          <fieldset className="cloud-checkbox inside">
-            <input type="checkbox" id="isCloud" />
-            <label htmlFor="isCloud">Is Cloud</label>
+          {/* TERMINAL */}
+
+          {/* <fieldset className="text-input-group">
+            <label>Terminal ID</label>
+            <input
+              value={terminalId}
+              onChange={(e) => setTerminalId(e.target.value)}
+            />
+          </fieldset> */}
+
+          {/* CLOUD */}
+
+          <fieldset className="cloud-checkbox">
+            <input
+              type="checkbox"
+              checked={isCloud}
+              onChange={(e) => setIsCloud(e.target.checked)}
+            />
+            <label>Is Cloud</label>
           </fieldset>
 
-          <fieldset className='text-input-group'>
-            <label htmlFor="deviceusername">Device UserName</label>
-            <input id='deviceusername' />
+          {/* USERNAME */}
+
+          <fieldset className="text-input-group">
+            <label>Device Username</label>
+            <input
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
           </fieldset>
+
+          {/* PASSWORD */}
 
           <fieldset className="text-input-group password-field">
-            <label htmlFor="devicepass">Device Password</label>
+
+            <label>Password</label>
 
             <div className="password-wrapper">
-              <input
-                id="devicepass"
-                type={showPassword ? "text" : "password"}
-              />
 
+              <input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
 
               <span
                 className="eye-icon"
-                onClick={() => setShowPassword(prev => !prev)}
+                onClick={() => setShowPassword(!showPassword)}
               >
                 <i
                   className={
@@ -191,21 +524,31 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
 
           </fieldset>
 
+          {/* BUTTONS */}
 
-
-          <button className="btn btn-primary me-2" >
+          {/* <button type="button"
+            className="btn btn-primary me-2"
+            onClick={handleConnect}
+          >
             Connect
-          </button>
+          </button> */}
 
-          <button className="btn btn-secondary me-2" onClick={() => setStep(1)}>
+          <button type="button"
+            className="btn btn-secondary me-2"
+            onClick={() => setStep(1)}
+          >
             Back
           </button>
-          <button className="btn btn-success" onClick={() => {
-            onButtonEvent()
-            onClose()
 
-            setStep(1)
-          }}>Finish</button>
+          <button
+            type="button"
+            className="btn btn-success"
+            onClick={handleSaveDevice}
+
+          >
+            Finish
+          </button>
+
         </>
       )}
 
