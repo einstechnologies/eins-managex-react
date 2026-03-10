@@ -163,7 +163,7 @@ const ConfigurationHome = () => {
         <ConfigureDeviceModal
           show={showDeviceModal}
           onClose={() => setShowDeviceModal(false)}
-          // setLoading={setLoading}
+          setLoading={setLoading}
         />
       </div>
     </>
