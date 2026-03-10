@@ -20,12 +20,8 @@ const CustomModal: React.FC<CustomModalProps> = ({
       <div className="modal-box">
         <div className="modal-header">
           <h5>{title}</h5>
-          <button onClick={onClose}> <i
-    className={
-      
-        "bi bi-x-circle-fill"
-    }
-  ></i></button>
+          <button onClick={onClose} className="btn-close">
+          </button>
         </div>
         <div className="modal-body">{children}</div>
       </div>

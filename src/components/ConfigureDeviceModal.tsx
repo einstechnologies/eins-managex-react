@@ -16,11 +16,12 @@ import { useNavigate } from "react-router-dom";
 interface ConfigureDeviceModalProps {
   show: boolean;
   onClose: () => void;
+  setLoading: (value: boolean) => void;
 }
 
 const MySwal = withReactContent(Swal);
 
-const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
+const ConfigureDeviceModal = ({ show, onClose, setLoading }: ConfigureDeviceModalProps) => {
 
 
 
@@ -77,17 +78,17 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
   const { mutateAsync: connectDeviceAsync } = usehidLogin();
   const { mutateAsync: getDeviceInfoAsync } = useHidGetInfo();
 
-  const { mutateAsync: savedevicedetails } = usedevice();
+  const { mutateAsync } = usedevice();
 
 
 
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const { mutate: getDeviceInfo } = useHidGetInfo();
+
+
   const [showModal, setShowModal] = useState(false);
   const handleSaveDevice = async () => {
 
-    setIsSubmitting(true);
-
+    setLoading(true);
+    const startTime = Date.now();
     const ipAddress = ipParts.join(".");
     const subnetMask = subnetParts.join(".");
     const gateway = gatewayParts.join(".");
@@ -109,106 +110,105 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
       if (!session) {
         MySwal.fire({
           icon: "error",
-          text: "Login failed"
+          text: "Login failed",
+          customClass: { confirmButton: "swal-mygradient", container: "swal-top-layer" }
         });
-        return;
-
-
-        // 2️⃣ GET DEVICE INFO
-        const info = await getDeviceInfoAsync({
-          host: `http://${ipAddress}`,
-          session: session
-        });
-
-        console.log("Device Info", info);
-
-        const terminalIdValue = info?.device_id ?? "";
-        const macValue = info?.network?.mac ?? "";
-        const serialValue = info?.serial ?? "";
-        const firmwareValue = info?.version ?? "";
-
-        const primaryDNS = info?.network?.primary_dns ?? "";
-        const secondaryDNS = info?.network?.secondary_dns ?? "";
-
-
-
-
-
-
-        // 3️⃣ SAVE DEVICE
-        const devdetails = await savedevicedetails({
-          DeviceName: deviceName,
-          DeviceModel: deviceModel,
-          DeviceType: "HID",
-          IsPortForward: isCloud,
-          Mode: "LAN",
-          TerminalID: terminalIdValue,
-          IPAddress: ipAddress,
-          SubnetMask: subnetMask,
-          GatewayAddress: gateway,
-          PortNo: port,
-          GateName: deviceName,
-          MACAddress: macValue,
-          ServerIP: serverIP,
-          Status: true,
-          PrimaryDNS: primaryDNS,
-          SecondaryDNS: secondaryDNS,
-          FirmwareVersion: firmwareValue,
-          SerialNumber: serialValue,
-          ListeningPort: 3000
-        });
-
-
-        MySwal.fire({
-          icon: "success",
-          text: "Device configured successfully!",
-          buttonsStyling: false,
-          customClass: { confirmButton: "swal-mygradient", container: "swal-top-layer" },
-          confirmButtonText: "OK",
-        }).then(() => {
-          // close modal here
-          setShowModal(false);
-        });
-
-        resetForm();
-        onClose();
-
-      }
-    } catch (error: any) {
-      const resData = error?.response?.data;
-      const errors: string[] = resData?.errors || [];
-
-      if (resData?.message == 'Unauthorized') {
-        navigate("/EINS_ManageX/", { replace: true });
         return;
       }
 
+      // 2️⃣ GET DEVICE INFO
+      const info = await getDeviceInfoAsync({
+        host: `http://${ipAddress}`,
+        session: session
+      });
 
-      const html = (() => {
+      console.log("Device Info", info);
 
-        if (errors.length === 0) {
-          // ✅ handles null, undefined, and empty string ""
-          return resData?.message?.trim()
-            ? resData.message
-            : "Something went wrong. Please try again.";
-        }
+      const terminalIdValue = info?.device_id ?? "";
+      const macValue = info?.network?.mac ?? "";
+      const serialValue = info?.serial ?? "";
+      const firmwareValue = info?.version ?? "";
 
-        if (errors.length === 1) return errors[0];
+      const primaryDNS = info?.network?.primary_dns ?? "";
+      const secondaryDNS = info?.network?.secondary_dns ?? "";
 
-        return `<ul style="text-align:left; margin:0 auto; padding-left:1.2rem; max-width:300px;">
-      ${errors.map((e: string) => `<li>${e}</li>`).join("")}
-    </ul>`;
-      })();
+      // 3️⃣ SAVE DEVICE
+      await mutateAsync({
+        DeviceName: deviceName,
+        DeviceModel: deviceModel,
+        DeviceType: "HID",
+        IsPortForward: isCloud,
+        Mode: "IN",
+        TerminalID: terminalIdValue,
+        IPAddress: ipAddress,
+        SubnetMask: subnetMask,
+        GatewayAddress: gateway,
+        PortNo: port,
+        GateName: deviceName,
+        MACAddress: macValue,
+        ServerIP: serverIP,
+        Status: true,
+        PrimaryDNS: primaryDNS,
+        SecondaryDNS: secondaryDNS,
+        FirmwareVersion: firmwareValue,
+        SerialNumber: serialValue,
+        ListeningPort: 3000
+      });
+      const elapsed = Date.now() - startTime;
+      const minLoaderTime = 800; // 1 second
 
+      if (elapsed < minLoaderTime) {
+        await new Promise(resolve =>
+          setTimeout(resolve, minLoaderTime - elapsed)
+        );
+      }
+
+      setLoading(false);
       MySwal.fire({
-        html,
-        icon: "error", // ✅ warning for image, error for register
+        icon: "success",
+        text: "Device configured successfully!",
         buttonsStyling: false,
         customClass: { confirmButton: "swal-mygradient", container: "swal-top-layer" },
         confirmButtonText: "OK",
       });
+      setStep(1);
+      setLoading(false);
+      resetForm();
+      onClose();
+
+    } catch (error: any) {
+
+      const elapsed = Date.now() - startTime;
+      const minLoaderTime = 800;
+      if (elapsed < minLoaderTime) {
+        await new Promise(resolve =>
+          setTimeout(resolve, minLoaderTime - elapsed)
+        );
+      }
+
+      setLoading(false);
+
+
+
+
+      setStep(1);
+
+
+
+      const resData = error?.response?.data;
+      if (resData?.message == 'Unauthorized') {
+        navigate("/EINS_ManageX/", { replace: true });
+        return;
+      }
+      MySwal.fire({
+        icon: "error",
+        text: resData?.message || "Device configuration failed",
+        customClass: { confirmButton: "swal-mygradient", container: "swal-top-layer" }
+      });
+
     } finally {
-      setIsSubmitting(false);
+
+
     }
   };
 
@@ -239,6 +239,7 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
 
   return (
     <CustomModal show={show} onClose={onClose} title="Configure Device">
+
 
       {/* STEP 1 */}
 
@@ -338,15 +339,7 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
           </fieldset> */}
 
 
-          {/* PORT */}
 
-          <fieldset className="text-input-group">
-            <label>Device Port</label>
-            <input
-              value={port}
-              onChange={(e) => setPort(e.target.value)}
-            />
-          </fieldset>
 
           {/* Subnetmask */}
 
@@ -355,7 +348,7 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
             <div className="ip-input-wrapper">
 
               {subnetParts.map((part, index) => (
-                <>
+                <React.Fragment key={index}>
                   <input
                     key={index}
                     maxLength={3}
@@ -370,7 +363,7 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
                     }
                   />
                   {index < 3 && <span>.</span>}
-                </>
+                </React.Fragment>
               ))}
 
             </div>
@@ -383,7 +376,7 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
             <div className="ip-input-wrapper">
 
               {gatewayParts.map((part, index) => (
-                <>
+                <React.Fragment key={index}>
                   <input
                     key={index}
                     maxLength={3}
@@ -398,7 +391,7 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
                     }
                   />
                   {index < 3 && <span>.</span>}
-                </>
+                </React.Fragment>
               ))}
 
             </div>
@@ -412,7 +405,7 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
             <div className="ip-input-wrapper">
 
               {serverIPParts.map((part, index) => (
-                <>
+                <React.Fragment key={index}>
                   <input
                     key={index}
                     maxLength={3}
@@ -427,7 +420,7 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
                     }
                   />
                   {index < 3 && <span>.</span>}
-                </>
+                </React.Fragment>
               ))}
 
             </div>
@@ -441,7 +434,7 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
             <div className="ip-input-wrapper">
 
               {dnsParts.map((part, index) => (
-                <>
+                <React.Fragment key={index}>
                   <input
                     key={index}
                     maxLength={3}
@@ -456,7 +449,7 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
                     }
                   />
                   {index < 3 && <span>.</span>}
-                </>
+                </React.Fragment>
               ))}
 
             </div>
@@ -471,7 +464,15 @@ const ConfigureDeviceModal = ({ show, onClose }: ConfigureDeviceModalProps) => {
               onChange={(e) => setTerminalId(e.target.value)}
             />
           </fieldset> */}
+          {/* PORT */}
 
+          <fieldset className="text-input-group">
+            <label>Device Port</label>
+            <input
+              value={port}
+              onChange={(e) => setPort(e.target.value)}
+            />
+          </fieldset>
           {/* CLOUD */}
 
           <fieldset className="cloud-checkbox">
