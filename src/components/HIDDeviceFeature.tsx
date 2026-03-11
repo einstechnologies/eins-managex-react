@@ -8,6 +8,7 @@ import { BuzzerSettings } from './DeviceFeature/BuzzerSettings';
 import { AlarmsSettings } from './DeviceFeature/AlarmsSettings';
 import { SetLogo } from './DeviceFeature/SetLogo';
 import '../styles/DeviceFeature.css'
+import ConnectedDevice from "../components/ConnectedDevice";
 
 // import { UserFace } from './components/UserFace';
 // import { UserCard } from './components/UserCard';
@@ -32,7 +33,13 @@ const HIDFeature = () => {
 
   return (
     <>
-      <div className="row mt-3 g-3 spacebottom">
+      <ConnectedDevice
+        Name="Main Door"
+        IP="192.168.1.201"
+        mac="00:18:9E:6A:B8:35"
+        terminalid="5382314504545"
+      />
+      <div className="mb-3 g-3 spacebottom">
         <div className="card hid-card spacebottomwhitediv">
           <div className='col-12 tabbgcolor'>
             <Tabs tabs={myTabs} />

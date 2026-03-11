@@ -1,13 +1,21 @@
 import '../../styles/DeviceFeature.css'
+import HelpIcon from "../HelpIcon";
 
 export function TimeBasedAntipassback() {
     return (
         <>
             <div className="col-lg-12">
                 <div className="card hid-card">
-                    <h6>
-                        <b>Time Based Antipassback </b>
-                    </h6>
+                    <div className="sound-page-header">
+                        <div className="sound-page-header-left">
+                            <h6>
+                                <b> <i className="bi bi-clock-history"></i>  Time Based Antipassback </b>
+                            </h6>
+                        </div>
+                        <div className="sound-page-header-right">
+                            <HelpIcon />
+                        </div>
+                    </div>
                     <div className="spaceBetweencontentdevicefeatr "></div>
                     <div className="row restartdiv spacebottom">
                         <div className='col-lg-3'>
@@ -24,12 +32,12 @@ export function TimeBasedAntipassback() {
                         </div>
                         <div className='col-lg-2 spacetopmaxdiv'>
                             <div className="no-nc-toggle">
-                                <span className="spanmarginbottom">Enable :</span>
+                                <span className="spanmarginbottom rdofontsize">Enable :</span>
 
                                 <div className="form-check form-switch TimebasedAntipass-toggle">
                                     <label className="toggle-switch">
                                         <input
-                                            id="rdoOSDP"
+                                            id="rdoenable"
                                             type="checkbox"
                                         />
                                         <span className="toggle-slider"></span>
@@ -37,12 +45,12 @@ export function TimeBasedAntipassback() {
                                 </div>
                             </div>
                         </div>
-                        <div className='col-lg-1'>
-                            <button className="btn-outline-soft-green commonwidth spacetop">Save</button>
+                        <div className='col-lg-2'>
+                            <button className="btn-outline-soft-green spacetop">Save</button>
                         </div>
-                        <div className='col-lg-1'>
-                            <button className="btn-outline-soft-red commonwidth spacetop">Clear</button>
-                        </div>
+                        {/* <div className='col-lg-2'>
+                            <button className="btn-outline-soft-red spacetop">Clear</button>
+                        </div> */}
                     </div>
                 </div>
             </div>

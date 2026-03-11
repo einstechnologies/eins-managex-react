@@ -2,6 +2,7 @@ import '../styles/Default.css';
 import { useEffect } from "react";
 
 function Default() {
+
     useEffect(() => {
         const HOME = "/EINS_ManageX/Home";
 
@@ -14,6 +15,7 @@ function Default() {
         };
 
         window.addEventListener("popstate", handlePopState);
+
         return () => window.removeEventListener("popstate", handlePopState);
     }, []);
     return (
@@ -23,7 +25,6 @@ function Default() {
                 <hr />
                 <h1 className='engraved-text-para'>HID Amico Face Recognition Devices</h1>
             </div>
-
         </>
     );
 }

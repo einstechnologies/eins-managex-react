@@ -11,7 +11,9 @@ import License from "./pages/Profile/License";
 import Login_History from "./pages/Profile/Login_History";
 import Configurationpage from "./pages/Configuration";
 import Transactions from "./pages/Transaction";
+import Profile from './pages/Profile';
 // import HIDDeviceFeature from './pages/HIDDeviceFeature';
+import ResetPassword from "./pages/ResetPassword";
 
 const AppRoutes = () => {
   return (
@@ -26,13 +28,15 @@ const AppRoutes = () => {
         <Route path="Configuration" element={<DeviceList />} />
         <Route path="TemplateTransfer" element={<Default />} />
         <Route path="Transaction" element={<Transactions />} />
+        <Route path="Profile" element={<Profile />} />
         <Route path="Profile/License" element={<License />} />
         <Route path="Profile/Login_History" element={<Login_History />} />
         <Route path="Help" element={<Help />} />
-        <Route
+               <Route
           path="Configurationpage/:deviceModel"
           element={<Configurationpage />}
         />
+        <Route path="ResetPassword" element={<ResetPassword />} />
       </Route>
     </Routes>
   );

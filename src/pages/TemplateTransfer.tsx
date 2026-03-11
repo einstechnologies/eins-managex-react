@@ -76,22 +76,21 @@ function TemplateTransfer() {
 
   return (
     <>
-      <div className="row mb-3 mt-1 g-3">
+      <div className="mb-3 mt-3 g-3">
         <div className="card hid-card">
           <div className="Ttnfr-content-screen templateTransfer">
-            <div className="header-title d-flex justify-content-between">
-              <span>TEMPLATE TRANSFER</span>
-
-              <div>
-                <HelpIcon />
+            <div className="row">
+              <div className="sound-page-header">
+                <div className="sound-page-header-left">
+                  <h6>
+                    <b> <i className="bi bi-file-text"></i> Template Transfer</b>
+                  </h6>
+                </div>
+                <div className="sound-page-header-right">
+                  <HelpIcon />
+                </div>
               </div>
-              {/* <span className='vertical-divider'></span>
-                    <span
-                        className='link'
-                        onClick={() => navigate("/EINS_ManageX/Home")}
-                    >
-                        HOME
-                    </span> - Template Transfer */}
+
             </div>
             {/* End Header */}
 
@@ -292,6 +291,12 @@ function TemplateTransfer() {
                 </div>
               </div>
             </div>
+
+
+
+
+
+
           </div>
         </div>
       </div>

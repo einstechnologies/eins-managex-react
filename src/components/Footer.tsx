@@ -17,6 +17,15 @@ function Footer({
     contactText = "Contact us",
     onContactClick
 }: FooterComponentProps) {
+
+    const handleContactClick = () => {
+        if (onContactClick) {
+            onContactClick();
+        } else {
+            window.open("https://eins.co.in", "_blank");
+        }
+    };
+
     return (
         <div className={isVisible && !isMobile ? 'footer' : 'footer-expanded'}>
             <div>
@@ -25,8 +34,8 @@ function Footer({
             <div>
                 <span
                     className='footer-contact'
-                    onClick={onContactClick}
-                    style={{ cursor: onContactClick ? 'pointer' : 'default' }}
+                    onClick={handleContactClick}
+                    style={{ cursor: 'pointer' }}
                 >
                     {contactText}
                 </span>
