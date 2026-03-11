@@ -51,7 +51,7 @@
 }
 
 .user-card-table-tableWrapper .tableHead th {
-    padding: 10px 16px;
+    padding: 10px 10px;
     text-align: center;
     font-size: 0.8rem;
     font-weight: 600;
@@ -73,7 +73,7 @@
 }
 
 .user-card-table-tableWrapper .tableBody td {
-    padding: 10px 16px;
+    padding: 10px 10px;
     font-size: 0.875rem;
     color: #374151;
     border: 1px solid #e5e7eb;
@@ -91,9 +91,9 @@
     /* padding: 4px; */
     border-radius: 4px;
 
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
     transition: background-color 0.2s ease;
 }
 

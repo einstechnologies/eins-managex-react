@@ -1,15 +1,28 @@
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { useParams } from "react-router-dom";
 import "../styles/CustomModal.css";
 import ConfigureDeviceModal from "../components/ConfigureDeviceModal";
 import { DeviceConfigureCard } from "../components/DeviceConfiguredCard";
 import FullScreenLoader from "../components/FullScreenLoader";
 import { useState } from "react";
+import HidAmicoLf35 from "/HIDAmicoVL35LF.png";
+import HidAmicoLf70 from "/HIDAmicoVL70F.png";
+import Connectpng from "/link.png";
+
+const slugToImageMap: Record<string, { image: string; label: string }> = {
+  "hid-amico-vlf": { image: HidAmicoLf35, label: "HID Amico VL35LF" },
+  "hid-amico-vl70f": { image: HidAmicoLf70, label: "HID Amico VL70F" },
+};
+const defaultDevice = { image: HidAmicoLf35, label: "HID Amico VL35LF" };
 
 const ConfigurationHome = () => {
+  const { deviceModel } = useParams();
+  const deviceDisplay = slugToImageMap[deviceModel ?? ""] ?? defaultDevice;
   const [showDeviceModal, setShowDeviceModal] = useState(false);
   const [deviceCount, setDeviceCount] = useState(0);
   const [selectedDevice, setSelectedDevice] = useState<any>(null);
   const [loading, setLoading] = useState(false);
+  const [isDeviceLoading, setIsDeviceLoading] = useState(true);
 
   return (
     <>
@@ -20,11 +33,27 @@ const ConfigurationHome = () => {
           <div className="card hid-card ">
             <div className="alignP">
               <h6 className="configuredev">Configured Device List</h6>
-              <h6 className="configuredev">No.of Devices : {deviceCount}</h6>
+              <h6 className="configuredev">
+                No.of Devices :{" "}
+                {isDeviceLoading ? (
+                  <span
+                    className="skeleton skeleton-sm"
+                    style={{
+                      width: "24px",
+                      height: "14px",
+                      display: "inline-block",
+                      verticalAlign: "middle",
+                    }}
+                  ></span>
+                ) : (
+                  deviceCount
+                )}
+              </h6>
             </div>
             <DeviceConfigureCard
               onSelectDevice={setSelectedDevice}
               ConfiguredDeviceCount={(count) => setDeviceCount(count)}
+              onLoadingChange={(loading) => setIsDeviceLoading(loading)}
             />
           </div>
 
@@ -64,7 +93,7 @@ const ConfigurationHome = () => {
               </div>
 
               <div className="connect-section text-center">
-                <img src="./link.png" alt="Connect" className="connect-img" />
+                <img src={Connectpng} alt="Connect" className="connect-img" />
 
                 <p className="connect-text" style={{ cursor: "pointer" }}>
                   Connect
@@ -81,7 +110,7 @@ const ConfigurationHome = () => {
           <div className="card hid-card">
             <div className="row align-items-center">
               {/* LEFT SIDE - TEXT */}
-              <div className="col-md-7">
+              <div className="col-md-8">
                 <h6 className="text-danger fw">
                   Steps to Configure the New Device
                 </h6>
@@ -90,9 +119,8 @@ const ConfigurationHome = () => {
                   configure new device.
                 </p>
                 <p className="para">
-                  <strong>Step 2 :</strong> Fill all details and enter the{" "}
-                  <b>UserName</b> and <b>Password</b> which you use for Login
-                  the device from the browser .
+                  <strong>Step 2 :</strong> Fill all details and enter the
+                  credentials of device.
                 </p>
                 <p className="para">
                   <strong>Step 3 :</strong> click <b>Finish</b>
@@ -131,12 +159,7 @@ const ConfigurationHome = () => {
                 </h6>
                 <p className="para">
                   <strong>Step 1 :</strong> Click <b>Connect</b> to connect the
-                  Device and do the further process or settings you want to do
-                  on the device.
-                </p>
-                <p className="para">
-                  <strong>Step 2 :</strong> Click <b>Disconnect</b> to
-                  disconnect the device.
+                  Device and do the further process .
                 </p>
 
                 <h6 className="text-danger fw mt-3">Steps to Delete Device</h6>
@@ -147,14 +170,14 @@ const ConfigurationHome = () => {
               </div>
 
               {/* RIGHT SIDE - IMAGE */}
-              <div className="col-md-5 text-center">
+              <div className="col-md-4 text-center">
                 <div className="device-wrapper">
                   <img
-                    src="./HIDAMICO3.png"
-                    alt="Device Illustration"
+                    src={deviceDisplay.image}
+                    alt={deviceDisplay.label}
                     className="img-fluid device-image "
                   />
-                  <p className="device-label mt-2">HID Amico VL35LF</p>
+                  <p className="device-label mt-2">{deviceDisplay.label}</p>
                 </div>
               </div>
             </div>
