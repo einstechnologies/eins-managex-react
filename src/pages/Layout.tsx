@@ -69,18 +69,13 @@ function LayoutPage() {
       id: "PROFILE",
       icon: "bi bi-person-circle",
       label: "PROFILE",
-      path: "/EINS_ManageX/",
-      children: [
-        // { id: "License", label: "License Details", path: "/EINS_ManageX/Profile/License" },
-        // { id: "Login History", label: "Login History", path: "/EINS_ManageX/Profile/Login_History" },
-        // { id: "Logout", label: "Logout", path: "/EINS_ManageX/" },],
-      ],
+      path: "/EINS_ManageX/Profile",
     },
     {
-      id: "HELP",
-      icon: "bi bi-patch-question",
-      label: "HELP",
-      path: "/EINS_ManageX/Help",
+      id: "LOGOUT",
+      icon: "bi bi-power",
+      label: "LOGOUT",
+      path: "/EINS_ManageX/",
     },
   ];
 
@@ -125,7 +120,7 @@ function LayoutPage() {
     const item = menuItems.find((m) => m.id === menuId);
 
     if (item?.path) {
-      if (item?.id == "PROFILE") {
+      if (item?.id == "LOGOUT") {
         ObjSwal.fire({
           title: "Are you sure?",
           text: "Do you really want to logout?",
