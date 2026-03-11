@@ -29,7 +29,10 @@ const AppRoutes = () => {
         <Route path="Profile/License" element={<License />} />
         <Route path="Profile/Login_History" element={<Login_History />} />
         <Route path="Help" element={<Help />} />
-        <Route path="Configurationpage" element={<Configurationpage />} />
+        <Route
+          path="Configurationpage/:deviceModel"
+          element={<Configurationpage />}
+        />
       </Route>
     </Routes>
   );
