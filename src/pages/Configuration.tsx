@@ -106,9 +106,8 @@ const HidConfiguration = () => {
         ].map((item) => (
           <div
             key={item.key}
-            className={`hid-tab-item ${
-              activeSection === item.key ? "active-tab" : ""
-            }`}
+            className={`hid-tab-item ${activeSection === item.key ? "active-tab" : ""
+              }`}
             onClick={() => {
               // if (item.route) {
               //   navigate(item.route);

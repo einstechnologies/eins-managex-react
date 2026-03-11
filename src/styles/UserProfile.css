@@ -1,0 +1,119 @@
+.toggle-eye-usrprofile {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.divtop {
+    margin-bottom: 20px;
+}
+
+/* Profile page */
+/* UserTab.css / DeviceFeature.css / UserProfile.css */
+.card.hid-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    margin-bottom: 20px;
+    /* transition: transform 0.3s ease; */
+}
+
+/* .card.hid-card:hover {
+    transform: translateY(-3px);
+} */
+
+
+.toggle-password-icon {
+    position: absolute;
+    right: 15px;
+    top: 25px;
+    cursor: pointer;
+    color: #888;
+}
+
+.divCursor {
+    cursor: pointer;
+}
+
+.divchangepwd {
+    width: 500px;
+}
+
+
+label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tooltip-containerprofile {
+    position: relative;
+    display: inline-block;
+}
+
+
+/* Tooltip wrapper */
+.tooltip-containerprofile {
+    position: relative;
+    display: inline-block;
+    margin-left: 5px;
+}
+
+/* Icon styling */
+.info-iconprofile {
+    color: #6c757d;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.info-iconprofile:hover {
+    color: #0d6efd;
+    transform: scale(1.2);
+}
+
+/* Tooltip box */
+.custom-tooltipprofile {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background: #fdf618;
+    color: #000000;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 11px !important;
+    white-space: nowrap;
+
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    transform: translateX(-50%) translateY(5px);
+
+    z-index: 10;
+}
+
+/* Tooltip arrow */
+.custom-tooltipprofile::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: #1f2937 transparent transparent transparent;
+}
+
+/* Show tooltip on hover */
+.tooltip-containerprofile:hover .custom-tooltipprofile {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}

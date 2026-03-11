@@ -21,7 +21,7 @@
 }
 
 .spanmargin-left {
-  margin-left: 20px;
+  margin-left: 35px;
 }
 
 .toggle-bottom {
@@ -158,7 +158,7 @@
   left: 50%;
   transform: translateX(-50%);
 
-  background: #dcf550;
+  background: #fdf618;
   color: #000000;
   padding: 6px 10px;
   border-radius: 6px;
@@ -188,4 +188,13 @@
   visibility: visible;
   opacity: 1;
   transform: translateX(-50%) translateY(0);
+}
+
+.rdofontsize {
+  font-size: 15px !important;
+  ;
+}
+
+.headerbottomspce {
+  margin-bottom: 0px !important;
 }

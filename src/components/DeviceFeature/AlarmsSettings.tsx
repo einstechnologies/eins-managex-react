@@ -1,3 +1,4 @@
+import HelpIcon from "../HelpIcon";
 export function AlarmsSettings() {
     return (
         <>
@@ -7,10 +8,17 @@ export function AlarmsSettings() {
                 <div className="col-lg-12">
                     <div className="card hid-card">
                         <div className="row">
-                            <div className='col-lg-2'>
-                                <h6>
-                                    <b>Door Held Open</b>
-                                </h6></div>
+                            <div className="sound-page-header">
+                                <div className="sound-page-header-left">
+                                    <h6>
+                                        <b> <i className="bi bi-door-open"></i> Door Held Open</b>
+                                    </h6>
+                                </div>
+                                <div className="sound-page-header-right">
+                                    <HelpIcon />
+                                </div>
+                            </div>
+
                         </div>
 
                         <div className="row">
@@ -18,12 +26,12 @@ export function AlarmsSettings() {
 
                                 <div className='col-lg-1 spacetopmaxdiv'>
                                     <div className="no-nc-toggle">
-                                        <span className="spanmarginbottom">Active</span>
+                                        <span className="spanmarginbottom rdofontsize">Active</span>
 
                                         <div className="form-check form-switch">
                                             <label className="toggle-switch">
                                                 <input
-                                                    id="rdoOSDP"
+                                                    id="rdodoorheld"
                                                     type="checkbox"
                                                 />
                                                 <span className="toggle-slider"></span>
@@ -33,23 +41,23 @@ export function AlarmsSettings() {
                                 </div>
                                 <div className='col-lg-3'>
                                     <fieldset className='text-input-group commonwidth'>
-                                        <label htmlFor="device">Detection Time After Relay Closure (s)</label>
-                                        <input id='antipassback' value='0' />
+                                        <label htmlFor="det">Detection Time After Relay Closure (s)</label>
+                                        <input id='detctn' value='0' />
                                     </fieldset>
 
                                 </div>
                                 <div className='col-lg-3'>
                                     <fieldset className='text-input-group commonwidth'>
-                                        <label htmlFor="device">Delay (s)</label>
-                                        <input id='antipassback' value='0' />
+                                        <label htmlFor="delay">Delay (s)</label>
+                                        <input id='delay' value='0' />
                                     </fieldset>
 
                                 </div>
 
 
                                 <div className='col-lg-1'></div>
-                                <div className='col-lg-1 spacetop'>
-                                    <button className="btn-outline-soft-green commonwidth">Save</button>
+                                <div className='col-lg-2 spacetop'>
+                                    <button className="btn-outline-soft-green">Save</button>
                                 </div>
 
                             </div>
@@ -58,7 +66,7 @@ export function AlarmsSettings() {
                         <div className="row">
                             <div className='col-lg-2'>
                                 <h6>
-                                    <b>Door Forced Open</b>
+                                    <b><i className="bi bi-exclamation-triangle-fill"></i> Door Forced Open</b>
                                 </h6></div>
                         </div>
 
@@ -67,12 +75,12 @@ export function AlarmsSettings() {
 
                                 <div className='col-lg-1 spacetopmaxdiv'>
                                     <div className="no-nc-toggle">
-                                        <span className="spanmarginbottom">Active</span>
+                                        <span className="spanmarginbottom rdofontsize">Active</span>
 
                                         <div className="form-check form-switch">
                                             <label className="toggle-switch">
                                                 <input
-                                                    id="rdoOSDP"
+                                                    id="rdodoorfrc"
                                                     type="checkbox"
                                                 />
                                                 <span className="toggle-slider"></span>
@@ -82,8 +90,8 @@ export function AlarmsSettings() {
                                 </div>
                                 <div className='col-lg-3'>
                                     <fieldset className='text-input-group commonwidth'>
-                                        <label htmlFor="device">Detection debounce (ms)</label>
-                                        <input id='antipassback' />
+                                        <label htmlFor="debounce">Detection debounce (ms)</label>
+                                        <input id='debounce' />
                                     </fieldset>
 
                                 </div>
@@ -92,8 +100,8 @@ export function AlarmsSettings() {
 
 
                                 <div className='col-lg-1'></div>
-                                <div className='col-lg-1 spacetop'>
-                                    <button className="btn-outline-soft-green commonwidth">Save</button>
+                                <div className='col-lg-2 spacetop'>
+                                    <button className="btn-outline-soft-green">Save</button>
                                 </div>
 
                             </div>

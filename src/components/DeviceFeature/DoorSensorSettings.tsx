@@ -1,25 +1,33 @@
+import HelpIcon from "../HelpIcon";
 export function DoorSensorSettings() {
     return (
         <>
             <div className="col-lg-12">
                 <div className="card hid-card">
-                    <h6>
-                        <b>Door Sensor Settings</b>
-                    </h6>
+                    <div className="sound-page-header">
+                        <div className="sound-page-header-left">
+                            <h6>
+                                <b><i className="bi bi-gear-fill"></i>  Door Sensor Settings</b>
+                            </h6>
+                        </div>
+                        <div className="sound-page-header-right">
+                            <HelpIcon />
+                        </div>
+                    </div>
 
                     <div className="spaceBetweencontentdevicefeatr"></div>
 
                     <div className="row restartdiv">
 
                         {/* Active */}
-                        <div className='col-12 col-md-12 col-lg-2 spacetopmaxdiv'>
+                        <div className='col-12 col-md-12 col-lg-3 spacetopmaxdiv'>
                             <div className="no-nc-toggle spaceBetweencontentdevicefeatr">
-                                <span className="spanmarginbottom">Active :</span>
+                                <span className="spanmarginbottom rdofontsize">Active :</span>
 
                                 <div className="form-check form-switch spanmargin-left">
                                     <label className="toggle-switch">
                                         <input
-                                            id="rdoOSDP"
+                                            id="rdodractv"
                                             type="checkbox"
                                         />
                                         <span className="toggle-slider"></span>
@@ -28,7 +36,7 @@ export function DoorSensorSettings() {
                             </div>
 
                             <div className="no-nc-toggle spaceBetweencontentdevicefeatr spacetopmax ">
-                                <span className="spanmarginbottom">Smart Closure :</span>
+                                <span className="spanmarginbottom rdofontsize">Smart Closure :</span>
 
                                 <div className="form-check form-switch TimebasedAntipass-toggle">
                                     <label className="toggle-switch">
@@ -42,7 +50,7 @@ export function DoorSensorSettings() {
                             </div>
                             <div className="no-nc-toggle spaceBetweencontentdevicefeatr spacetopmax">
 
-                                <span className="spanmarginbottom">
+                                <span className="spanmarginbottom rdofontsize">
                                     NO :
                                     <span className="tooltip-containerDoor">
                                         <i className="bi bi-info-circle info-iconDoor"></i>
@@ -52,12 +60,12 @@ export function DoorSensorSettings() {
 
                                 <div className="form-check form-switch spanmargin-left">
                                     <label className="toggle-switch">
-                                        <input id="rdoNO" type="checkbox" />
+                                        <input id="rdoNONC" type="checkbox" />
                                         <span className="toggle-slider spanmarginbottom"></span>
                                     </label>
                                 </div>
 
-                                <span className="spanmargin-left">
+                                <span className="spanmargin-left rdofontsize">
                                     NC :
                                     <span className="tooltip-containerDoor">
                                         <i className="bi bi-info-circle info-iconDoor"></i>
@@ -78,8 +86,8 @@ export function DoorSensorSettings() {
                         </div>
 
                         {/* Save Button */}
-                        <div className='col-12 col-md-12 col-lg-3 spacetop'>
-                            <button className="btn-outline-soft-green commonwidth">
+                        <div className='col-12 col-md-12 col-lg-2 spacetop'>
+                            <button className="btn-outline-soft-green">
                                 Save
                             </button>
                         </div>

@@ -167,7 +167,7 @@
 .Ttnfr-content-screen .header-title {
     font-size: 20px;
     display: flex;
-    color: #464855;
+    color: black;
     align-items: center;
     flex-wrap: wrap;
     margin-bottom: 30px;
@@ -199,7 +199,7 @@
 }
 
 .Ttnfr-content-screen .card-title {
-    color: #6B6F82;
+    color: #334155;
     margin-bottom: 0px;
 }
 

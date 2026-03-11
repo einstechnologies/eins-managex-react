@@ -4,7 +4,7 @@ import "../styles/Transaction.css";
 import "../index.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import HelpIcon from "../components/HelpIcon";
 
 type TransactionType = "Valid" | "Invalid" | "Door Secure";
 
@@ -142,11 +142,14 @@ export default function Transactions() {
         <div className="col-md-3 col-12 d-flex justify-content-md-end mt-2 mt-md-0 headerbottomspace">
           <button
             type="button"
-            className="btn btn-warning custom-print-btn"
+            className="btn btn-warning custom-print-btn export-right-margin"
             onClick={handleExportClick}
           >
             🖨 Export
           </button>
+          <div className="sound-page-header-right">
+            <HelpIcon />
+          </div>
         </div>
       </div>
 

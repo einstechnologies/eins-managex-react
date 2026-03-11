@@ -1,12 +1,21 @@
 import DragDropUpload from "../DragDropUpload ";
+import HelpIcon from "../HelpIcon";
+
 export function SetLogo() {
     return (
         <>
             <div className="col-lg-12">
                 <div className="card hid-card">
-                    <h6>
-                        <b>Set Logo</b>
-                    </h6>
+                    <div className="sound-page-header">
+                        <div className="sound-page-header-left">
+                            <h6>
+                                <b><i className="bi bi-upload"></i> Set Logo</b>
+                            </h6>
+                        </div>
+                        <div className="sound-page-header-right">
+                            <HelpIcon />
+                        </div>
+                    </div>
                     <div className="spaceBetweencontentdevicefeatr"></div>
                     <div className="col-12 restartdiv spacebottom">
 

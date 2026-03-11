@@ -1,4 +1,5 @@
 import { BiColor } from "react-icons/bi";
+import HelpIcon from "../HelpIcon";
 
 export function DeliberateEmergency() {
     return (
@@ -6,10 +7,17 @@ export function DeliberateEmergency() {
             <div className="col-lg-12">
                 <div className="card hid-card">
                     <div className="row">
-                        <div className='col-lg-2'>
-                            <h6>
-                                <b>Deliberate Emergency</b>
-                            </h6></div> <div className='col-lg-4'><label htmlFor="device">Communication Mode : Default</label></div>
+                        <div className="sound-page-header">
+                            <div className="sound-page-header-left">
+                                <div className='col-lg-12'>
+                                    <h6>
+                                        <b> <i className="bi bi-exclamation-triangle-fill"></i> Deliberate Emergency</b>
+                                    </h6></div> <div className='col-lg-12'><label htmlFor="device">Communication Mode : Default</label></div>
+                            </div>
+                            <div className="sound-page-header-right">
+                                <HelpIcon />
+                            </div>
+                        </div>
                     </div>
                     <div className="spaceBetweencontentdevicefeatrdeleberate"></div>
                     <div className="col-12 restartdiv">
@@ -33,8 +41,8 @@ export function DeliberateEmergency() {
                             </fieldset>
                         </div>
 
-                        <div className='col-lg-1'>
-                            <button className="btn-outline-soft-green spacetop commonwidth">Save</button>
+                        <div className='col-lg-2'>
+                            <button className="btn-outline-soft-green spacetop">Save</button>
                         </div>
                         <div className='col-lg-4'></div>
                     </div>
