@@ -961,7 +961,7 @@
      font-weight: 600;
      color: #0061ff;
      /* blue */
-     text-transform: uppercase;
+     /* text-transform: uppercase; */
      letter-spacing: 0.5px;
      white-space: nowrap;
  }
