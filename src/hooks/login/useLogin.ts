@@ -13,8 +13,10 @@ export const useLogin = () => {
             localStorage.setItem('loginUserId', data.userId.toString());
             await new Promise((resolve) => setTimeout(resolve, 800));
             // Push a blocker entry BEFORE replacing with Home
-            window.history.pushState(null, "", "/EINS_ManageX/Home");
-            navigate("/EINS_ManageX/Home", { replace: true });
+            //window.history.pushState(null, "", "/EINS_ManageX/Home");
+            window.history.pushState(null, "", "/EINS_ManageX/ResetPassword");
+            //navigate("/EINS_ManageX/Home", { replace: true });
+            navigate("/EINS_ManageX/ResetPassword", { replace: true });
             console.log('Logged in as:', data.username, '| Role:', data.userRole)
         },
 
