@@ -73,7 +73,7 @@ function LayoutPage() {
     },
     {
       id: "LOGOUT",
-      icon: "bi bi-power",
+      icon: "bi bi-box-arrow-right",
       label: "LOGOUT",
       path: "/EINS_ManageX/",
     },
