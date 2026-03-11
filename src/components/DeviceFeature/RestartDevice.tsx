@@ -1,13 +1,21 @@
 import '../../styles/DeviceFeature.css'
+import HelpIcon from "../HelpIcon";
 
 export function RestartDevice() {
     return (
         <>
             <div className="col-lg-12">
                 <div className="card hid-card">
-                    <h6>
-                        <b>Restart Device</b>
-                    </h6>
+                    <div className="sound-page-header headerbottomspce">
+                        <div className="sound-page-header-left">
+                            <h6>
+                                <b> <i className="bi bi-arrow-clockwise"></i>  Restart Device</b>
+                            </h6>
+                        </div>
+                        <div className="sound-page-header-right">
+                            <HelpIcon />
+                        </div>
+                    </div>
                     <div className="spaceBetweencontentdevicefeatr"></div>
                     <div className="row restartdiv">
                         <div className='col-lg-3'>
@@ -17,8 +25,8 @@ export function RestartDevice() {
                             </fieldset>
                         </div>
 
-                        <div className='col-lg-1'>
-                            <button className="btn-outline-soft-green spacetop commonwidth">Restart</button>
+                        <div className='col-lg-2'>
+                            <button className="btn-outline-soft-green spacetop">Restart</button>
                         </div>
                     </div>
 
