@@ -1,6 +1,7 @@
 import "bootstrap-icons/font/bootstrap-icons.css";
 import '../styles/DeviceInformation.css'
 import ConnectedDevice from "../components/ConnectedDevice";
+import HelpIcon from "./HelpIcon";
 function DeviceInfo() {
   return (
     <>
@@ -14,8 +15,11 @@ function DeviceInfo() {
 
         <div className="col-12 mt-3 g-3">
           <div className="card device-user-card device-information">
-            <h6>
+            <h6 className="d-flex justify-content-between">
               <b><i className="bi bi-laptop"></i> Device Information</b>
+              <div>
+                <HelpIcon />
+              </div>
             </h6>
             <div className="card hid-card">
 

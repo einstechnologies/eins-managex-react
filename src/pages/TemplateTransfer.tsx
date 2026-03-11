@@ -4,6 +4,7 @@ import { DeviceTable } from "../components/TemplateTransferDeviceList";
 import { UserTable } from "../components/TemplateTransferEmployeeList";
 import type { User } from "../components/TemplateTransferEmployeeList";
 import type { Device } from "../components/TemplateTransferDeviceList";
+import HelpIcon from "../components/HelpIcon";
 
 function TemplateTransfer() {
   const [devices] = useState<Device[]>([
@@ -271,8 +272,14 @@ function TemplateTransfer() {
                 </div>
                 <div className="col-12">
                   <div className="btntemplateTransfer templateTransfer">
-                    <button className="btn-outline-soft-greenTT templateTransfer">
-                      Template Transfer
+                    <button className=" btn-outline-soft-greenTT templateTransfer">
+                      Transfer
+                    </button>
+                    <button className="  btn-outline-soft-yellowTT Ttnfr-content-screen">
+                      Remove
+                    </button>
+                    <button className="btn-outline-soft-blueTT templateTransfer">
+                      Sync
                     </button>
                     <button className="btn-outline-soft-redTT templateTransfer">
                       Cancel

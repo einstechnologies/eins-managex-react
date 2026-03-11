@@ -687,6 +687,12 @@
      /* take full field width */
  }
 
+ .hid-container .text-input-group span {
+     font-size: 15px;
+     color: black;
+
+ }
+
  .hid-container .ip-input-wrapper input {
      flex: 1;
      /* each box grows equally */
@@ -760,6 +766,15 @@
      font-size: 14px;
 
      padding: 0;
+ }
+
+ .hid-container .password-field {
+     position: relative;
+ }
+
+ .hid-container .password-field input {
+     width: 100%;
+     padding-right: 40px;
  }
 
  .hid-container .eye-icon {

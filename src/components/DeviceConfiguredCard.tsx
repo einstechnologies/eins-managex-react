@@ -1,49 +1,107 @@
-import { useState } from "react";
-import { DeviceCardTable } from '../components/DeviceCardTable';
+import { useState, useEffect } from "react";
+import { DeviceCardTable } from "../components/DeviceCardTable";
+import { GetConfiuredDevicelist } from "../hooks/eins/device/configuration/usedevice";
+import type { GetDeviceDetailsResponse } from "../ts/api/eins/device/device_details/device_details_request_response";
 
-export function DeviceConfigureCard() {
-    const [device, setdevice] = useState([
-        { id: 1, DeviceName: "HID Amico VL35LF", IPAddress: "192.168.1.54", TerminalID: "756565454", PortNo: "3001" },
-        { id: 2, DeviceName: "HID Amico VL70LF", IPAddress: "192.168.1.54", TerminalID: "7656464", PortNo: "3001" },
-        { id: 3, DeviceName: "HID Amico VL35LF", IPAddress: "192.168.1.54", TerminalID: "75005454", PortNo: "3001" },
-        { id: 4, DeviceName: "HID Amico VL70LF", IPAddress: "192.168.1.54", TerminalID: "765652564", PortNo: "3001" },
-        { id: 5, DeviceName: "HID Amico VL35LF", IPAddress: "192.168.1.54", TerminalID: "756565454", PortNo: "3001" },
-        { id: 6, DeviceName: "HID Amico VL35LF", IPAddress: "192.168.1.54", TerminalID: "756565454", PortNo: "3001" },
-        { id: 7, DeviceName: "HID Amico VL35LF", IPAddress: "192.168.1.54", TerminalID: "756565454", PortNo: "3001" },
-        { id: 8, DeviceName: "HID Amico VL35LF", IPAddress: "192.168.1.54", TerminalID: "756565454", PortNo: "3001" },
-        { id: 9, DeviceName: "HID Amico VL35LF", IPAddress: "192.168.1.54", TerminalID: "756565454", PortNo: "3001" },
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import { useNavigate } from "react-router-dom";
 
+const MySwal = withReactContent(Swal);
 
-    ]);
+export function DeviceConfigureCard({
+  onSelectDevice,
+  ConfiguredDeviceCount,
+}: Props) {
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+  const [device, setdevice] = useState<GetDeviceDetailsResponse[]>([]);
 
-    const handleSelect = (id: number) => {
-        setdevice((prev) => prev.filter((c) => c.id !== id));
-    };
-    const handleView = (id: number) => {
-        setdevice((prev) => prev.filter((c) => c.id !== id));
-    };
-    const handleDelete = (id: number) => {
-        setdevice((prev) => prev.filter((c) => c.id !== id));
-    };
-    return (
-        <>
-            <div className="col-12">
+  //  Runs once on component load
+  useEffect(() => {
+    try {
+      setLoading(true);
+      fetchConfiguredDevices();
+    } catch {
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
+  const { mutateAsync: GetConfiuredDevice } = GetConfiuredDevicelist();
+  const fetchConfiguredDevices = async () => {
+    try {
+      const DeviceList = await GetConfiuredDevice();
+      ConfiguredDeviceCount(DeviceList.length);
+      setdevice(DeviceList);
+    } catch (error: any) {
+      const resData = error?.response?.data;
+      const errors: string[] = resData?.errors || [];
 
-                <div className="spaceBetweencontent"></div>
-                <div>
-                    <DeviceCardTable
-                        devices={device}
-                        onConnect={handleSelect}
-                        onView={handleView}
-                        onDelete={handleDelete}
-                    />
-                </div>
-            </div>
-        </>
-    );
+      const html = (() => {
+        if (errors.length === 0) {
+          // handles null, undefined, and empty string ""
+          return resData?.message?.trim()
+            ? resData.message
+            : "Something went wrong. Please try again.";
+        }
+
+        if (errors.length === 1) return errors[0];
+
+        return `<ul style="text-align:left; margin:0 auto; padding-left:1.2rem; max-width:300px;">
+      ${errors.map((e: string) => `<li>${e}</li>`).join("")}
+    </ul>`;
+      })();
+
+      MySwal.fire({
+        html,
+        icon: "error", //  warning for image, error for register
+        buttonsStyling: false,
+        customClass: {
+          confirmButton: "swal-mygradient",
+          container: "swal-top-layer",
+        },
+        confirmButtonText: "OK",
+      });
+
+      if (resData?.message == "Unauthorized") {
+        navigate("/EINS_ManageX/", { replace: true });
+        return;
+      }
+    }
+  };
+
+  const handleSelect = (id: number) => {
+    const selectedDevice = device.find((d) => d.deviceId === id);
+
+    if (selectedDevice) {
+      onSelectDevice(selectedDevice);
+    }
+  };
+  const handleView = (id: number) => {
+    setdevice((prev) => prev.filter((c) => c.deviceId !== id));
+  };
+  const handleDelete = (id: number) => {
+    setdevice((prev) => prev.filter((c) => c.deviceId !== id));
+  };
+  return (
+    <>
+      <div className="col-12">
+        <div className="spaceBetweencontent"></div>
+        <div>
+          <DeviceCardTable
+            devices={device}
+            onConnect={handleSelect}
+            onView={handleView}
+            onDelete={handleDelete}
+          />
+        </div>
+      </div>
+    </>
+  );
 }
 
-
-
-
+type Props = {
+  onSelectDevice: (device: any) => void;
+  ConfiguredDeviceCount: (count: number) => void;
+};
