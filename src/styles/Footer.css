@@ -2,7 +2,7 @@
     bottom: 0px;
     left: 160px;
     right: 10px;
-    /* padding-bottom: 20px;  */
+    padding-bottom: 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -11,8 +11,9 @@
     width: calc(100% - 170px);
     transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
 
-
-    color: #9d8f8f;
+    padding-right: 10px;
+    /* color: #9d8f8f; */
+    color: #686363;
     opacity: 1;
     background-color: #f5f6fa;
 }
