@@ -323,50 +323,61 @@ const Profile = () => {
                 </div>
 
                 <div className="card hid-card">
-                    <div className="content-body">
-                        <div className="table-responsive">
+                    <div className="col-12">
+                        <div className="Template-transfer-table templateTransfer ">
 
-                            <table className="table table-hover align-middle text-center shadow-sm mb-0">
-                                <thead className="table-light">
+                            <table>
+                                <thead className="tableHead">
                                     <tr>
+
+                                        <th className="hidden-col template-transfer">#</th>
+
                                         <th>User Name</th>
                                         <th>User Type</th>
-                                        <th>Added On <br /> (dd-mm-yyyy)</th>
+                                        <th>Added On</th>
                                         <th>Status</th>
                                     </tr>
                                 </thead>
 
-                                <tbody>
-                                    {transactions.map((tx, index) => (
-                                        <tr key={index}>
-                                            <td className="palign">
-                                                {tx.UserName ?? "-"}
-                                            </td>
+                                <tbody className="tableBody">
 
-                                            <td className="palign">
-                                                {tx.UserType ?? "-"}
-                                            </td>
+                                    {
+                                        transactions.length === 0 ? (
+                                            <tr className="emptyRow">
+                                                <td colSpan={6}>No users available</td>
+                                            </tr>
+                                        ) : (
 
-                                            <td className="palign">
-                                                {tx.AddedOn}
-                                            </td>
+                                            transactions.map((tx, index) => (
+                                                <tr key={index}>
+                                                    <td className="hidden-col template-transfer">
+                                                        {index + 1}
+                                                    </td>
 
-                                            <td className="palign">
-                                                <span
-                                                    className={`btn btn-sm rounded-pill ${tx.Activeusers === "Active"
-                                                        ? "btn-outline-success"
-                                                        : tx.Activeusers === "Inactive"
-                                                            ? "btn-outline-danger"
-                                                            : "btn-outline-info"
-                                                        }`}
-                                                >
-                                                    {tx.Activeusers}
-                                                </span>
-                                            </td>
-                                        </tr>
-                                    ))}
+                                                    <td>{tx.UserName ?? "-"}</td>
+
+                                                    <td>{tx.UserType ?? "-"}</td>
+
+                                                    <td>{tx.AddedOn}</td>
+
+                                                    <td>
+                                                        <span
+                                                            className={`btn btn-sm rounded-pill ${tx.Activeusers === "Active"
+                                                                ? "btn-outline-success"
+                                                                : tx.Activeusers === "Inactive"
+                                                                    ? "btn-outline-danger"
+                                                                    : "btn-outline-info"
+                                                                }`}
+                                                        >
+                                                            {tx.Activeusers}
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            ))
+                                        )
+                                    }
+
                                 </tbody>
-
                             </table>
 
                         </div>
