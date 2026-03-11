@@ -906,7 +906,7 @@
  .connected-device-card {
      background: #ffffff;
      border: 1px solid #e2e8f0;
-     border-radius: 12px;
+     border-radius: 6px;
      padding: 8px 16px;
      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
      margin-top: 8px;
@@ -918,6 +918,7 @@
      align-items: center;
      flex-wrap: wrap;
      gap: 0;
+     margin-left: -30px;
  }
 
  /* Each info block */
@@ -927,6 +928,7 @@
      gap: 4px;
      padding: 2px 16px;
      flex: 1;
+     justify-content: center;
      /* min-width: 160px; */
  }
 

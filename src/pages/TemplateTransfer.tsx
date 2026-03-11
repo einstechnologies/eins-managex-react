@@ -75,11 +75,11 @@ function TemplateTransfer() {
 
   return (
     <>
-      <div className="row mb-3 mt-3 g-3">
+      <div className="mb-3 mt-3 g-3">
         <div className="card hid-card">
           <div className="Ttnfr-content-screen templateTransfer">
             <div className="header-title">
-              <span>TEMPLATE TRANSFER</span>
+              <span><i className="bi bi-file-text me-1"></i><i className="bi bi-arrow-repeat"></i> Template Transfer</span>
               {/* <span className='vertical-divider'></span>
                     <span
                         className='link'
@@ -281,6 +281,12 @@ function TemplateTransfer() {
                 </div>
               </div>
             </div>
+
+
+
+
+
+
           </div>
         </div>
       </div>
