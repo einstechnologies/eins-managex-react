@@ -4,6 +4,8 @@ import { useLogin } from "../hooks/eins/login/useLogin.ts";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { useEffect } from "react";
+import ForgetPassword from "../components/ForgetPassword";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 const MySwal = withReactContent(Swal);
 
@@ -11,6 +13,8 @@ const LoginPage: React.FC = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+    const [showDeviceModal, setShowForgotModal] = useState(false);
+  const [step, setStep] = useState(1);
 
   const { mutate, isPending } = useLogin();
 
@@ -143,8 +147,10 @@ const LoginPage: React.FC = () => {
                 ></i>
               </span>
             </div>
-            <div className="login-options">
-              <span className="forgot">Forgot Password?</span>
+             <div className="login-options"><span className="forgot" style={{ cursor: "pointer" }}onClick={() => { setStep(1); setShowForgotModal(true); }}>
+  Forgot Password?
+</span>
+
             </div>
 
             <button
@@ -163,6 +169,10 @@ const LoginPage: React.FC = () => {
             </button>
           </div>
         </div>
+            <ForgetPassword
+                    show={showDeviceModal}
+                    onClose={() => setShowForgotModal(false)}
+                />
       </div>
     </>
   );
