@@ -1,0 +1,251 @@
+.login-wrapper {
+  min-height: 100vh;
+  padding: 20px 0;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card {
+  display: flex;
+  align-items: stretch;
+  width: 90%;
+  max-width: 843px;   /* keeps original desktop size */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* ================= LEFT SIDE ================= */
+
+.login-left{
+  position: relative;
+  flex: 0 0 490px;
+  min-width: 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.login-left::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:url('/eins_hid_bg.jpg');
+  background-size:cover;
+  background-position:top;
+  background-repeat:no-repeat;
+  z-index:1;
+}
+
+.login-left img{
+  position:relative;
+  z-index:2;
+  height:100%;
+  width:auto;
+  max-height:100%;
+}
+
+/* ================= RIGHT SIDE ================= */
+
+.login-right {
+  flex: 1;
+  background: #f5f5f5;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-right h2 {
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.login-right p {
+  margin-bottom: 20px;
+  color: #666;
+  text-align: center;
+}
+
+.login-right input {
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+/* ================= BUTTON ================= */
+
+.login-btn {
+  padding: 12px;
+  border-radius: 30px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 15px;
+  position: relative;
+  overflow: hidden;
+
+  background: linear-gradient(180deg, #E71D3E, #811023);
+
+  box-shadow:
+    inset 0 2px 3px rgba(255,255,255,0.35),
+    inset 0 -3px 6px rgba(0,0,0,0.25),
+    0 4px 10px rgba(0,0,0,0.25);
+
+  transform: translateY(0);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 3px 6px rgba(255,255,255,0.45),
+    inset 0 -4px 8px rgba(0,0,0,0.35),
+    0 10px 22px rgba(75, 9, 20, 0.45);
+}
+
+.login-btn::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:50%;
+  height:100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.5),
+    transparent
+  );
+  transition: left .6s ease;
+}
+
+.login-btn:hover::after{
+  left:120%;
+}
+
+/* ================= OTHER ================= */
+
+.register {
+  text-align: center;
+  color: #2460e2;
+  cursor: pointer;
+}
+
+.login-input:focus-visible {
+  outline: none;
+  box-shadow: 0 0 3px 2px rgba(231, 29, 62, 0.5);
+}
+
+.forgot{
+  color:#811023;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid white;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  animation: spin 0.6s linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.password-field{
+  position:relative;
+}
+
+.password-field input{
+  width:100%;
+  padding-right:40px;
+}
+
+.toggle-eye{
+  position:absolute;
+  right:12px;
+  top:39%;
+  transform:translateY(-50%);
+  cursor:pointer;
+  font-size:18px;
+}
+
+/* ===================================================
+   RESPONSIVE
+   =================================================== */
+
+/* Hide left image for tablet & below */
+@media (max-width: 1024px) {
+
+   .login-wrapper {
+    background-position: right center;
+  }
+
+  .login-card {
+    flex-direction: column;
+    width: 95%;
+    
+  }
+
+  .login-left {
+    display: none;
+  }
+
+  .login-right {
+    width: 100%;
+    flex: none;
+  }
+}
+
+.swal-mygradient{ 
+  border-radius:30px; 
+  border: none; color: white; 
+  font-weight: bold; 
+  cursor: pointer; 
+  margin-bottom: 15px; 
+  position: relative; 
+  overflow: hidden; 
+  background: linear-gradient(180deg, #E71D3E, #811023); 
+  box-shadow: inset 0 2px 3px rgba(255,255,255,0.35), inset 0 -3px 6px rgba(0,0,0,0.25), 0 4px 10px rgba(0,0,0,0.25); 
+  transform: translateY(0); /* IMPORTANT */ will-change: transform, box-shadow; /* smooth rendering */ transition: transform .25s ease, box-shadow .25s ease; font-size: 15px;
+}
+
+@media (max-width: 800px) and (max-height:1350px){
+  .login-card {
+    flex-direction: column;
+    width: 75%;
+  }
+}
+
+/* Small mobile adjustments */
+@media (max-width: 480px) {
+
+  .login-card {
+    width: 92%;
+  }
+
+  .login-right {
+    padding: 25px;
+  }
+}

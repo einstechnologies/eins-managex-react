@@ -1,0 +1,293 @@
+/* ===============================
+   Dashboard Layout
+=================================*/
+.dashboard-container {
+  min-height: 80vh;
+  padding: 0px;
+
+}
+
+
+.row-bottom-space {
+  margin-bottom: 81px;
+  /* adjust as needed */
+}
+
+/* Icon inside card */
+.card1-icon {
+  font-size: 80px;
+  /* icon size */
+  opacity: 1;
+  /* subtle */
+  color: black;
+  /* white icon, can adjust */
+  position: absolute;
+  /* right: 20px;                 */
+  /* bottom: 0px;                */
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+
+.card1-icon.icon1 {
+  color: #ffa500 !important;
+  /* orange for users */
+}
+
+
+.card1-icon.icon2 {
+  color: #17a2b8 !important;
+  /* orange for users */
+}
+
+
+.card1-icon.icon3 {
+  color: #6dbf00 !important;
+  /* orange for users */
+}
+
+.card1-icon.icon4 {
+  color: #dc3545 !important;
+  /* orange for users */
+}
+
+.custom-card1:hover .card1-icon {
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+}
+
+.dashboard-cards-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  /* Makes it responsive */
+}
+
+.dashboard-card {
+  position: relative;
+  /* for glossy overlay */
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: right;
+  border: 5px solid transparent;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  width: 25%;
+  flex: 1;
+  min-width: 220px;
+  overflow: hidden;
+  /* Smooth animation */
+  transition: all 0.3s ease-in-out;
+
+  /* Always visible shadow */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+}
+
+.card-users {
+  border-color: #ffa500;
+  box-shadow: 0 8px 20px rgba(243, 156, 18, 0.35);
+}
+
+.card-devices {
+  border-color: #17a2b8;
+  box-shadow: 0 8px 20px rgba(23, 162, 184, 0.35);
+}
+
+.card-valid {
+  border-color: #6dbf00;
+  box-shadow: 0 8px 20px rgba(109, 191, 0, 0.35);
+}
+
+.card-invalid {
+  border-color: #dc3545;
+  box-shadow: 0 8px 20px rgba(220, 53, 69, 0.35);
+}
+
+/* Hover Effect */
+.dashboard-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+}
+
+.card-users:hover {
+  box-shadow: 0 12px 25px rgba(243, 156, 18, 0.4);
+}
+
+.card-devices:hover {
+  box-shadow: 0 12px 25px rgba(23, 162, 184, 0.4);
+}
+
+.card-valid:hover {
+  box-shadow: 0 12px 25px rgba(109, 191, 0, 0.4);
+}
+
+.card-invalid:hover {
+  box-shadow: 0 12px 25px rgba(220, 53, 69, 0.4);
+}
+
+.card1-title {
+  font-size: 20px;
+  opacity: 1;
+  margin: 20px 2px 8px 100px;
+  /* top:0, horizontal:auto, bottom:8px */
+  text-align: center;
+  /* center the text itself */
+  width: 150px;
+  font-weight: 700;
+  /* makes text bold */
+}
+
+.card1-value {
+  font-size: 40px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+/* 24022026 */
+
+/* Glossy overlay using pseudo-element */
+.dashboard-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.25) 0%,
+      rgba(255, 255, 255, 0) 60%);
+  transform: rotate(25deg) translateX(-100%);
+  transition: all 0.6s ease-in-out;
+  pointer-events: none;
+}
+
+/* Hover effects */
+.dashboard-card:hover {
+  transform: translateY(-8px) scale(1.05);
+}
+
+/* Change icon color and rotate slightly */
+.dashboard-card:hover .card1-icon {
+  transform: scale(1.2);
+  /* only scale, no rotate */
+  cursor: pointer;
+}
+
+/* Glossy sweep animation */
+.dashboard-card:hover::after {
+  transform: rotate(25deg) translateX(100%);
+  opacity: 0.6;
+}
+
+Hover card shadow .card-users:hover {
+  box-shadow: 0 12px 25px rgba(243, 156, 18, 0.5);
+}
+
+.card-devices:hover {
+  box-shadow: 0 12px 25px rgba(23, 162, 184, 0.5);
+}
+
+.card-valid:hover {
+  box-shadow: 0 12px 25px rgba(109, 191, 0, 0.5);
+}
+
+.card-invalid:hover {
+  box-shadow: 0 12px 25px rgba(220, 53, 69, 0.5);
+}
+
+
+/* iPhone SE (320-375px width) */
+@media (max-width: 375px) {
+  .card1-title {
+    font-size: 16px;
+  }
+
+  .card1-value {
+    font-size: 25px;
+  }
+
+  /* .card-icon { font-size: 40px; right: 0px; bottom: 5px; } */
+  .card1-icon {
+    font-size: 60px;
+  }
+}
+
+
+
+/* Small phones / iPhone 12 / Galaxy S8 */
+@media (max-width: 414px) {
+  .card1-title {
+    font-size: 16px;
+    margin-left: 75px;
+  }
+
+  .card1-value {
+    font-size: 25px;
+  }
+
+  /* .card-icon { font-size: 55px; right: 15px; bottom: 5px; } */
+  .card1-icon {
+    font-size: 60px;
+  }
+}
+
+/* Tablets / iPad mini / iPad Air */
+@media (max-width: 768px) {
+  .card1-title {
+    font-size: 20px;
+    margin-left: 80px;
+  }
+
+  .card1-value {
+    font-size: 34px;
+  }
+
+  /* .card-icon { font-size: 47px; right: 5px; bottom: 0px; } */
+  .card1-icon {
+    font-size: 60px;
+  }
+}
+
+/* Large folding phones (Galaxy Z Fold 5) and bigger devices */
+@media (min-width: 1024px) {
+  .dashboard-container {
+    padding: 10px;
+  }
+
+  .card1-title {
+    font-size: 20px;
+  }
+
+  .card1-value {
+    font-size: 36px;
+  }
+
+  /* .card-icon { font-size: 60px; right: 5px; bottom: 0; } */
+  .card1icon {
+    font-size: 70px;
+  }
+}
+
+/* Nest hub max */
+@media (min-width: 1200px) {
+  .dashboard-container {
+    min-height: 70vh;
+    padding: 0px;
+  }
+
+  .card1-title {
+    font-size: 20px;
+    margin-left: 70px;
+  }
+
+  .card1-value {
+    font-size: 36px;
+  }
+
+  /* .card-icon { font-size: 60px; right: 5px; bottom: 0; } */
+  .card1-icon {
+    font-size: 70px;
+  }
+}

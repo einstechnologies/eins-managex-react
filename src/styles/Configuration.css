@@ -1,0 +1,998 @@
+ .device-list {
+     margin: 0;
+     font-family: 'Poppins-Regular', sans-serif;
+     /* background-color: #f5f5f5; */
+     /* margin-left: 10px; */
+ }
+
+
+ .device-list .card-list {
+     background-color: #eaeaea;
+     width: 98%;
+     MARGIN-TOP: 20PX;
+     margin-left: 0px;
+     height: 543px;
+     padding: 30px 20px;
+     text-align: center;
+     border: 1px solid #ccc;
+     transition: all 0.3s ease;
+     box-shadow: 0px 5px 10px gray
+         /* border: 7px solid rgb(66, 100, 238) !important; */
+ }
+
+ .device-list .row-image-link {
+     padding-top: 3%;
+     text-align: left;
+ }
+
+ /* Card Hover Effect */
+ /* .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            background-color: #ffffff;
+        } */
+
+ .device-list .card-list h2 {
+     font-size: 22px;
+     font-weight: bold;
+     margin-bottom: 25px;
+     color: #555;
+ }
+
+ /* #region ImageCard */
+ /* .card img {
+            width: auto;
+            height: 250px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+               
+        } */
+
+
+ /* Image Hover Zoom */
+ .card-list:hover img {
+     transform: scale(1.05);
+ }
+
+
+
+ .card-list ul {
+     text-align: left;
+     padding-left: 20px;
+     color: #444;
+     font-size: 14px;
+ }
+
+ .card-list ul li {
+     margin-bottom: 12px;
+ }
+
+ /* Responsive */
+ @media (max-width: 768px) {
+     .container {
+         flex-direction: column;
+     }
+
+     .card-list {
+         width: 100%;
+     }
+ }
+
+
+ /* Overlay */
+ .device-list.modal-overlay {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: rgba(0, 0, 0, 0.6);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     z-index: 1500;
+ }
+
+ /* Main Modal */
+ /* .device-list.custom-modalBroucher {
+     background: #f0ecec;
+     width: 600px;
+     height: auto;
+     max-width: 95%;
+     padding: 25px;
+     border: 5px solid #666;
+     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+     border-radius: 3%;
+ } */
+
+
+ .device-list.custom-modal {
+     background: #f0ecec;
+     width: 754px;
+     max-width: 95%;
+     padding: 10px;
+     max-height: 80vh;
+     /* Screen limit */
+     display: flex;
+     flex-direction: column;
+
+     border: 5px solid #666;
+     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+     border-radius: 3%;
+ }
+
+ /* 
+.custom-modal {
+  background: #f0ecec;
+  width: 754px;
+  height: auto;
+  max-width: 95%;
+  padding: 25px;
+  border: 5px solid #666;
+  box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+  border-radius: 3%;
+} */
+
+ /* Header */
+ .device-list.modal-header {
+     background: gray;
+     color: rgb(255, 255, 255);
+     padding: 9px;
+     text-align: center;
+     font-weight: bold;
+     border-radius: 10px;
+     margin-bottom: 20px;
+
+ }
+
+ /* Body */
+ /* .modal-body {
+  text-align: center;
+} */
+
+ .device-list.modal-body {
+     text-align: center;
+
+     flex: 1;
+     /* 👈 IMPORTANT */
+     min-height: 0;
+     /* 👈 VERY IMPORTANT */
+     /* overflow-y: scroll;  👈 SCROLL ENABLE */
+     height: auto;
+     padding: 20px;
+     overflow: hidden;
+     overflow-y: auto;
+ }
+
+ .modal-body::-webkit-scrollbar {
+     width: 6px;
+ }
+
+ .modal-body::-webkit-scrollbar-thumb {
+     background-color: rgba(255, 255, 255, 0.3);
+     border-radius: 3px;
+ }
+
+ .modal-body::-webkit-scrollbar-track {
+     background: transparent;
+ }
+
+
+
+ .device-list.device-img {
+     width: 170px;
+     margin-bottom: 20px;
+     margin-left: 85px;
+
+ }
+
+ @media(width<767px) {
+     .device-list.device-img {
+
+         margin-left: 0px;
+
+     }
+ }
+
+ .device-list.BroucherImage {
+     width: 49px;
+     margin-bottom: 18px;
+     margin-left: 76px;
+
+
+ }
+
+ @media(width< 768px) {
+     .device-list.BroucherImage {
+         margin-left: 0px;
+     }
+ }
+
+ .device-list.feature-list {
+     text-align: left;
+     padding-left: 30px;
+     font-size: 83%;
+ }
+
+ .feature-list li {
+     margin-bottom: 12px;
+     color: black;
+ }
+
+ /* Footer */
+ .device-list.modal-footer {
+     text-align: right;
+     margin-top: 20px;
+ }
+
+ .device-list.close-btn {
+     background: #811023;
+     color: white;
+     border: none;
+     padding: 8px 18px;
+     cursor: pointer;
+     border-radius: 4px;
+
+ }
+
+ .close-btn:hover {
+     background: #E71D3E;
+ }
+
+ .device-list.download-link {
+     text-decoration: none;
+     color: #007bff;
+     font-weight: 600;
+     cursor: pointer;
+     padding-left: 16px
+ }
+
+ .download-link:hover {
+     text-decoration: underline;
+ }
+
+ @media(width<768px) {
+     .device-list.download-link {
+         padding-left: 0px
+     }
+ }
+
+ /* Outer Wrapper (instead of body center) */
+ .device-list.config-wrapper {
+     width: 100%;
+     display: flex;
+     justify-content: center;
+     margin-top: 50px;
+ }
+
+ /* Main Card */
+ .device-list.config-card {
+     width: 520px;
+     padding: 10px 25px;
+     border-radius: 18px;
+     background: linear-gradient(135deg, #0f2f5f, #0c4a8a, #00a0c6);
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     color: white;
+     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+     transition: 0.3s ease;
+     cursor: pointer;
+ }
+
+ .config-card:hover {
+     transform: translateY(-4px);
+     box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
+ }
+
+ /* Left Section */
+ .device-list.left-section {
+     display: flex;
+     align-items: center;
+     gap: 18px;
+ }
+
+ /* Icon Circle */
+ .device-list.icon-circle {
+     width: 50px;
+     height: 50px;
+     border-radius: 50%;
+     background: white;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     color: #0f2f5f;
+     font-size: 22px;
+     font-weight: bold;
+ }
+
+ /* Text */
+ .device-list.text-box h2 {
+     margin: 0;
+     font-size: 22px;
+     font-weight: 600;
+     color: white;
+ }
+
+ .device-list.text-box p {
+     margin: 4px 0 0 0;
+     font-size: 16px;
+     opacity: 0.85;
+ }
+
+ /* Right Section */
+ .device-list.right-section {
+     display: flex;
+     align-items: center;
+ }
+
+ /* Divider */
+ .device-list.divider {
+     width: 1px;
+     height: 50px;
+     background: rgba(255, 255, 255, 0.4);
+     margin-right: 20px;
+ }
+
+ /* Arrow Circle */
+ .device-list.arrow-circle {
+     width: 45px;
+     height: 45px;
+     border-radius: 50%;
+     background: white;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     color: #0f2f5f;
+     font-size: 20px;
+     font-weight: bold;
+ }
+
+ .device-list.HidDevice35 {
+     width: auto;
+     height: 230px;
+     margin-top: 20px;
+     margin-bottom: 22px;
+     transition: transform 0.3s ease;
+
+ }
+
+ .device-list.HidDevice70 {
+     width: auto;
+     height: 272px;
+     /* margin-bottom: 20px; */
+     transition: transform 0.3s ease;
+
+ }
+
+ .device-list.DivVisibility {
+     display: none;
+ }
+
+
+ /* Temperory CSS */
+
+ @media (width< 768px) {
+     #DetailsImagelink {
+         text-align: center !important;
+         padding-top: 0%;
+     }
+
+
+     /* .modal-body 
+{
+    overflow-y: scroll;
+}           */
+ }
+
+
+
+
+
+
+ .MarginTop {
+     margin-top: 35px;
+ }
+
+ @media(width<700px) {
+     #ConfigCards {
+         margin-bottom: 31%;
+     }
+ }
+
+
+
+ .device-list.cssbuttons-io-buttonConfi {
+     background: linear-gradient(to bottom, #193e8e, #130e3b);
+     color: white;
+     font-family: inherit;
+     padding: 0.35em;
+     padding-left: 61.2px;
+     font-size: 17px;
+     font-weight: 500;
+     border-radius: 0.9em;
+     border: none;
+     letter-spacing: 0.05em;
+
+     display: flex;
+     align-items: center;
+     justify-content: center;
+
+     box-shadow: inset 0 0 1.6em -0.6em #3058af;
+     overflow: hidden;
+     position: relative;
+     height: 3.5em;
+     padding-right: 1.3em;
+     cursor: pointer;
+     margin: 20px auto;
+ }
+
+ .device-list.config-link {
+
+     margin-bottom: 20px;
+     color: #313cfc;
+     outline: none;
+     border: none;
+     text-decoration: none;
+     font-weight: bold;
+     padding: 8px 15px;
+     border-radius: 5px;
+     transition: all 0.3s ease;
+     background: #e8e8ea;
+     /* background: linear-gradient(to bottom, #1d408c, #615794); */
+ }
+
+ /* Button Hover */
+ /* .config-link:hover {
+            background-color: #d7d7f4;
+             outline: none;
+             border: none;
+            text-decoration: none;
+        } */
+ /* Button Hovering CSS */
+ .cssbuttons-io-buttonConfi .icon {
+     background: white;
+     margin-left: 1em;
+     position: absolute;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     height: 2.7em;
+     width: 2.7em;
+     border-radius: 0.7em;
+     box-shadow: 0.1em 0.1em 0.6em 0.2em #3058af;
+     left: -12px;
+     transition: all 0.3s;
+ }
+
+ .cssbuttons-io-buttonConfi:hover .icon {
+     width: calc(100% - 0.6em);
+ }
+
+ .cssbuttons-io-buttonConfi .icon svg {
+     width: 2.1em;
+     transition: transform 0.3s;
+     color: #7b52b9;
+ }
+
+ .cssbuttons-io-buttonConfi:hover .icon svg {
+     transform: translateX(0.1em);
+ }
+
+ .cssbuttons-io-buttonConfi:active .icon {
+     transform: scale(0.95);
+ }
+
+
+
+ /* .hid-container {
+  padding: 20px;
+  
+
+  
+} */
+
+ .user-content-screen {
+     align-self: flex-start;
+
+     /* cancel parent padding */
+     margin-right: -43px;
+     /* cancel parent padding on right too */
+     margin-top: 10px;
+     width: calc(100% + 40px);
+     /* compensate both sides */
+     flex: 1;
+     padding: 0 20px;
+     /* add your own controlled padding */
+ }
+
+ .fw {
+     font-weight: 600 !important;
+ }
+
+ .para {
+     font-size: 15px;
+ }
+
+ .configuredev {
+     font-size: 15px;
+ }
+
+ .user-content-screen .header-title {
+     font-size: 20px;
+     display: flex;
+     color: black;
+     align-items: center;
+     flex-wrap: wrap;
+     margin-bottom: 30px;
+ }
+
+
+
+
+
+ .hid-container .hid-header {
+     background: #ffffff;
+     padding: 10px 20px;
+     border-bottom: 1px solid #ddd;
+ }
+
+ .logo {
+     height: 35px;
+ }
+
+
+
+ .hid-container .hid-nav div {
+     font-size: 14px;
+     cursor: pointer;
+ }
+
+ .hid-container .hid-nav div p {
+     margin: 5px 0 0;
+ }
+
+ .hid-container .hid-card {
+     padding: 15px;
+     border-radius: 6px;
+     border: 1px solid #e2e2e2;
+     box-shadow: 0 0 3px 2px rgb(225 217 218 / 50%);
+
+
+     overflow-y: auto;
+ }
+
+ .hid-container .device-info p {
+     margin-bottom: 6px;
+     font-size: 14px;
+ }
+
+ .hid-container .device-footer {
+     background: #e9eef5;
+     padding: 8px;
+     margin-top: 10px;
+     font-size: 13px;
+ }
+
+ .hid-container .hid-nav {
+     background: #fff;
+     padding: 10px 19px;
+     border-bottom: 1px solid #ddd;
+     box-shadow: 0 0 3px 2px rgb(225 217 218 / 50%);
+     border-radius: 6px;
+
+     overflow-x: auto;
+ }
+
+ .hid-container .nav-item {
+     cursor: pointer;
+     transition: all 0.3s ease;
+     padding: 10px 0;
+     border-radius: 8px;
+ }
+
+ .hid-container .nav-item:hover {
+
+
+     transition: all 0.3s ease;
+ }
+
+ .hid-container .nav-item:hover .nav-icon {
+     color: #2f4ac2;
+ }
+
+ .hid-container .nav-item:hover p {
+
+     text-shadow: 0 0 2px #1f66eb;
+ }
+
+ .hid-container .nav-item:active {
+     transform: scale(0.95);
+ }
+
+ .hid-container .nav-icon {
+     font-size: 26px;
+     color: #495057;
+     transition: all 0.3s ease;
+ }
+
+ .hid-container .nav-item p {
+     margin: 5px 0 0;
+     font-size: 16px;
+     font-weight: 500;
+ }
+
+ .hid-container .connect-section {
+     min-width: 120px;
+     cursor: pointer;
+ }
+
+ .hid-container .connect-img {
+     width: 60px;
+     height: 60px;
+     object-fit: contain;
+     transition: transform 0.2s ease;
+ }
+
+ .hid-container .connect-img:hover {
+     transform: scale(1.1);
+ }
+
+ .hid-container .connect-text {
+     margin-top: 6px;
+     font-size: 14px;
+     color: #0d6efd;
+ }
+
+
+
+
+ .hid-container .text-input-group {
+     border: 0.5px solid #ccc;
+     border-radius: 4px;
+     padding: 3px 10px;
+     position: relative;
+     margin-bottom: 10px;
+ }
+
+ .hid-container .text-input-group label {
+     font-size: 15px;
+     color: #888;
+     margin-bottom: 0;
+     display: block;
+ }
+
+ .hid-container .text-input-group input {
+     border: none;
+     outline: none;
+     padding: 0;
+     width: 100%;
+     font-size: 14px;
+     background-color: transparent;
+     color: black;
+ }
+
+ .hid-container .text-input-group:focus-within {
+     border: 1px solid #811023;
+ }
+
+ .hid-container .text-input-group input:focus {
+     box-shadow: none;
+ }
+
+ .hid-container .ip-input-wrapper {
+     display: flex;
+     align-items: center;
+     width: 100%;
+     /* take full field width */
+ }
+
+ .hid-container .text-input-group span {
+     font-size: 15px;
+     color: black;
+
+ }
+
+ .hid-container .ip-input-wrapper input {
+     flex: 1;
+     /* each box grows equally */
+     min-width: 0;
+     text-align: center;
+     border: none;
+     outline: none;
+     font-size: 14px;
+     background: transparent;
+     padding: 0;
+ }
+
+ .hid-container .ip-input-wrapper span {
+     padding: 0 6px;
+     font-weight: 600;
+     color: #555;
+ }
+
+ .hid-container .device-wrapper {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+ }
+
+ .hid-container .device-image {
+     max-height: 280px;
+     object-fit: contain;
+ }
+
+ .hid-container .device-label {
+     font-weight: 600;
+     font-size: 14px;
+     color: #444;
+ }
+
+ .hid-container .cloud-checkbox {
+     display: flex;
+     align-items: center;
+     gap: 8px;
+     margin-top: 8px;
+     margin-bottom: 8px;
+     font-size: 14px;
+ }
+
+ .hid-container .cloud-checkbox input {
+     width: 16px;
+     height: 16px;
+     cursor: pointer;
+ }
+
+ .hid-container .cloud-checkbox label {
+     cursor: pointer;
+     color: #888;
+ }
+
+ .hid-container .cloud-checkbox.inside {
+     margin-top: 6px;
+ }
+
+ .hid-container .password-wrapper {
+     display: flex;
+     align-items: center;
+     width: 100%;
+ }
+
+ .hid-container .password-wrapper input {
+     flex: 1;
+     border: none;
+     outline: none;
+     font-size: 14px;
+
+     padding: 0;
+ }
+
+ .hid-container .password-field {
+     position: relative;
+ }
+
+ .hid-container .password-field input {
+     width: 100%;
+     padding-right: 40px;
+ }
+
+ .hid-container .eye-icon {
+     cursor: pointer;
+     font-size: 16px;
+     padding-left: 8px;
+     user-select: none;
+ }
+
+ .classmargin {
+     margin-bottom: 40px;
+     margin-top: 15px
+ }
+
+ .classLeftMargin {
+     margin-bottom: 40px;
+ }
+
+ .alignP {
+     display: flex;
+     /* IMPORTANT */
+     justify-content: space-between;
+     /* pushes left & right */
+     align-items: center;
+     /* vertical alignment */
+ }
+
+ .btnconfigurenew {
+     height: 34px;
+     width: 145px;
+     padding: 1px
+ }
+
+ @media(width<700px) {
+     .card .hid-card {
+         margin-bottom: 31%;
+     }
+
+     .classLeftMargin {
+         margin-bottom: 100px;
+     }
+
+     .classmargin {
+         margin-bottom: 1px;
+     }
+ }
+
+
+
+ /* =========================
+   TABS CONTAINER
+========================= */
+ .hid-tabs {
+     display: flex;
+     align-items: center;
+     width: 100%;
+     padding: 10px 16px;
+     background: #f4f5fa;
+     border-radius: 10px;
+     gap: 8px;
+ }
+
+ /* =========================
+   DESKTOP VIEW
+========================= */
+ @media (min-width: 768px) {
+     .hid-tabs {
+         justify-content: space-between;
+     }
+
+     .hid-tab-item {
+         flex: 1;
+         justify-content: center;
+     }
+ }
+
+ /* =========================
+   MOBILE VIEW
+========================= */
+ @media (max-width: 767px) {
+     .hid-tabs {
+         overflow-x: auto;
+         /* horizontal scroll */
+         white-space: nowrap;
+     }
+
+     .hid-tab-item {
+         flex: 0 0 auto;
+         /* prevent shrinking */
+         padding: 10px 14px;
+     }
+ }
+
+ /* =========================
+   TAB ITEM
+========================= */
+ .hid-tab-item {
+     display: flex;
+     align-items: center;
+     gap: 6px;
+     padding: 12px 16px;
+     font-size: 14px;
+     font-weight: 500;
+     border-radius: 8px;
+     cursor: pointer;
+     color: #646464;
+     transition: all 0.3s ease;
+     position: relative;
+ }
+
+ /* Bigger icon */
+ .hid-tab-item i {
+     font-size: 30px;
+ }
+
+ /* Hover */
+ .hid-tab-item:hover {
+     background: #e9ebf3;
+     color: #111;
+ }
+
+ /* Active Tab */
+ .hid-tab-item.active-tab {
+     color: black;
+     font-weight: 600;
+ }
+
+ /* Animated underline */
+ .hid-tab-item.active-tab::after {
+     content: "";
+     position: absolute;
+     bottom: -10px;
+     left: 20%;
+     width: 60%;
+     height: 3px;
+     /* background: linear-gradient(90deg, #811023, #E71D3E); */
+     background: grey;
+     border-radius: 3px;
+ }
+
+
+ /* Connected Device Row */
+
+ .connected-device-card {
+     background: #ffffff;
+     border: 1px solid #e2e8f0;
+     border-radius: 6px;
+     padding: 8px 16px;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+     margin-top: 8px;
+     margin-bottom: 8px;
+ }
+
+ .connected-device-grid {
+     display: flex;
+     align-items: center;
+     flex-wrap: wrap;
+     gap: 0;
+     margin-left: -30px;
+ }
+
+ /* Each info block */
+ .device-info-item {
+     display: flex;
+     flex-direction: row;
+     gap: 4px;
+     padding: 2px 16px;
+     flex: 1;
+     justify-content: center;
+     /* min-width: 160px; */
+ }
+
+ /* Vertical divider between items */
+ .device-info-divider {
+     width: 1px;
+     height: 24px;
+     background: #e2e8f0;
+     flex-shrink: 0;
+ }
+
+ /* Colored bold label */
+ .device-info-label {
+     font-size: 15px;
+     font-weight: 600;
+     color: #0061ff;
+     /* blue */
+     /* text-transform: uppercase; */
+     letter-spacing: 0.5px;
+     white-space: nowrap;
+ }
+
+ /* Value text */
+ .device-info-value {
+     font-size: 15px;
+     font-weight: 400;
+     white-space: nowrap;
+ }
+
+ /* Responsive — stack on mobile */
+ @media (max-width: 768px) {
+     .connected-device-grid {
+         flex-direction: column;
+         align-items: flex-start;
+         gap: 12px;
+     }
+
+     .device-info-divider {
+         width: 100%;
+         height: 1px;
+         /* horizontal divider on mobile */
+     }
+
+     .device-info-item {
+         padding: 0 4px;
+         width: 100%;
+     }
+ }
+
+ .swal-top-layer {
+     z-index: 99999 !important;
+ }

@@ -1,0 +1,33 @@
+/* Add to UserCardTable.css or a global CSS file */
+
+.skeleton {
+    background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+    height: 16px;
+}
+
+.skeleton-sm {
+    width: 40px;
+}
+
+.skeleton-md {
+    width: 120px;
+}
+
+.skeleton-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}

@@ -1,0 +1,200 @@
+.hid-container .devicefeature {
+  background: #ffffff;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.spaceBetweencontentdevicefeatr {
+  margin-bottom: 15px;
+}
+
+.spaceBetweencontentdevicefeatrdeleberate {
+  margin-bottom: -4px;
+}
+
+.commonwidth {
+  width: 100%;
+}
+
+.alignright {
+  text-align: right;
+}
+
+.spanmargin-left {
+  margin-left: 35px;
+}
+
+.toggle-bottom {
+  margin-top: -6px;
+}
+
+.spacetop {
+  margin-top: 5px;
+}
+
+.spacetopmax {
+  margin-top: 10px;
+}
+
+
+.radioActive {
+  margin-right: 10px;
+}
+
+.center-heading {
+  text-align: center;
+}
+
+/* Restart Device */
+
+.restartdiv {
+  display: flex;
+  gap: 10px;
+  /* space between select and button */
+  align-items: flex-start;
+  margin-bottom: 10px;
+
+  /* optional */
+}
+
+@media (max-width: 576px) {
+  .restartdiv {
+    display: block;
+    /* remove flex for mobile */
+  }
+
+  .restartdiv .col-lg-3,
+  .restartdiv .col-lg-1 {
+    width: 100% !important;
+    /* make each element full width */
+    margin-bottom: 10px;
+    /* add spacing between rows */
+  }
+
+  .restartdiv button {
+    width: 100% !important;
+  }
+
+  .spacebottom {
+    margin-bottom: 100px;
+    ;
+  }
+
+  .spacebottomwhitediv {
+    margin-bottom: 20px;
+    ;
+  }
+
+}
+
+/* Door sensor settings */
+
+.togglesize {
+  width: 40px !important;
+  height: 25px;
+}
+
+.btnmarginleft {
+  margin-left: 20px;
+}
+
+.spanmarginbottom {
+  margin-bottom: 2px;
+}
+
+/* TimeBasedAntipass */
+
+.checkboxmarginRight {
+  margin-right: 10px;
+}
+
+.spacetopmaxdiv {
+  margin-top: 15px;
+}
+
+
+/* SetLogo */
+
+.photoradious {
+  border-radius: 10% !important;
+}
+
+.no-nc-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.TimebasedAntipass-toggle {
+  padding-left: 0.5rem;
+}
+
+/* Tooltip wrapper */
+.tooltip-containerDoor {
+  position: relative;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+/* Icon styling */
+.info-iconDoor {
+  color: #6c757d;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.info-iconDoor:hover {
+  color: #0d6efd;
+  transform: scale(1.2);
+}
+
+/* Tooltip box */
+.custom-tooltipDoor {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: #fdf618;
+  color: #000000;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  transform: translateX(-50%) translateY(5px);
+
+  z-index: 10;
+}
+
+/* Tooltip arrow */
+.custom-tooltipDoor::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #1f2937 transparent transparent transparent;
+}
+
+/* Show tooltip on hover */
+.tooltip-containerDoor:hover .custom-tooltipDoor {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.rdofontsize {
+  font-size: 15px !important;
+  ;
+}
+
+.headerbottomspce {
+  margin-bottom: 0px !important;
+}
